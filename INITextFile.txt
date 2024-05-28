@@ -1,0 +1,8 @@
+does it exist?
+ else make it
+
+greasewesal_path="C:\greaseweazle-1.12" - (txtGwtext.text=)
+tracks_selected=79 - (cboTrackCombo)
+Disk_Type=ADF -(cboType)
+Read_Retrys=3 -(cboRetries)
+last file= -(lblFileName)
