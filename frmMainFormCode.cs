@@ -16,7 +16,25 @@ namespace ADFDiskBox
 
     public partial class frmMainForm : Form
     {
+        private void ErrorReporter(string sMessage)
+        {
+            /* error reporter */
 
+            //string sMessage = error.Message.ToString();
+
+            string report = string.Format("{0}", sMessage);
+            txtDiag.Text = report;
+
+            lbErrors.Items.Add("An error has occured");
+            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+            lbErrors.Items.Add(report);
+            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+            txtDiag.Text = report;
+
+            /* end of error reporter */
+        }
         private void ClearlbOutput()
         {
             if (lbOutput.InvokeRequired)
@@ -261,14 +279,14 @@ namespace ADFDiskBox
                 catch (Exception error)
                 {
                     string sMessage = error.Message.ToString();
-                    MessageBox.Show("An error has occured\n" + sMessage, "Oops!");
-                    txtDiag.Text= "An error has occured\n" + sMessage+"Oops!";
+                    ErrorReporter(sMessage);
                 }
             }
             else
             {
-                MessageBox.Show("could not write That adf files no good try again");
-                txtDiag.Text = "could not write That adf files no good try again";
+                string sMessage = "could not write That adf files no good try again";
+                ErrorReporter(sMessage);
+
                 return;
             }
         }
@@ -358,15 +376,14 @@ namespace ADFDiskBox
                 catch (Exception error)
                 {
                     string sMessage = error.Message.ToString();
-                    MessageBox.Show("An error has occured\n" + sMessage, "Oops!");
-                    txtDiag.Text= "An error has occured\n" + sMessage+ "Oops!";
+                    ErrorReporter(sMessage);
                 }
             }
 
             else
             {
-                MessageBox.Show("could not save That adf try again");
-                txtDiag.Text = "could not save That adf try again";
+                string sMessage="could not save That adf try again";
+                ErrorReporter(sMessage);
             }
         }
                 
@@ -464,16 +481,16 @@ namespace ADFDiskBox
 
                 catch (Exception error)
                 {
-                    string sMessage = error.Message.ToString();
-                    MessageBox.Show("An error has occured\n" + sMessage, "Oops!");
+                        string sMessage = error.Message.ToString();
+                        ErrorReporter(sMessage);
                 }
                 
             }
 
             else
             {
-                MessageBox.Show("could not open That scp file try again");
-                txtDiag.Text = "could not open That scp file try again";
+                    string sMessage = "could not open That scp file try again";
+                    ErrorReporter(sMessage);
             }
         }
 
@@ -556,15 +573,15 @@ namespace ADFDiskBox
 
                 catch (Exception error)
                 {
-                    string sMessage = error.Message.ToString();
-                    MessageBox.Show("An error has occured\n" + sMessage, "Oops!");
-                    txtDiag.Text= "An error has occured\n" + sMessage+ "Oops!";
+                        string sMessage = error.Message.ToString();
+                        ErrorReporter(sMessage);
                 }
             }
 
             else
             {
-                MessageBox.Show("That scp files no good try again");
+                    string sMessage = "could not open That scp file try again";
+                    ErrorReporter(sMessage);
             }
         }
 
@@ -651,16 +668,15 @@ namespace ADFDiskBox
                 catch (Exception error)
                 {
                     string sMessage = error.Message.ToString();
-                    MessageBox.Show("An error has occured\n" + sMessage, "Oops!");
-                    txtDiag.Text = "An error has occured\n" + sMessage + "Oops!";
+                    ErrorReporter(sMessage);
                 }
   
             }
 
             else
             {
-                MessageBox.Show("That scp files no good try again");
-                txtDiag.Text = "That scp files no good try again";
+                    string sMessage = "That scp files no good try again";
+                    ErrorReporter(sMessage);
             }
         }
 
@@ -730,16 +746,15 @@ namespace ADFDiskBox
                 catch (Exception error)
                 {
                     string sMessage = error.Message.ToString();
-                    MessageBox.Show("An error has occured\n" + sMessage, "Oops!");
-                    txtDiag.Text = "An error has occured\n" + sMessage + "Oops!";
+                    ErrorReporter(sMessage);
                 }
 
             }
 
             else
             {
-                MessageBox.Show("That scp files no good try again");
-                txtDiag.Text = "That scp files no good try again";
+                    string sMessage = "That scp files no good try again";
+                    ErrorReporter(sMessage);
             }
         }
 
@@ -847,8 +862,8 @@ namespace ADFDiskBox
 
                     else
                     {
-                        MessageBox.Show("That folder does not contain greasewesal software please try again");
-                        txtDiag.Text = "That folder does not contain greasewesal software please try again";
+                            string sMessage = "That folder does not contain greasewesal software please try again";
+                            ErrorReporter(sMessage);
                     }
 
 
@@ -856,8 +871,8 @@ namespace ADFDiskBox
 
                 else
                 {
-                    MessageBox.Show("That folders no good please try again");
-                    txtDiag.Text = "That Folder did not exist";
+                        string sMessage = "That folders no good please try again";
+                        ErrorReporter(sMessage);
                 }
 
                 return fullpath;
@@ -901,8 +916,8 @@ namespace ADFDiskBox
 
             catch (Exception error)
             {
-                MessageBox.Show(string.Format("Cant load INI error {0}", error.Message));
-                txtDiag.Text = string.Format("Cant load INI error {0}", error.Message);
+                string sMessage = error.Message.ToString();
+                ErrorReporter(sMessage);
             }
         }
 
@@ -931,8 +946,8 @@ namespace ADFDiskBox
 
             catch (Exception error)
             {
-                MessageBox.Show(string.Format("cant save INI error {0}", error.Message));
-                txtDiag.Text = string.Format("cant save INI error {0}", error.Message);
+                string sMessage = error.Message.ToString();
+                ErrorReporter(sMessage);
             }
         }
 

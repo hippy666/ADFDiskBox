@@ -24,7 +24,7 @@ namespace ADFDiskBox
     public partial class frmMainForm : Form
 
     {
-        
+
 
         public frmMainForm()
         {
@@ -39,8 +39,9 @@ namespace ADFDiskBox
             INIControl inisettings = new INIControl();
 
             var INIpath = Checkexists();
+            cboNumberOfDisks.SelectedIndex = 1;
 
-            MessageBox.Show("ADF Diskbox version 1.0.0.9" + "\n\n" + "By John Brett"
+            MessageBox.Show("ADF Diskbox version 1.0.0.10" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2" + "\n\n"
@@ -48,20 +49,20 @@ namespace ADFDiskBox
         }
 
 
-        
-
-       
 
 
-       
 
-        
 
-        
 
-        
 
-        
+
+
+
+
+
+
+
+
 
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -87,7 +88,7 @@ namespace ADFDiskBox
 
             //MessageBox.Show(tracks);
 
-            switch(selected)
+            switch (selected)
             {
                 case "ADF":
                     DISK2ADF();
@@ -102,7 +103,7 @@ namespace ADFDiskBox
                     break;
             }
 
-            
+
         }
 
         private void writeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -136,7 +137,7 @@ namespace ADFDiskBox
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*MessageBox.Show("ADF Diskbox version 1.0.0.2" + "\n\n" + "By John Brett"
+            /*MessageBox.Show("ADF Diskbox version 1.0.0.12" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2" + "\n\n"
@@ -145,7 +146,7 @@ namespace ADFDiskBox
                 "this is a gui frontend for the greasewesal v4 host tools."+ "\n\n"+
                 "\n\n" + "this program reads and writes amiga disks" + "\n\n"+
                 " using the greasewesal v4 hardware and host tools" + "\n\n"+
-                "Tested on host tools 1.16.2" + "\n\n"+
+                "Tested on host tools 1.16.3" + "\n\n"+
                 "should work on any host tools that recongnises the diskdefs file" + "\n\n"+
                 "on first load the program will set up its settings." + "\n\n"+
                 "you can save and load your settings." + "\n\n"+
@@ -173,8 +174,8 @@ namespace ADFDiskBox
                 " and follow the instructions." + "\n\n"+
                 "\n\nThis is a beta and a work in progress!" + "\n\n"
             };
-                
-                
+
+
             string s = string.Join(",", helpstring);
             MessageBox.Show(s);
 
@@ -229,7 +230,7 @@ namespace ADFDiskBox
             }
         }
         #endregion
-        
+
 
 
         private void cboRetries_SelectedIndexChanged(object sender, EventArgs e)
@@ -287,8 +288,10 @@ namespace ADFDiskBox
             catch (Exception error)
             {
                 string sMessage = error.Message.ToString();
-                MessageBox.Show("An error has occured\n" + sMessage, "Oops!");
-                txtDiag.Text = sMessage;
+
+                ErrorReporter(sMessage);
+
+                
             }
             /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -339,21 +342,21 @@ namespace ADFDiskBox
                     txtGwtext.Text = folderDlg.SelectedPath;
                     SaveINI(INIPath.Text);
 
-                    MessageBox.Show(string.Format("greasewesal software found at {0}",exepath));
-
+                    string sMessage = string.Format("greasewesal software found at {0}", exepath);
+                    ErrorReporter(sMessage);
                 }
 
                 else
                 {
-                    MessageBox.Show("folder does not contain greasewesal software please try again");
-                    txtDiag.Text = "folder does not contain greasewesal software please try again";
+                    string sMessage = "folder does not contain greasewesal software please try again";
+                    ErrorReporter(sMessage);
                 }
             }
 
             else
             {
-                MessageBox.Show("Invalid Folder please try again");
-                txtDiag.Text="Invalid Folder please try again";
+                string sMessage = "Invalid Folder please try again";
+                ErrorReporter(sMessage);
             }
         }
 
@@ -410,7 +413,7 @@ namespace ADFDiskBox
                     INIPath.Text = fullpath;
                 }
 
-                
+
             }
 
             else
@@ -495,7 +498,7 @@ namespace ADFDiskBox
 
         private void btnChangeSettings_Click(object sender, EventArgs e)
         {
-            
+
             string FilePath = INIPath.Text;
             string DirectoryName;
 
@@ -507,13 +510,13 @@ namespace ADFDiskBox
             saveFileDialog1.Filter = "Settings File Location|" + "ADFDiskbox.ini";
 
             saveFileDialog1.InitialDirectory = DirectoryName;
-            
-           
+
+
 
             saveFileDialog1.RestoreDirectory = true;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            { 
+            {
 
                 var fileContent = string.Empty;
                 var filePath = string.Empty;
@@ -535,7 +538,7 @@ namespace ADFDiskBox
 
         private void softwareLicenceToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             string[] LegalCrap = new string[]
                 { "Software License."+"\n\n"+
 
@@ -637,7 +640,7 @@ namespace ADFDiskBox
         {
             //pick directory
 
-            string selectedfolder= "c:\\";
+            string selectedfolder = "c:\\";
 
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
             folderDlg.ShowNewFolderButton = true;
@@ -823,188 +826,395 @@ namespace ADFDiskBox
                         i++;
 
                     }
-                        
-                    }
+
+                }
 
 
+            }
+        }
+
+        private void prgProgressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConvert2ADF_Click(object sender, EventArgs e)
+        {
+
+            var fileContent = string.Empty;
+            var filePathin = string.Empty;
+            var filePathout = string.Empty;
+
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "Amiga SCP only|*.scp";
+            openFileDialog1.RestoreDirectory = true;
+            // testing.....
+            openFileDialog1.ShowReadOnly = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            //
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                //Get the path of specified file
+                filePathin = openFileDialog1.FileName;
+
+                saveFileDialog1.FileName = "";
+                saveFileDialog1.InitialDirectory = "c:\\";
+                saveFileDialog1.Filter = "ADF Amiga only|*.adf";
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+                {
+
+                    //Get the path of specified file
+                    filePathout = saveFileDialog1.FileName;
+
+                    // insert process stuff
+
+                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
+
+                    txtDiag.Text = arg;
+
+                    ClearlbOutput();
+                    ClearlbErrorOutput();
+
+                    var proc = new Process
+                    {
+                        EnableRaisingEvents = true,
+                        StartInfo = new ProcessStartInfo
+                        {
+                            WorkingDirectory = txtGwtext.Text,
+                            Arguments = arg,
+                            FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            CreateNoWindow = true
+                        }
+                    };
+
+                    prgProgressBar1.Value = 0;
+
+                    proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+                    proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+                    proc.Start();
+
+                    proc.BeginErrorReadLine();
+                    proc.BeginOutputReadLine();
+
+                    proc.Close();
+                }
+
+                else
+                {
+                    MessageBox.Show("Could Not save that file");
+                    txtDiag.Text = "Could Not save that file";
                 }
             }
 
-                private void prgProgressBar1_Click(object sender, EventArgs e)
+            else
+            {
+                MessageBox.Show("could not open that file");
+                txtDiag.Text = "could not open that file";
+            }
+        }
+
+
+        private void btnConvert2SCP_Click(object sender, EventArgs e)
+        {
+            var fileContent = string.Empty;
+            var filePathin = string.Empty;
+            var filePathout = string.Empty;
+
+            openFileDialog1.FileName = "";
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Filter = "Amiga ADF only|*.adf";
+            openFileDialog1.RestoreDirectory = true;
+            // testing.....
+            openFileDialog1.ShowReadOnly = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            //
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //Get the path of specified file
+                filePathin = openFileDialog1.FileName;
+
+                saveFileDialog1.FileName = "";
+                saveFileDialog1.InitialDirectory = "c:\\";
+                saveFileDialog1.Filter = "SCP Amiga only|*.scp";
+                saveFileDialog1.RestoreDirectory = true;
+
+                if (saveFileDialog1.ShowDialog() == DialogResult.OK)
                 {
 
+                    //Get the path of specified file
+                    filePathout = saveFileDialog1.FileName;
+
+                    // insert process stuff
+
+                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
+
+                    //MessageBox.Show(arg);
+                    txtDiag.Text = arg;
+
+                    ClearlbOutput();
+                    ClearlbErrorOutput();
+
+                    var proc = new Process
+                    {
+                        EnableRaisingEvents = true,
+                        StartInfo = new ProcessStartInfo
+                        {
+                            WorkingDirectory = txtGwtext.Text,
+                            Arguments = arg,
+                            FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                            UseShellExecute = false,
+                            RedirectStandardOutput = true,
+                            RedirectStandardError = true,
+                            CreateNoWindow = true
+                        }
+                    };
+
+                    prgProgressBar1.Value = 0;
+
+                    proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+                    proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+                    proc.Start();
+
+                    proc.BeginErrorReadLine();
+                    proc.BeginOutputReadLine();
+
+                    proc.Close();
                 }
 
-                private void btnConvert2ADF_Click(object sender, EventArgs e)
+                else
                 {
-
-                    var fileContent = string.Empty;
-                    var filePathin = string.Empty;
-                    var filePathout = string.Empty;
-
-                    openFileDialog1.FileName = "";
-                    openFileDialog1.InitialDirectory = "c:\\";
-                    openFileDialog1.Filter = "Amiga SCP only|*.scp";
-                    openFileDialog1.RestoreDirectory = true;
-                    // testing.....
-                    openFileDialog1.ShowReadOnly = true;
-                    openFileDialog1.ReadOnlyChecked = true;
-                    //
-                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-
-                        //Get the path of specified file
-                        filePathin = openFileDialog1.FileName;
-
-                        saveFileDialog1.FileName = "";
-                        saveFileDialog1.InitialDirectory = "c:\\";
-                        saveFileDialog1.Filter = "ADF Amiga only|*.adf";
-                        saveFileDialog1.RestoreDirectory = true;
-
-                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                        {
-
-                            //Get the path of specified file
-                            filePathout = saveFileDialog1.FileName;
-
-                            // insert process stuff
-
-                            string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
-
-                            txtDiag.Text = arg;
-
-                            ClearlbOutput();
-                            ClearlbErrorOutput();
-
-                            var proc = new Process
-                            {
-                                EnableRaisingEvents = true,
-                                StartInfo = new ProcessStartInfo
-                                {
-                                    WorkingDirectory = txtGwtext.Text,
-                                    Arguments = arg,
-                                    FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
-                                    UseShellExecute = false,
-                                    RedirectStandardOutput = true,
-                                    RedirectStandardError = true,
-                                    CreateNoWindow = true
-                                }
-                            };
-
-                            prgProgressBar1.Value = 0;
-
-                            proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
-                            proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
-
-                            proc.Start();
-
-                            proc.BeginErrorReadLine();
-                            proc.BeginOutputReadLine();
-
-                            proc.Close();
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("Could Not save that file");
-                            txtDiag.Text = "Could Not save that file";
-                        }
-                    }
-
-                    else
-                    {
-                        MessageBox.Show("could not open that file");
-                        txtDiag.Text = "could not open that file";
-                    }
+                    MessageBox.Show("could not save that file");
+                    txtDiag.Text = "could not save that file";
                 }
+            }
 
-
-                private void btnConvert2SCP_Click(object sender, EventArgs e)
-                {
-                    var fileContent = string.Empty;
-                    var filePathin = string.Empty;
-                    var filePathout = string.Empty;
-
-                    openFileDialog1.FileName = "";
-                    openFileDialog1.InitialDirectory = "c:\\";
-                    openFileDialog1.Filter = "Amiga ADF only|*.adf";
-                    openFileDialog1.RestoreDirectory = true;
-                    // testing.....
-                    openFileDialog1.ShowReadOnly = true;
-                    openFileDialog1.ReadOnlyChecked = true;
-                    //
-                    if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        //Get the path of specified file
-                        filePathin = openFileDialog1.FileName;
-
-                        saveFileDialog1.FileName = "";
-                        saveFileDialog1.InitialDirectory = "c:\\";
-                        saveFileDialog1.Filter = "SCP Amiga only|*.scp";
-                        saveFileDialog1.RestoreDirectory = true;
-
-                        if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                        {
-
-                            //Get the path of specified file
-                            filePathout = saveFileDialog1.FileName;
-
-                            // insert process stuff
-
-                            string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
-
-                            //MessageBox.Show(arg);
-                            txtDiag.Text = arg;
-
-                            ClearlbOutput();
-                            ClearlbErrorOutput();
-
-                            var proc = new Process
-                            {
-                                EnableRaisingEvents = true,
-                                StartInfo = new ProcessStartInfo
-                                {
-                                    WorkingDirectory = txtGwtext.Text,
-                                    Arguments = arg,
-                                    FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
-                                    UseShellExecute = false,
-                                    RedirectStandardOutput = true,
-                                    RedirectStandardError = true,
-                                    CreateNoWindow = true
-                                }
-                            };
-
-                            prgProgressBar1.Value = 0;
-
-                            proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
-                            proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
-
-                            proc.Start();
-
-                            proc.BeginErrorReadLine();
-                            proc.BeginOutputReadLine();
-
-                            proc.Close();
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("could not save that file");
-                            txtDiag.Text = "could not save that file";
-                        }
-                    }
-
-                    else
-                    {
-                        MessageBox.Show("could not open this file");
-                    }
-                }
+            else
+            {
+                MessageBox.Show("could not open this file");
+            }
+        }
 
         private void lblNoOfDisks_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void btnXwrite_Click(object sender, EventArgs e)
+        {
+            //pick directory
+
+            string selectedfolder = "c:\\";
+
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            //folderDlg.ShowNewFolderButton = true;
+            folderDlg.ShowNewFolderButton = false;
+            folderDlg.Description = "Please Select the folder for this batch";
+            // Show the FolderBrowserDialog.  
+            DialogResult result = folderDlg.ShowDialog();
+            if (result != DialogResult.OK)
+            {
+                string sMessage = "that folders no good please try again";
+
+                string report = string.Format("{0}", sMessage);
+                txtDiag.Text = report;
+
+                lbErrors.Items.Add("An error");
+                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                lbErrors.Items.Add(report);
+                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                lbErrors.Items.Add("has occured");
+                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                /* end of error reporter */
+            }
+
+            else
+            {
+
+
+                selectedfolder = folderDlg.SelectedPath;
+                Environment.SpecialFolder root = folderDlg.RootFolder;
+
+                
+
+
+                    string diskformat = "";
+                    //string NoOfTracks = "";
+
+                    int SelectedTracks = cboTrackCombo.SelectedIndex;
+
+                    switch (SelectedTracks)
+                    {
+
+                        case 0:
+                            //NoOfTracks = "--tracks=c=0-79:h=0-1 ";
+                            diskformat = " --format=amiga.amigados ";
+                            break;
+                        case 1:
+                            //NoOfTracks = "--tracks=c=0-81:h=0-1 ";
+                            diskformat = " --format=amiga.amigados.plus ";
+                            break;
+                        default:
+                            //NoOfTracks = "--tracks=c=0-79:h=0-1 ";
+                            diskformat = " --format=amiga.amigados ";
+                            break;
+                    }
+
+                    string NoOfRetries = " --retries=" + cboRetries.SelectedIndex;
+
+                    /////////////////////////////////////////////////////////////////////
+                    // insert while here
+
+                    int NoDisks = cboNumberOfDisks.SelectedIndex + 1;
+
+                    string NumberOfDisks = NoDisks.ToString();
+
+                    int i = 1;
+
+                    MessageBox.Show(string.Format(" number of disks {0}", NumberOfDisks));
+
+
+                    bool quitwhile = false;
+
+
+                    while (i <= NoDisks && quitwhile==false)
+                    {
+
+                        MessageBox.Show(string.Format("Please Insert disk {0}", i));
+
+                        openFileDialog1.FileName = "";
+                        openFileDialog1.InitialDirectory = selectedfolder;
+                        openFileDialog1.Title = "Pick the next adf disk to write";
+
+                        openFileDialog1.Filter = "Amiga ADF only|*.adf";
+                        // testing.....
+                        openFileDialog1.ShowReadOnly = true;
+                        openFileDialog1.ReadOnlyChecked = true;
+                        //
+                        openFileDialog1.RestoreDirectory = true;
+                        if (openFileDialog1.ShowDialog() != DialogResult.OK)
+                        {
+                            /* error reporter */
+
+                            string report = string.Format("that files no good please try again");
+                            txtDiag.Text = report;
+
+                            lbErrors.Items.Add("An error");
+                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                            lbErrors.Items.Add(report);
+                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                            lbErrors.Items.Add("has occured");
+                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                        /* end of error reporter */
+                        quitwhile = true;
+                        }
+
+                        else
+                        {
+                            var fileContent = string.Empty;
+                            var filePath = string.Empty;
+
+                            //Get the path of specified file
+                            filePath = openFileDialog1.FileName;
+                            lblFileName.Text = filePath;
+
+
+                        
+
+                            // original
+                            //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+
+
+                            string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+
+
+                            //startInfo.Arguments = arg;
+
+
+                            ClearlbOutput();
+                            ClearlbErrorOutput();
+
+
+                            var proc = new Process
+                            {
+                                EnableRaisingEvents = true,
+                                StartInfo = new ProcessStartInfo
+                                {
+                                    WorkingDirectory = txtGwtext.Text,
+                                    Arguments = arg,
+                                    FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                                    UseShellExecute = false,
+                                    RedirectStandardOutput = true,
+                                    RedirectStandardError = true,
+                                    CreateNoWindow = true
+                                }
+                            };
+
+                            prgProgressBar1.Value = 0;
+
+                            proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+                            proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+                            //proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+                            try
+                            {
+                                proc.Start();
+
+                                proc.BeginOutputReadLine();
+                                proc.BeginErrorReadLine();
+
+
+                                proc.Close();
+                            }
+
+                            catch (Exception error)
+                            {
+                                /* error reporter */
+
+                                string sMessage = error.Message.ToString();
+
+                                string report = string.Format("{0}", sMessage);
+                                txtDiag.Text = report;
+
+                                lbErrors.Items.Add("An error");
+                                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                                lbErrors.Items.Add(report);
+                                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                                lbErrors.Items.Add("has occured");
+                                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                                /* end of error reporter */
+                            }
+
+                            // end of while i think
+                            i++;
+
+                    }
+
+                }
+
+
+            }
+        }
     }
+    
 }
 
         
