@@ -773,14 +773,14 @@
             this.lblErrorReport.AutoSize = true;
             this.lblErrorReport.Location = new System.Drawing.Point(52, 353);
             this.lblErrorReport.Name = "lblErrorReport";
-            this.lblErrorReport.Size = new System.Drawing.Size(64, 13);
+            this.lblErrorReport.Size = new System.Drawing.Size(63, 13);
             this.lblErrorReport.TabIndex = 48;
-            this.lblErrorReport.Text = "Error Report";
+            this.lblErrorReport.Text = "Notifcations";
             // 
             // btnXwrite
             // 
             this.btnXwrite.Location = new System.Drawing.Point(800, 290);
-            this.btnXwrite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXwrite.Margin = new System.Windows.Forms.Padding(2);
             this.btnXwrite.Name = "btnXwrite";
             this.btnXwrite.Size = new System.Drawing.Size(77, 76);
             this.btnXwrite.TabIndex = 49;

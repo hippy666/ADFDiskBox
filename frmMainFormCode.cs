@@ -22,10 +22,12 @@ namespace ADFDiskBox
 
             //string sMessage = error.Message.ToString();
 
+            ClearlbErrorOutput();
+
             string report = string.Format("{0}", sMessage);
             txtDiag.Text = report;
 
-            lbErrors.Items.Add("An error has occured");
+            lbErrors.Items.Add("the following event has occured");
             lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
             lbErrors.Items.Add(report);
@@ -856,7 +858,9 @@ namespace ADFDiskBox
             else
             {
                 //MessageBox.Show(string.Format("File {0} at path {1} Did Not Exist", fullpath, path));
-                txtDiag.Text = string.Format("File {0} at path {1} Did Not Exist", fullpath, path);
+                string smessage= string.Format("File {0} at path {1} Did Not Exist", fullpath, path);
+
+                ErrorReporter(smessage);
 
                 string[] LegalCrap = new string[]
                 { "Software License."+"\n\n"+
@@ -980,7 +984,7 @@ namespace ADFDiskBox
                         string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
 
                         //testing
-                        MessageBox.Show(string.Format(" Load settings {0}", iniContents));
+                        //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
                         txtDiag.Text = string.Format(" Loaded settings {0}", iniContents);
                     }
                     sr.Close();
@@ -1006,13 +1010,15 @@ namespace ADFDiskBox
 
                     string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
 
-                    MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
+                    //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 
 
                     sw.WriteLine(settings);
 
                     //MessageBox.Show(string.Format(" INI File Saved: {0}", settings));
-                    txtDiag.Text = string.Format(" INI File Saved: {0}", settings);
+                    string sMessage=string.Format(" INI File Saved: {0}", settings);
+
+                    ErrorReporter(sMessage);
                     sw.Close();
                 }
             }

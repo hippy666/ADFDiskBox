@@ -42,10 +42,10 @@ namespace ADFDiskBox
             
 
 
-            MessageBox.Show("ADF Diskbox version 1.0.0.10" + "\n\n" + "By John Brett"
+            MessageBox.Show("ADF Diskbox version 1.0.0.15" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
-            + "Tested on host tools 1.16.2" + "\n\n"
+            + "Tested on host tools 1.16.2 and up" + "\n\n"
             + "This is a beta and a work in progress!" + "\n\n");
         }
 
@@ -650,9 +650,10 @@ namespace ADFDiskBox
             DialogResult result = folderDlg.ShowDialog();
             if (result != DialogResult.OK)
             {
-                string sMessage = "that folders no good please try again";
+                string sMessage = string.Format("that folders no good please try again");
+                ErrorReporter(sMessage);
 
-                string report = string.Format("{0}", sMessage);
+                /*string report = string.Format("{0}", sMessage);
                 txtDiag.Text = report;
 
                 lbErrors.Items.Add("An error");
@@ -664,7 +665,8 @@ namespace ADFDiskBox
                 lbErrors.Items.Add("has occured");
                 lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                /* end of error reporter */
+                end of error reporter 
+                */
             }
 
             else
@@ -685,7 +687,9 @@ namespace ADFDiskBox
                     /* error reporter */
 
                     string report = string.Format("that files no good please try again");
-                    txtDiag.Text = report;
+                    ErrorReporter(report);
+                    
+                    /*txtDiag.Text = report;
 
                     lbErrors.Items.Add("An error");
                     lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
@@ -696,7 +700,8 @@ namespace ADFDiskBox
                     lbErrors.Items.Add("has occured");
                     lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                    /* end of error reporter */
+                     end of error reporter
+                    */
                 }
 
                 else
@@ -819,7 +824,9 @@ namespace ADFDiskBox
                             string sMessage = error.Message.ToString();
 
                             string report = string.Format("{0}", sMessage);
-                            txtDiag.Text = report;
+                            ErrorReporter(report);
+                            
+                            /*txtDiag.Text = report;
 
                             lbErrors.Items.Add("An error");
                             lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
@@ -830,7 +837,7 @@ namespace ADFDiskBox
                             lbErrors.Items.Add("has occured");
                             lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                            /* end of error reporter */
+                             end of error reporter */
                         }
 
                         // end of while i think
@@ -920,15 +927,20 @@ namespace ADFDiskBox
 
                 else
                 {
+                    ErrorReporter("Could Not save that file");
+                    /*
                     MessageBox.Show("Could Not save that file");
-                    txtDiag.Text = "Could Not save that file";
+                    txtDiag.Text = "Could Not save that file";*/
                 }
             }
 
             else
             {
+                ErrorReporter("could not open that file");
+                /*
                 MessageBox.Show("could not open that file");
-                txtDiag.Text = "could not open that file";
+                txtDiag.Text = "could not open that file";*/
+
             }
         }
 
@@ -1003,14 +1015,18 @@ namespace ADFDiskBox
 
                 else
                 {
+                    ErrorReporter("could not save that file");
+                    /*
                     MessageBox.Show("could not save that file");
-                    txtDiag.Text = "could not save that file";
+                    txtDiag.Text = "could not save that file";*/
                 }
             }
 
             else
             {
-                MessageBox.Show("could not open this file");
+                ErrorReporter("could not open this file");
+
+                /* MessageBox.Show("could not open this file");*/
             }
         }
 
@@ -1036,7 +1052,11 @@ namespace ADFDiskBox
                 string sMessage = "that folders no good please try again";
 
                 string report = string.Format("{0}", sMessage);
-                txtDiag.Text = report;
+
+                ErrorReporter(report);
+
+
+                /*txtDiag.Text = report;
 
                 lbErrors.Items.Add("An error");
                 lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
@@ -1047,7 +1067,7 @@ namespace ADFDiskBox
                 lbErrors.Items.Add("has occured");
                 lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                /* end of error reporter */
+                 end of error reporter */
             }
 
             else
@@ -1130,6 +1150,10 @@ namespace ADFDiskBox
                         {
                             /* error reporter */
 
+                            ErrorReporter("that files no good please try again");
+
+                            /*
+
                             string report = string.Format("that files no good please try again");
                             txtDiag.Text = report;
 
@@ -1142,8 +1166,8 @@ namespace ADFDiskBox
                             lbErrors.Items.Add("has occured");
                             lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                        /* end of error reporter */
-                        quitwhile = true;
+                         end of error reporter */
+                            quitwhile = true;
                         }
 
                         else
@@ -1214,6 +1238,10 @@ namespace ADFDiskBox
                                 string sMessage = error.Message.ToString();
 
                                 string report = string.Format("{0}", sMessage);
+
+                                ErrorReporter(report);
+                            
+                                /*
                                 txtDiag.Text = report;
 
                                 lbErrors.Items.Add("An error");
@@ -1225,7 +1253,7 @@ namespace ADFDiskBox
                                 lbErrors.Items.Add("has occured");
                                 lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                                /* end of error reporter */
+                                 end of error reporter */
                             }
 
                             // end of while i think
