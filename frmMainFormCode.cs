@@ -237,7 +237,19 @@ namespace ADFDiskBox
 
                 string NoOfRetries = "--retries=" + cboRetries.SelectedIndex+" ";
 
-                string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + "\"" + filePath + "\"";
+                string driveselect;
+                if (cboDriveSelect.SelectedIndex == 0)
+                {
+                    driveselect = "--drive=A";
+                }
+                else
+                {
+                    driveselect = "--drive=B";
+                }
+
+                //MessageBox.Show(driveselect);
+
+                string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+driveselect+" "+ "\"" + filePath + "\"";
 
                 
                 ClearlbOutput();
@@ -333,7 +345,19 @@ namespace ADFDiskBox
 
                 string NoOfRetries = " --retries=" + cboRetries.SelectedIndex;
 
-                string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                string driveselect;
+                if (cboDriveSelect.SelectedIndex == 0)
+                {
+                    driveselect = "--drive=A";
+                }
+                else
+                {
+                    driveselect = "--drive=B";
+                }
+
+                //MessageBox.Show(driveselect);
+
+                string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " "+driveselect+" " + "\"" + filePath + "\"";
 
 
                 //startInfo.Arguments = arg;
@@ -438,7 +462,19 @@ namespace ADFDiskBox
 
                 string NoOfRetries = "--retries=" + cboRetries.SelectedIndex;
 
-                string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                string driveselect;
+                if (cboDriveSelect.SelectedIndex == 0)
+                {
+                    driveselect = "--drive=A";
+                }
+                else
+                {
+                    driveselect = "--drive=B";
+                }
+
+                //MessageBox.Show(driveselect);
+
+                string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " "+driveselect+" " + "\"" + filePath + "\"";
 
                 //if doing scp you will need to add mydisk.scp::disktype=amiga directly
 
@@ -528,11 +564,22 @@ namespace ADFDiskBox
 
                 string NoOfRetries = "--retries=" + cboRetries.SelectedIndex;
 
-               
+                string driveselect;
+                if (cboDriveSelect.SelectedIndex == 0)
+                {
+                    driveselect = "--drive=A";
+                }
+                else
+                {
+                    driveselect = "--drive=B";
+                }
+
+                //MessageBox.Show(driveselect);
+
                 // below for raw scp....
                 //string arg = "/K " + "gw write " + "\"" + filePath + "::disktype=amiga" + "\"";
 
-                string arg = "/K " + "gw write " + "\"" + filePath + "\"";
+                string arg = "/K " + "gw write " + driveselect+" "+"\"" + filePath + "\"";
                 //if doing scp you will need to add mydisk.scp::disktype=amiga directly
 
                 startInfo.Arguments = arg;
@@ -627,8 +674,20 @@ namespace ADFDiskBox
 
                 string NoOfRetries = "--retries=" + cboRetries.SelectedIndex;
 
+                string driveselect;
+                if (cboDriveSelect.SelectedIndex == 0)
+                {
+                    driveselect = "--drive=A";
+                }
+                else
+                {
+                    driveselect = "--drive=B";
+                }
 
-                string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text+ "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                //MessageBox.Show(driveselect);
+
+
+                string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text+ "\"" + diskformat + " " + NoOfRetries + " "+driveselect+" " + "\"" + filePath + "\"";
 
 
                 ClearlbOutput();
@@ -703,9 +762,20 @@ namespace ADFDiskBox
                 string NoOfRetries = "--retries=" + cboRetries.SelectedIndex;
 
                 //if doing scp you will need to add mydisk.scp::disktype=amiga directly
-              
+                
+                string driveselect;
+                if (cboDriveSelect.SelectedIndex == 0)
+                {
+                    driveselect = "--drive=A";
+                }
+                else
+                {
+                    driveselect = "--drive=B";
+                }
+
+                //MessageBox.Show(driveselect);
                 // below for raw scp....
-                string arg = "/K " + "gw read " +  "\"" + filePath + "::disktype=amiga" + "\"";
+                string arg = "/K " + "gw read " +" "+driveselect+" "+"\"" + filePath + "::disktype=amiga" + "\"";
 
                 //startInfo.Arguments = arg;
 
@@ -904,10 +974,13 @@ namespace ADFDiskBox
                         cboType.Text = settings[5];
                         cboRetries.Text = settings[6];
 
-                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text);
+                        cboNumberOfDisks.Text = settings[7];
+                        cboDriveSelect.Text = settings[8];
+
+                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
 
                         //testing
-                        //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
+                        MessageBox.Show(string.Format(" Load settings {0}", iniContents));
                         txtDiag.Text = string.Format(" Loaded settings {0}", iniContents);
                     }
                     sr.Close();
@@ -931,9 +1004,9 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
 
-                    //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text));
+                    MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text));
 
 
                     sw.WriteLine(settings);

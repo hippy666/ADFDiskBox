@@ -39,7 +39,8 @@ namespace ADFDiskBox
             INIControl inisettings = new INIControl();
 
             var INIpath = Checkexists();
-            cboNumberOfDisks.SelectedIndex = 1;
+            
+
 
             MessageBox.Show("ADF Diskbox version 1.0.0.10" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
@@ -746,23 +747,34 @@ namespace ADFDiskBox
 
 
 
-
+                    string driveselect; 
+                    if (cboDriveSelect.SelectedIndex==0)
+                    {
+                        driveselect = "--drive=A";
+                    }
+                    else
+                    {
+                        driveselect = "--drive=B";
+                    }
+                    
+                    //MessageBox.Show(driveselect);
 
                     while (i <= NoDisks)
                     {
 
 
-                        MessageBox.Show(string.Format("Please Insert disk {0}", i));
+                        MessageBox.Show(string.Format("Please Wait for disk activity to finnish then Insert disk {0}", i));
 
                         // original
                         //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
-                        string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                        string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " "+driveselect +" "+ "\"" + filePath + " Disk " + i + " .adf" + "\"";
 
 
                         //startInfo.Arguments = arg;
 
+                        MessageBox.Show(arg);
 
                         ClearlbOutput();
                         ClearlbErrorOutput();
@@ -1087,8 +1099,20 @@ namespace ADFDiskBox
 
                     bool quitwhile = false;
 
+                    string driveselect;
+                    if (cboDriveSelect.SelectedIndex == 0)
+                    {
+                        driveselect = "--drive=A";
+                    }
+                    else
+                    {
+                        driveselect = "--drive=B";
+                    }
 
-                    while (i <= NoDisks && quitwhile==false)
+                //MessageBox.Show(driveselect);
+
+
+                while (i <= NoDisks && quitwhile==false)
                     {
 
                         MessageBox.Show(string.Format("Please Insert disk {0}", i));
@@ -1139,10 +1163,12 @@ namespace ADFDiskBox
                             //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
-                            string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                            string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " "+driveselect+" " + "\"" + filePath + "\"";
 
 
-                            //startInfo.Arguments = arg;
+                        //startInfo.Arguments = arg;
+
+                        //MessageBox.Show(arg);
 
 
                             ClearlbOutput();
