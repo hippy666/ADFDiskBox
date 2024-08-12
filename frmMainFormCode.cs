@@ -1006,7 +1006,7 @@ namespace ADFDiskBox
 
                     string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
 
-                    MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text));
+                    MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 
 
                     sw.WriteLine(settings);

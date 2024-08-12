@@ -138,16 +138,12 @@ namespace ADFDiskBox
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*MessageBox.Show("ADF Diskbox version 1.0.0.12" + "\n\n" + "By John Brett"
-            + "\n\n" + "this program reads and writes amiga disks"
-            + " using the greasewesal v4 hardware and host tools" + "\n\n"
-            + "Tested on host tools 1.16.2" + "\n\n"
-            + "This is a beta and a work in progress!" + "\n\n");*/
             string[] helpstring = new string[] {
+                "ADF Diskbox version 1.0.0.15 By John Brett"+"\n\n"+
                 "this is a gui frontend for the greasewesal v4 host tools."+ "\n\n"+
                 "\n\n" + "this program reads and writes amiga disks" + "\n\n"+
                 " using the greasewesal v4 hardware and host tools" + "\n\n"+
-                "Tested on host tools 1.16.3" + "\n\n"+
+                "Tested on host tools 1.16.3 and up" + "\n\n"+
                 "should work on any host tools that recongnises the diskdefs file" + "\n\n"+
                 "on first load the program will set up its settings." + "\n\n"+
                 "you can save and load your settings." + "\n\n"+
@@ -598,6 +594,9 @@ namespace ADFDiskBox
             cboTrackCombo.Text = "79";
             cboType.Text = "ADF";
             cboRetries.Text = "3";
+
+            cboNumberOfDisks.Text = "2";
+            cboDriveSelect.Text = "A";
 
 
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
