@@ -763,6 +763,7 @@
             // lbErrors
             // 
             this.lbErrors.FormattingEnabled = true;
+            this.lbErrors.HorizontalScrollbar = true;
             this.lbErrors.Location = new System.Drawing.Point(46, 378);
             this.lbErrors.Name = "lbErrors";
             this.lbErrors.Size = new System.Drawing.Size(411, 95);

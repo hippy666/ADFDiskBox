@@ -985,7 +985,8 @@ namespace ADFDiskBox
 
                         //testing
                         //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
-                        txtDiag.Text = string.Format(" Loaded settings {0}", iniContents);
+                        string esettings= string.Format(" Loaded settings {0}", iniContents);
+                        ErrorReporter(esettings);
                     }
                     sr.Close();
                 }
