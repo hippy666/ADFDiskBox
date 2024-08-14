@@ -22,7 +22,7 @@ namespace ADFDiskBox
 
             //string sMessage = error.Message.ToString();
 
-            ClearlbErrorOutput();
+            //ClearlbErrorOutput(); clear the listbox ....
 
             string report = string.Format("{0}", sMessage);
             txtDiag.Text = report;
@@ -858,7 +858,7 @@ namespace ADFDiskBox
             else
             {
                 //MessageBox.Show(string.Format("File {0} at path {1} Did Not Exist", fullpath, path));
-                string smessage= string.Format("File {0} at path {1} Did Not Exist", fullpath, path);
+                string smessage= string.Format("ini File {0} at path {1} Did Not Exist", fullpath, path);
 
                 ErrorReporter(smessage);
 
@@ -909,6 +909,9 @@ namespace ADFDiskBox
                 cboType.Text = "ADF";
                 cboRetries.Text = "3";
 
+                cboNumberOfDisks.Text = "5";
+                cboDriveSelect.Text = "A";
+
 
                 FolderBrowserDialog folderDlg = new FolderBrowserDialog();
                 folderDlg.ShowNewFolderButton = true;
@@ -930,7 +933,8 @@ namespace ADFDiskBox
                         SaveINI(INIPath.Text);
 
                         //MessageBox.Show(string.Format("greasewesal software found at {0}", exepath));
-                        txtDiag.Text = string.Format("greasewesal software found at {0}", exepath);
+                        //txtDiag.Text = string.Format("greasewesal software found at {0}", exepath);
+                        ErrorReporter(string.Format("greasewesal software found at {0}", exepath));
 
                     }
 
@@ -980,6 +984,9 @@ namespace ADFDiskBox
 
                         cboNumberOfDisks.Text = settings[7];
                         cboDriveSelect.Text = settings[8];
+
+
+                        
 
                         string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
 
