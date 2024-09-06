@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Runtime.InteropServices;
@@ -47,6 +48,24 @@ namespace ADFDiskBox
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2 and up" + "\n\n"
             + "This is a beta and a work in progress!" + "\n\n");
+
+            // btn rescan code
+            // Get a list of serial port names.
+            string[] ports = SerialPort.GetPortNames();
+
+            MessageBox.Show("The following serial ports were found:");
+
+            // Display each port name to the combobox
+            
+            foreach (string port in ports)
+            {
+                MessageBox.Show(port);
+                cboComPort.Items.Add(port);
+                cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
+            }
+
+            //lbErrors.Items.Add(report);
+            //lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
         }
 
 
@@ -1264,6 +1283,36 @@ namespace ADFDiskBox
                 }
 
 
+            }
+        }
+
+        private void lblDirectory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblComPort_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRescan_Click(object sender, EventArgs e)
+        {
+            // Get a list of serial port names.
+            string[] ports = SerialPort.GetPortNames();
+
+            MessageBox.Show("The following serial ports were found:");
+
+            // Display each port name
+
+            cboComPort.Items.Clear();
+            
+
+            foreach (string port in ports)
+            {
+                MessageBox.Show(port);
+                cboComPort.Items.Add(port);
+                cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
             }
         }
     }
