@@ -249,11 +249,16 @@ namespace ADFDiskBox
                     driveselect = "--drive=B";
                 }
 
+                string device;
+                device = "--device=" + cboComPort.Text;
+
+
                 //MessageBox.Show(driveselect);
 
-                string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+driveselect+" "+ "\"" + filePath + "\"";
+                string arg = "/K " + "gw write " + device+" "+driveselect+" "+" --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+driveselect+" "+ "\"" + filePath + "\"";
 
-                
+                MessageBox.Show(arg);
+
                 ClearlbOutput();
                 ClearlbErrorOutput();
 
@@ -357,11 +362,18 @@ namespace ADFDiskBox
                     driveselect = "--drive=B";
                 }
 
+
+
+
+                string device;
+                device = "--device=" + cboComPort.Text;
+                
                 //MessageBox.Show(driveselect);
 
-                string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " "+driveselect+" " + "\"" + filePath + "\"";
+                string arg = "/K " + "gw read " + device + " "+driveselect+" --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
+                MessageBox.Show(arg);
                 //startInfo.Arguments = arg;
 
 
