@@ -698,7 +698,7 @@ namespace ADFDiskBox
                 saveFileDialog1.FileName = "";
                 saveFileDialog1.Title = "Please Select the filename for this batch (!dont add file extension)";
                 saveFileDialog1.InitialDirectory = selectedfolder;
-                saveFileDialog1.Filter = "Amiga ADF only|*.adf";
+                //saveFileDialog1.Filter = "Amiga ADF only|*.adf";
                 saveFileDialog1.RestoreDirectory = true;
 
                 if (saveFileDialog1.ShowDialog() != DialogResult.OK)
@@ -1167,7 +1167,8 @@ namespace ADFDiskBox
                         openFileDialog1.InitialDirectory = selectedfolder;
                         openFileDialog1.Title = "Pick the next adf disk to write";
 
-                        openFileDialog1.Filter = "Amiga ADF only|*.adf";
+                        //openFileDialog1.Filter = "Amiga ADF only|*.adf";
+
                         // testing.....
                         openFileDialog1.ShowReadOnly = true;
                         openFileDialog1.ReadOnlyChecked = true;
