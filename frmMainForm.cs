@@ -698,7 +698,7 @@ namespace ADFDiskBox
                 saveFileDialog1.FileName = "";
                 saveFileDialog1.Title = "Please Select the filename for this batch (!dont add file extension)";
                 saveFileDialog1.InitialDirectory = selectedfolder;
-                //saveFileDialog1.Filter = "Amiga ADF only|*.adf";
+                saveFileDialog1.Filter = "Amiga ADF only|*.adf";
                 saveFileDialog1.RestoreDirectory = true;
 
                 if (saveFileDialog1.ShowDialog() != DialogResult.OK)
@@ -779,7 +779,11 @@ namespace ADFDiskBox
                     {
                         driveselect = "--drive=B";
                     }
-                    
+
+                    string device;
+                    device = "--device=" + cboComPort.Text;
+
+
                     //MessageBox.Show(driveselect);
 
                     while (i <= NoDisks)
@@ -792,7 +796,7 @@ namespace ADFDiskBox
                         //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
-                        string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " "+driveselect +" "+ "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                        string arg = "/K " + "gw read " + device + " " + driveselect + " "+ " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + " Disk " + i + " .adf" + "\"";
 
 
                         //startInfo.Arguments = arg;
@@ -1147,6 +1151,10 @@ namespace ADFDiskBox
                         driveselect = "--drive=B";
                     }
 
+                string device;
+                device = "--device=" + cboComPort.Text;
+
+
                 //MessageBox.Show(driveselect);
 
 
@@ -1205,12 +1213,12 @@ namespace ADFDiskBox
                             //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
-                            string arg = "/K " + "gw write " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " "+driveselect+" " + "\"" + filePath + "\"";
+                            string arg = "/K " + "gw write " + device + " " + driveselect + " "+"--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
                         //startInfo.Arguments = arg;
 
-                        //MessageBox.Show(arg);
+                        MessageBox.Show(arg);
 
 
                             ClearlbOutput();
