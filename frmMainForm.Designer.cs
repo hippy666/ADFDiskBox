@@ -664,7 +664,7 @@
             this.btnX.Name = "btnX";
             this.btnX.Size = new System.Drawing.Size(75, 76);
             this.btnX.TabIndex = 37;
-            this.btnX.Text = "Xperimental batch read";
+            this.btnX.Text = "batch read";
             this.btnX.UseVisualStyleBackColor = true;
             this.btnX.Click += new System.EventHandler(this.btnX_Click);
             // 
@@ -785,11 +785,11 @@
             // btnXwrite
             // 
             this.btnXwrite.Location = new System.Drawing.Point(800, 290);
-            this.btnXwrite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXwrite.Margin = new System.Windows.Forms.Padding(2);
             this.btnXwrite.Name = "btnXwrite";
             this.btnXwrite.Size = new System.Drawing.Size(77, 76);
             this.btnXwrite.TabIndex = 49;
-            this.btnXwrite.Text = "Xperimental batch write";
+            this.btnXwrite.Text = "batch write";
             this.btnXwrite.UseVisualStyleBackColor = true;
             this.btnXwrite.Click += new System.EventHandler(this.btnXwrite_Click);
             // 
@@ -817,7 +817,7 @@
             // 
             this.cboComPort.FormattingEnabled = true;
             this.cboComPort.Location = new System.Drawing.Point(22, 58);
-            this.cboComPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboComPort.Margin = new System.Windows.Forms.Padding(2);
             this.cboComPort.Name = "cboComPort";
             this.cboComPort.Size = new System.Drawing.Size(92, 21);
             this.cboComPort.TabIndex = 52;
@@ -836,7 +836,7 @@
             // btnRescan
             // 
             this.btnRescan.Location = new System.Drawing.Point(820, 35);
-            this.btnRescan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRescan.Margin = new System.Windows.Forms.Padding(2);
             this.btnRescan.Name = "btnRescan";
             this.btnRescan.Size = new System.Drawing.Size(56, 65);
             this.btnRescan.TabIndex = 54;

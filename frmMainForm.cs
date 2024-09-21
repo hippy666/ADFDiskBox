@@ -790,15 +790,59 @@ namespace ADFDiskBox
 
                     while (i <= NoDisks)
                     {
+                        /*string selected = cboType.SelectedItem.ToString();
+                        //MessageBox.Show(selected);
+                        string tracks = cboTrackCombo.SelectedItem.ToString();
+
+                        //MessageBox.Show(tracks);
+
+                        switch (selected)
+                        {
+                            case "ADF":
+                                openFileDialog1.Filter = "Amiga dos ADF|*.adf";
+                                break;
+                            case "SCP":
+                                openFileDialog1.Filter = "Amiga dos SCP|*.scp";
+                                break;
+                            case "RAWSCP":
+                                openFileDialog1.Filter = "Amiga raw SCP|*.scp";
+                                break;
+                            default:
+                                openFileDialog1.Filter = "Amiga ADF |*.adf";
+                                break;
+                        }*/
+
+                        string selected = cboType.SelectedItem.ToString();
+                        //MessageBox.Show(selected);
+                        string tracks = cboTrackCombo.SelectedItem.ToString();
+
+                        //MessageBox.Show(tracks);
+
+                        string arg = " ";
+                        switch (selected)
+                        {
+                            case "ADF":
+                                arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                                break;
+                            case "SCP":
+                                arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk "+i+" .scp"+"::disktype=amiga" + "\"";
+                                break;
+                            case "RAWSCP":
+                                arg = "/K " + "gw read " + device + " " + driveselect + " " + "\"" + filePath +" Disk "+i+" .scp"+"\"";
+                                break;
+                            default:
+                                arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                                break;
+                        }
 
 
-                        MessageBox.Show(string.Format("Please Wait for disk activity to finnish then Insert disk {0}", i));
+                        MessageBox.Show(string.Format("Please Wait for disk activity to finish then Insert disk {0}", i));
 
                         // original
                         //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
-                        string arg = "/K " + "gw read " + device + " " + driveselect + " "+ " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                        //string arg = "/K " + "gw read " + device + " " + driveselect + " "+ " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + " Disk " + i + " .adf" + "\"";
 
 
                         //startInfo.Arguments = arg;
@@ -1102,9 +1146,6 @@ namespace ADFDiskBox
                 selectedfolder = folderDlg.SelectedPath;
                 Environment.SpecialFolder root = folderDlg.RootFolder;
 
-                
-
-
                     string diskformat = "";
                     //string NoOfTracks = "";
 
@@ -1162,12 +1203,33 @@ namespace ADFDiskBox
 
                 while (i <= NoDisks && quitwhile==false)
                     {
+                    string selectedformat = cboType.SelectedItem.ToString();
+                    //MessageBox.Show(selected);
+                    //string tracks = cboTrackCombo.SelectedItem.ToString();
 
-                        MessageBox.Show(string.Format("Please Insert disk {0}", i));
+                    //MessageBox.Show(tracks);
+
+                    switch (selectedformat)
+                    {
+                        case "ADF":
+                            openFileDialog1.Filter = "Amiga dos ADF|*.adf";
+                            break;
+                        case "SCP":
+                            openFileDialog1.Filter = "Amiga dos SCP|*.scp";
+                            break;
+                        case "RAWSCP":
+                            openFileDialog1.Filter = "Amiga raw SCP|*.scp";
+                            break;
+                        default:
+                            openFileDialog1.Filter = "Amiga ADF |*.adf";
+                            break;
+                    }
+
+                    MessageBox.Show(string.Format("Please Insert disk {0}", i));
 
                         openFileDialog1.FileName = "";
                         openFileDialog1.InitialDirectory = selectedfolder;
-                        openFileDialog1.Title = "Pick the next adf disk to write";
+                        openFileDialog1.Title = "Pick the next disk to write";
 
                         //openFileDialog1.Filter = "Amiga ADF only|*.adf";
 
@@ -1209,14 +1271,35 @@ namespace ADFDiskBox
                             filePath = openFileDialog1.FileName;
                             lblFileName.Text = filePath;
 
+                            string selected = cboType.SelectedItem.ToString();
+                            //MessageBox.Show(selected);
+                            string tracks = cboTrackCombo.SelectedItem.ToString();
 
-                        
+                        //MessageBox.Show(tracks);
 
-                            // original
-                            //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                            string arg = " ";
+                            switch (selected)
+                            {
+                            case "ADF":
+                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                break;
+                            case "SCP":
+                                arg = "/K " + "gw write " + device + " " + driveselect + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                break;
+                            case "RAWSCP":
+                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "\"" + filePath + "\"";
+                                break;
+                            default:
+                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                break;
+                            }
 
 
-                            string arg = "/K " + "gw write " + device + " " + driveselect + " "+"--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                        // original
+                        //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+
+
+                        //string arg = "/K " + "gw write " + device + " " + driveselect + " "+"--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
                         //startInfo.Arguments = arg;
