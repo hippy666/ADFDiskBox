@@ -260,8 +260,10 @@ namespace ADFDiskBox
 
         private void btnGwinfo_Click(object sender, EventArgs e)
         {
-            string arg = "/K " + "gw info";
-            //if doing scp you will need to add mydisk.scp::disktype=amiga directly
+            string device;
+            device = "--device=" + cboComPort.Text;
+
+            string arg = "/K gw info " + device;
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////
 
