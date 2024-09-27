@@ -49,20 +49,33 @@ namespace ADFDiskBox
             + "Tested on host tools 1.16.2 and up" + "\n\n"
             + "This is a beta and a work in progress!" + "\n\n");
 
-            // btn rescan code
             // Get a list of serial port names.
             string[] ports = SerialPort.GetPortNames();
 
             MessageBox.Show("The following serial ports were found:");
 
-            // Display each port name to the combobox
-            
-            foreach (string port in ports)
+            // Display each port name
+
+            cboComPort.Items.Clear();
+
+            if (null == ports | ports.Length == 0)
             {
-                MessageBox.Show(port);
-                cboComPort.Items.Add(port);
-                cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
+                MessageBox.Show("No Com ports Detected. replugin and retry!");
+                cboComPort.Items.Add("Rescan");
+                //cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
+
             }
+            else
+            {
+                foreach (string port in ports)
+                {
+
+                    MessageBox.Show(port);
+                    cboComPort.Items.Add(port);
+                    cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
+                }
+            }
+
 
             //lbErrors.Items.Add(report);
             //lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
@@ -1400,14 +1413,25 @@ namespace ADFDiskBox
             // Display each port name
 
             cboComPort.Items.Clear();
-            
 
-            foreach (string port in ports)
+            if(ports.Length!=0)
             {
-                MessageBox.Show(port);
-                cboComPort.Items.Add(port);
+                foreach (string port in ports)
+                {
+
+                    MessageBox.Show(port);
+                    cboComPort.Items.Add(port);
+                    cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("No Com ports Detected. replugin and retry!");
+                cboComPort.Items.Add("Rescan");
                 cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
             }
+            
         }
     }
     
