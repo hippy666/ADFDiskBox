@@ -99,6 +99,7 @@
             this.cboComPort = new System.Windows.Forms.ComboBox();
             this.lblComPort = new System.Windows.Forms.Label();
             this.btnRescan = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -816,7 +817,7 @@
             // cboComPort
             // 
             this.cboComPort.FormattingEnabled = true;
-            this.cboComPort.Location = new System.Drawing.Point(22, 58);
+            this.cboComPort.Location = new System.Drawing.Point(15, 71);
             this.cboComPort.Margin = new System.Windows.Forms.Padding(2);
             this.cboComPort.Name = "cboComPort";
             this.cboComPort.Size = new System.Drawing.Size(92, 21);
@@ -828,9 +829,9 @@
             this.lblComPort.Location = new System.Drawing.Point(12, 40);
             this.lblComPort.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblComPort.Name = "lblComPort";
-            this.lblComPort.Size = new System.Drawing.Size(141, 13);
+            this.lblComPort.Size = new System.Drawing.Size(132, 13);
             this.lblComPort.TabIndex = 53;
-            this.lblComPort.Text = "Please Select your Com Port";
+            this.lblComPort.Text = "Please Select your Device";
             this.lblComPort.Click += new System.EventHandler(this.lblComPort_Click);
             // 
             // btnRescan
@@ -844,11 +845,22 @@
             this.btnRescan.UseVisualStyleBackColor = true;
             this.btnRescan.Click += new System.EventHandler(this.btnRescan_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(820, 119);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(92, 50);
+            this.btnUpdate.TabIndex = 55;
+            this.btnUpdate.Text = "Update My Greasewezel";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(952, 548);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnRescan);
             this.Controls.Add(this.lblComPort);
             this.Controls.Add(this.cboComPort);
@@ -984,6 +996,7 @@
         private System.Windows.Forms.ComboBox cboComPort;
         private System.Windows.Forms.Label lblComPort;
         private System.Windows.Forms.Button btnRescan;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 

@@ -18,6 +18,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Management;
+using System.Management.Instrumentation;
+using System.Collections;
+
 
 namespace ADFDiskBox
 
@@ -74,6 +78,60 @@ namespace ADFDiskBox
                     cboComPort.Items.Add(port);
                     cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
                 }
+
+                string device;
+                device = "--device=" + cboComPort.Text;
+
+                string arg = "/K gw info " + device;
+
+                //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                ClearlbOutput();
+                ClearlbErrorOutput();
+
+                var proc = new Process
+                {
+                    EnableRaisingEvents = true,
+                    StartInfo = new ProcessStartInfo
+                    {
+                        WorkingDirectory = txtGwtext.Text,
+                        Arguments = arg,
+                        FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true
+                    }
+                };
+
+                prgProgressBar1.Value = 0;
+
+                proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+                proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+                try
+                {
+                    proc.Start();
+                    //ChooserForm.m_ProcessId = proc.Id;
+
+
+                    proc.BeginErrorReadLine();
+                    proc.BeginOutputReadLine();
+
+                    //proc.WaitForExit();
+                    proc.Close();
+                }
+
+                catch (Exception error)
+                {
+                    string sMessage = error.Message.ToString();
+
+                    ErrorReporter(sMessage);
+
+
+                }
+                /////////////////////////////////////////////////////////////////////////////////////////////////////
+
             }
 
 
@@ -1432,6 +1490,62 @@ namespace ADFDiskBox
                 cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
             }
             
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            string device;
+            device = "--device=" + cboComPort.Text;
+
+            string arg = "/K gw update " + device;
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            ClearlbOutput();
+            ClearlbErrorOutput();
+
+            var proc = new Process
+            {
+                EnableRaisingEvents = true,
+                StartInfo = new ProcessStartInfo
+                {
+                    WorkingDirectory = txtGwtext.Text,
+                    Arguments = arg,
+                    FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    RedirectStandardError = true,
+                    CreateNoWindow = true
+                }
+            };
+
+            prgProgressBar1.Value = 0;
+
+            proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+            proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+            try
+            {
+                proc.Start();
+                //ChooserForm.m_ProcessId = proc.Id;
+
+
+                proc.BeginErrorReadLine();
+                proc.BeginOutputReadLine();
+
+                //proc.WaitForExit();
+                proc.Close();
+            }
+
+            catch (Exception error)
+            {
+                string sMessage = error.Message.ToString();
+
+                ErrorReporter(sMessage);
+
+
+            }
+            /////////////////////////////////////////////////////////////////////////////////////////////////////
         }
     }
     
