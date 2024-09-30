@@ -397,7 +397,7 @@
             this.btnGwinfo.Name = "btnGwinfo";
             this.btnGwinfo.Size = new System.Drawing.Size(87, 35);
             this.btnGwinfo.TabIndex = 19;
-            this.btnGwinfo.Text = "Greasewesal Info";
+            this.btnGwinfo.Text = "Greaseweazle Info";
             this.btnGwinfo.UseVisualStyleBackColor = true;
             this.btnGwinfo.Click += new System.EventHandler(this.btnGwinfo_Click);
             // 
@@ -408,7 +408,7 @@
             this.txtGwtext.ReadOnly = true;
             this.txtGwtext.Size = new System.Drawing.Size(151, 20);
             this.txtGwtext.TabIndex = 20;
-            this.txtGwtext.Text = "C:\\Greasewesal";
+            this.txtGwtext.Text = "C:\\Greaseweazle";
             // 
             // lblDirectory
             // 
@@ -851,7 +851,7 @@
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(92, 50);
             this.btnUpdate.TabIndex = 55;
-            this.btnUpdate.Text = "Update My Greasewezel";
+            this.btnUpdate.Text = "Update My Greaseweazle";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
