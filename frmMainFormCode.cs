@@ -257,7 +257,7 @@ namespace ADFDiskBox
 
                 string arg = "/K " + "gw write " + device+" "+driveselect+" "+" --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + "\"";
 
-                MessageBox.Show(arg);
+                //MessageBox.Show(arg);
 
                 ClearlbOutput();
                 ClearlbErrorOutput();
@@ -373,7 +373,7 @@ namespace ADFDiskBox
                 string arg = "/K " + "gw read " + device + " "+driveselect+" --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
-                MessageBox.Show(arg);
+                //MessageBox.Show(arg);
                 //startInfo.Arguments = arg;
 
 
@@ -498,7 +498,7 @@ namespace ADFDiskBox
                 //if doing scp you will need to add mydisk.scp::disktype=amiga directly
 
                 //startInfo.Arguments = arg;
-                MessageBox.Show(arg);
+                //MessageBox.Show(arg);
 
                 ClearlbOutput();
                 ClearlbErrorOutput();
@@ -606,7 +606,7 @@ namespace ADFDiskBox
                 //if doing scp you will need to add mydisk.scp::disktype=amiga directly
 
                 startInfo.Arguments = arg;
-                MessageBox.Show(arg);
+                //MessageBox.Show(arg);
 
                 ClearlbOutput();
                 ClearlbErrorOutput();
@@ -716,7 +716,7 @@ namespace ADFDiskBox
 
                 string arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + txtDiskdefs.Text+ "\"" + diskformat + " " + NoOfRetries +" " + "\"" + filePath +"::disktype=amiga" + "\"";
 
-                MessageBox.Show(arg);
+                //MessageBox.Show(arg);
 
                 ClearlbOutput();
                 ClearlbErrorOutput();
@@ -811,7 +811,7 @@ namespace ADFDiskBox
                 string arg = "/K " + "gw read " + device + " " + driveselect + " " + "\"" + filePath + "\"";
 
                 //startInfo.Arguments = arg;
-                MessageBox.Show(arg);
+                //MessageBox.Show(arg);
 
                 ClearlbOutput();
                 ClearlbErrorOutput();

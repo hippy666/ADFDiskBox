@@ -920,7 +920,7 @@ namespace ADFDiskBox
 
                         //startInfo.Arguments = arg;
 
-                        MessageBox.Show(arg);
+                        //MessageBox.Show(arg);
 
                         ClearlbOutput();
                         ClearlbErrorOutput();
@@ -1377,7 +1377,7 @@ namespace ADFDiskBox
 
                         //startInfo.Arguments = arg;
 
-                        MessageBox.Show(arg);
+                        //MessageBox.Show(arg);
 
 
                             ClearlbOutput();
