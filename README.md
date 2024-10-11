@@ -1,6 +1,6 @@
 # ADFDiskBox
 
-ADF Diskbox version 1.0.0.15 By John Brett
+ADF Diskbox version 2.0 By John Brett
 
 this program reads and writes amiga disks
 

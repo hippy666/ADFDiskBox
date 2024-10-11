@@ -47,7 +47,7 @@ namespace ADFDiskBox
             
 
 
-            MessageBox.Show("ADF Diskbox version 1.0.0.15" + "\n\n" + "By John Brett"
+            MessageBox.Show("ADF Diskbox version 2.0" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2 and up" + "\n\n"
@@ -229,7 +229,7 @@ namespace ADFDiskBox
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] helpstring = new string[] {
-                "ADF Diskbox version 1.0.0.15 By John Brett"+"\n\n"+
+                "ADF Diskbox version 2.0 By John Brett"+"\n\n"+
                 "this is a gui frontend for the greasewesal v4 host tools."+ "\n\n"+
                 "\n\n" + "this program reads and writes amiga disks" + "\n\n"+
                 " using the greasewesal v4 hardware and host tools" + "\n\n"+
@@ -247,6 +247,7 @@ namespace ADFDiskBox
                 "change diskdefs path lets you use a diffrent diskdefs file."+
                 "\n\nIf you want to use your own diskdefs file\n" +
                 " please include the following\n\n" +
+                "\n\n"+
                 "disk amiga.amigados.plus\n" +
                 "cyls = 82\n" +
                 "    heads = 2\n" +
@@ -254,6 +255,7 @@ namespace ADFDiskBox
                 "        secs = 11\n" +
                 "    end\n" +
                 "end\n\n"+
+                "\n\n"+
                 "pick your number of tracks then disk type (adf for a plain disk,"+
                 "scp for a protected amigados and rawscp for a rearly protected)" + "\n\n"+
                 "pick your read retries - for adf files only." + "\n\n"+
