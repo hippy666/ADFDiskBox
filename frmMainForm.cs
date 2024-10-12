@@ -64,9 +64,9 @@ namespace ADFDiskBox
 
             if (null == ports | ports.Length == 0)
             {
-                MessageBox.Show("No Com ports Detected. replugin and retry!");
+                MessageBox.Show("No Com ports Detected. please replugin and press rescan ports!");
                 cboComPort.Items.Add("Rescan");
-                //cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
+                cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
 
             }
             else
@@ -1487,7 +1487,7 @@ namespace ADFDiskBox
 
             else
             {
-                MessageBox.Show("No Com ports Detected. replugin and retry!");
+                MessageBox.Show("No Com ports Detected. replugin and press rescan com ports!");
                 cboComPort.Items.Add("Rescan");
                 cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
             }
