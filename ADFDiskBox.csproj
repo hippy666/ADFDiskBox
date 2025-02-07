@@ -107,7 +107,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ADFDiskBox_TemporaryKey.pfx" />
     <None Include="Jdiskdefs.cfg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
