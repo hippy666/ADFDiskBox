@@ -308,14 +308,15 @@
             // customizeToolStripMenuItem
             // 
             this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.customizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.customizeToolStripMenuItem.Text = "&Customize";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -786,7 +787,7 @@
             // btnXwrite
             // 
             this.btnXwrite.Location = new System.Drawing.Point(800, 290);
-            this.btnXwrite.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXwrite.Margin = new System.Windows.Forms.Padding(2);
             this.btnXwrite.Name = "btnXwrite";
             this.btnXwrite.Size = new System.Drawing.Size(77, 76);
             this.btnXwrite.TabIndex = 49;
@@ -818,7 +819,7 @@
             // 
             this.cboComPort.FormattingEnabled = true;
             this.cboComPort.Location = new System.Drawing.Point(15, 71);
-            this.cboComPort.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboComPort.Margin = new System.Windows.Forms.Padding(2);
             this.cboComPort.Name = "cboComPort";
             this.cboComPort.Size = new System.Drawing.Size(92, 21);
             this.cboComPort.TabIndex = 52;
@@ -837,7 +838,7 @@
             // btnRescan
             // 
             this.btnRescan.Location = new System.Drawing.Point(820, 35);
-            this.btnRescan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnRescan.Margin = new System.Windows.Forms.Padding(2);
             this.btnRescan.Name = "btnRescan";
             this.btnRescan.Size = new System.Drawing.Size(56, 65);
             this.btnRescan.TabIndex = 54;
@@ -993,10 +994,10 @@
         private System.Windows.Forms.Button btnXwrite;
         private System.Windows.Forms.Label lblDriveSelect;
         private System.Windows.Forms.ComboBox cboDriveSelect;
-        private System.Windows.Forms.ComboBox cboComPort;
         private System.Windows.Forms.Label lblComPort;
         private System.Windows.Forms.Button btnRescan;
         private System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.ComboBox cboComPort;
     }
 }
 

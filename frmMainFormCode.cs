@@ -16,6 +16,11 @@ namespace ADFDiskBox
 
     public partial class frmMainForm : Form
     {
+        public void Tester()
+        {
+            MessageBox.Show("Fucking thing");
+        }
+
         private void ErrorReporter(string sMessage)
         {
             /* error reporter */

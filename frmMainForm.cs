@@ -1549,6 +1549,12 @@ namespace ADFDiskBox
             }
             /////////////////////////////////////////////////////////////////////////////////////////////////////
         }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmOptions FormOptions = new FrmOptions();
+            FormOptions.ShowDialog();
+        }
     }
     
 }
