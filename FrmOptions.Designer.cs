@@ -55,6 +55,24 @@ namespace ADFDiskBox
             this.txtDiag = new System.Windows.Forms.TextBox();
             this.BtnCloseButton = new System.Windows.Forms.Button();
             this.btnGwinfo = new System.Windows.Forms.Button();
+            this.LblPercentComplete = new System.Windows.Forms.Label();
+            this.prgProgressBar1 = new System.Windows.Forms.ProgressBar();
+            this.lblTrackNo = new System.Windows.Forms.Label();
+            this.txtTrackNo = new System.Windows.Forms.TextBox();
+            this.lblSide = new System.Windows.Forms.Label();
+            this.txtSide = new System.Windows.Forms.TextBox();
+            this.lblNumberOfTracks = new System.Windows.Forms.Label();
+            this.cboTrackCombo = new System.Windows.Forms.ComboBox();
+            this.lblDiskType = new System.Windows.Forms.Label();
+            this.cboType = new System.Windows.Forms.ComboBox();
+            this.lblRetries = new System.Windows.Forms.Label();
+            this.cboRetries = new System.Windows.Forms.ComboBox();
+            this.lblDriveSelect = new System.Windows.Forms.Label();
+            this.cboDriveSelect = new System.Windows.Forms.ComboBox();
+            this.lblNoOfDisks = new System.Windows.Forms.Label();
+            this.cboNumberOfDisks = new System.Windows.Forms.ComboBox();
+            this.LblFileInUse = new System.Windows.Forms.Label();
+            this.lblFileName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblComPort
@@ -76,17 +94,18 @@ namespace ADFDiskBox
             // 
             // btnChange
             // 
-            this.btnChange.Location = new System.Drawing.Point(456, 213);
+            this.btnChange.Location = new System.Drawing.Point(457, 107);
             this.btnChange.Name = "btnChange";
             this.btnChange.Size = new System.Drawing.Size(150, 31);
             this.btnChange.TabIndex = 25;
             this.btnChange.Text = "change Host Tools path";
             this.btnChange.UseVisualStyleBackColor = true;
+            this.btnChange.Click += new System.EventHandler(this.btnChange_Click);
             // 
             // lblDirectory
             // 
             this.lblDirectory.AutoSize = true;
-            this.lblDirectory.Location = new System.Drawing.Point(471, 247);
+            this.lblDirectory.Location = new System.Drawing.Point(461, 141);
             this.lblDirectory.Name = "lblDirectory";
             this.lblDirectory.Size = new System.Drawing.Size(121, 13);
             this.lblDirectory.TabIndex = 26;
@@ -94,10 +113,10 @@ namespace ADFDiskBox
             // 
             // txtGwtext
             // 
-            this.txtGwtext.Location = new System.Drawing.Point(456, 266);
+            this.txtGwtext.Location = new System.Drawing.Point(457, 157);
             this.txtGwtext.Name = "txtGwtext";
             this.txtGwtext.ReadOnly = true;
-            this.txtGwtext.Size = new System.Drawing.Size(151, 20);
+            this.txtGwtext.Size = new System.Drawing.Size(344, 20);
             this.txtGwtext.TabIndex = 27;
             this.txtGwtext.Text = "C:\\Greaseweazle";
             // 
@@ -105,7 +124,7 @@ namespace ADFDiskBox
             // 
             this.btnChangeSettings.Location = new System.Drawing.Point(456, 25);
             this.btnChangeSettings.Name = "btnChangeSettings";
-            this.btnChangeSettings.Size = new System.Drawing.Size(100, 37);
+            this.btnChangeSettings.Size = new System.Drawing.Size(178, 37);
             this.btnChangeSettings.TabIndex = 32;
             this.btnChangeSettings.Text = "Reset Path To Settings";
             this.btnChangeSettings.UseVisualStyleBackColor = true;
@@ -125,12 +144,12 @@ namespace ADFDiskBox
             this.INIPath.Location = new System.Drawing.Point(456, 81);
             this.INIPath.Name = "INIPath";
             this.INIPath.ReadOnly = true;
-            this.INIPath.Size = new System.Drawing.Size(100, 20);
+            this.INIPath.Size = new System.Drawing.Size(345, 20);
             this.INIPath.TabIndex = 34;
             // 
             // btnDiskdefs
             // 
-            this.btnDiskdefs.Location = new System.Drawing.Point(456, 113);
+            this.btnDiskdefs.Location = new System.Drawing.Point(0, 239);
             this.btnDiskdefs.Name = "btnDiskdefs";
             this.btnDiskdefs.Size = new System.Drawing.Size(142, 55);
             this.btnDiskdefs.TabIndex = 35;
@@ -140,7 +159,7 @@ namespace ADFDiskBox
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(482, 171);
+            this.label1.Location = new System.Drawing.Point(-3, 297);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 36;
@@ -148,14 +167,14 @@ namespace ADFDiskBox
             // 
             // txtDiskdefs
             // 
-            this.txtDiskdefs.Location = new System.Drawing.Point(456, 187);
+            this.txtDiskdefs.Location = new System.Drawing.Point(4, 313);
             this.txtDiskdefs.Name = "txtDiskdefs";
-            this.txtDiskdefs.Size = new System.Drawing.Size(136, 20);
+            this.txtDiskdefs.Size = new System.Drawing.Size(419, 20);
             this.txtDiskdefs.TabIndex = 37;
             // 
             // btnConvert2ADF
             // 
-            this.btnConvert2ADF.Location = new System.Drawing.Point(672, 25);
+            this.btnConvert2ADF.Location = new System.Drawing.Point(726, 24);
             this.btnConvert2ADF.Name = "btnConvert2ADF";
             this.btnConvert2ADF.Size = new System.Drawing.Size(75, 39);
             this.btnConvert2ADF.TabIndex = 42;
@@ -164,7 +183,7 @@ namespace ADFDiskBox
             // 
             // btnConvert2SCP
             // 
-            this.btnConvert2SCP.Location = new System.Drawing.Point(574, 25);
+            this.btnConvert2SCP.Location = new System.Drawing.Point(645, 22);
             this.btnConvert2SCP.Name = "btnConvert2SCP";
             this.btnConvert2SCP.Size = new System.Drawing.Size(75, 42);
             this.btnConvert2SCP.TabIndex = 43;
@@ -184,16 +203,17 @@ namespace ADFDiskBox
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(341, 96);
+            this.btnUpdate.Location = new System.Drawing.Point(338, 24);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(99, 69);
             this.btnUpdate.TabIndex = 56;
             this.btnUpdate.Text = "Update My Greaseweazle";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(222, 96);
+            this.btnReset.Location = new System.Drawing.Point(560, 550);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(102, 69);
             this.btnReset.TabIndex = 57;
@@ -202,7 +222,7 @@ namespace ADFDiskBox
             // 
             // BtnLoadSettings
             // 
-            this.BtnLoadSettings.Location = new System.Drawing.Point(222, 25);
+            this.BtnLoadSettings.Location = new System.Drawing.Point(560, 466);
             this.BtnLoadSettings.Name = "BtnLoadSettings";
             this.BtnLoadSettings.Size = new System.Drawing.Size(102, 65);
             this.BtnLoadSettings.TabIndex = 58;
@@ -212,7 +232,7 @@ namespace ADFDiskBox
             // 
             // btnSaveSettings
             // 
-            this.btnSaveSettings.Location = new System.Drawing.Point(341, 25);
+            this.btnSaveSettings.Location = new System.Drawing.Point(683, 466);
             this.btnSaveSettings.Name = "btnSaveSettings";
             this.btnSaveSettings.Size = new System.Drawing.Size(99, 65);
             this.btnSaveSettings.TabIndex = 59;
@@ -221,7 +241,7 @@ namespace ADFDiskBox
             // lbOutput
             // 
             this.lbOutput.FormattingEnabled = true;
-            this.lbOutput.Location = new System.Drawing.Point(17, 171);
+            this.lbOutput.Location = new System.Drawing.Point(10, 368);
             this.lbOutput.Name = "lbOutput";
             this.lbOutput.Size = new System.Drawing.Size(411, 95);
             this.lbOutput.TabIndex = 60;
@@ -229,7 +249,7 @@ namespace ADFDiskBox
             // lblOutputWIndow
             // 
             this.lblOutputWIndow.AutoSize = true;
-            this.lblOutputWIndow.Location = new System.Drawing.Point(14, 155);
+            this.lblOutputWIndow.Location = new System.Drawing.Point(7, 348);
             this.lblOutputWIndow.Name = "lblOutputWIndow";
             this.lblOutputWIndow.Size = new System.Drawing.Size(81, 13);
             this.lblOutputWIndow.TabIndex = 61;
@@ -238,7 +258,7 @@ namespace ADFDiskBox
             // lblErrorReport
             // 
             this.lblErrorReport.AutoSize = true;
-            this.lblErrorReport.Location = new System.Drawing.Point(14, 269);
+            this.lblErrorReport.Location = new System.Drawing.Point(7, 466);
             this.lblErrorReport.Name = "lblErrorReport";
             this.lblErrorReport.Size = new System.Drawing.Size(63, 13);
             this.lblErrorReport.TabIndex = 62;
@@ -248,7 +268,7 @@ namespace ADFDiskBox
             // 
             this.lbErrors.FormattingEnabled = true;
             this.lbErrors.HorizontalScrollbar = true;
-            this.lbErrors.Location = new System.Drawing.Point(17, 285);
+            this.lbErrors.Location = new System.Drawing.Point(10, 485);
             this.lbErrors.Name = "lbErrors";
             this.lbErrors.Size = new System.Drawing.Size(411, 95);
             this.lbErrors.TabIndex = 63;
@@ -256,7 +276,7 @@ namespace ADFDiskBox
             // lblDiag
             // 
             this.lblDiag.AutoSize = true;
-            this.lblDiag.Location = new System.Drawing.Point(22, 383);
+            this.lblDiag.Location = new System.Drawing.Point(15, 583);
             this.lblDiag.Name = "lblDiag";
             this.lblDiag.Size = new System.Drawing.Size(73, 13);
             this.lblDiag.TabIndex = 64;
@@ -264,16 +284,16 @@ namespace ADFDiskBox
             // 
             // txtDiag
             // 
-            this.txtDiag.Location = new System.Drawing.Point(19, 399);
+            this.txtDiag.Location = new System.Drawing.Point(14, 599);
             this.txtDiag.Name = "txtDiag";
             this.txtDiag.Size = new System.Drawing.Size(409, 20);
             this.txtDiag.TabIndex = 65;
             // 
             // BtnCloseButton
             // 
-            this.BtnCloseButton.Location = new System.Drawing.Point(565, 292);
+            this.BtnCloseButton.Location = new System.Drawing.Point(683, 550);
             this.BtnCloseButton.Name = "BtnCloseButton";
-            this.BtnCloseButton.Size = new System.Drawing.Size(193, 107);
+            this.BtnCloseButton.Size = new System.Drawing.Size(131, 71);
             this.BtnCloseButton.TabIndex = 66;
             this.BtnCloseButton.Text = "Close Options";
             this.BtnCloseButton.UseVisualStyleBackColor = true;
@@ -281,19 +301,326 @@ namespace ADFDiskBox
             // 
             // btnGwinfo
             // 
-            this.btnGwinfo.Location = new System.Drawing.Point(19, 96);
+            this.btnGwinfo.Location = new System.Drawing.Point(222, 29);
             this.btnGwinfo.Name = "btnGwinfo";
-            this.btnGwinfo.Size = new System.Drawing.Size(87, 35);
+            this.btnGwinfo.Size = new System.Drawing.Size(87, 61);
             this.btnGwinfo.TabIndex = 67;
             this.btnGwinfo.Text = "Greaseweazle Info";
             this.btnGwinfo.UseVisualStyleBackColor = true;
             this.btnGwinfo.Click += new System.EventHandler(this.btnGwinfo_Click);
             // 
+            // LblPercentComplete
+            // 
+            this.LblPercentComplete.AutoSize = true;
+            this.LblPercentComplete.Location = new System.Drawing.Point(143, 164);
+            this.LblPercentComplete.Name = "LblPercentComplete";
+            this.LblPercentComplete.Size = new System.Drawing.Size(67, 13);
+            this.LblPercentComplete.TabIndex = 68;
+            this.LblPercentComplete.Text = "Progress Bar";
+            // 
+            // prgProgressBar1
+            // 
+            this.prgProgressBar1.Location = new System.Drawing.Point(0, 183);
+            this.prgProgressBar1.Maximum = 162;
+            this.prgProgressBar1.Name = "prgProgressBar1";
+            this.prgProgressBar1.Size = new System.Drawing.Size(650, 23);
+            this.prgProgressBar1.Step = 1;
+            this.prgProgressBar1.TabIndex = 69;
+            // 
+            // lblTrackNo
+            // 
+            this.lblTrackNo.AutoSize = true;
+            this.lblTrackNo.Location = new System.Drawing.Point(0, 100);
+            this.lblTrackNo.Name = "lblTrackNo";
+            this.lblTrackNo.Size = new System.Drawing.Size(49, 13);
+            this.lblTrackNo.TabIndex = 70;
+            this.lblTrackNo.Text = "TrackNo";
+            // 
+            // txtTrackNo
+            // 
+            this.txtTrackNo.Location = new System.Drawing.Point(0, 117);
+            this.txtTrackNo.Name = "txtTrackNo";
+            this.txtTrackNo.Size = new System.Drawing.Size(49, 20);
+            this.txtTrackNo.TabIndex = 71;
+            // 
+            // lblSide
+            // 
+            this.lblSide.AutoSize = true;
+            this.lblSide.Location = new System.Drawing.Point(76, 100);
+            this.lblSide.Name = "lblSide";
+            this.lblSide.Size = new System.Drawing.Size(28, 13);
+            this.lblSide.TabIndex = 72;
+            this.lblSide.Text = "Side";
+            this.lblSide.Click += new System.EventHandler(this.lblSide_Click);
+            // 
+            // txtSide
+            // 
+            this.txtSide.Location = new System.Drawing.Point(79, 116);
+            this.txtSide.Name = "txtSide";
+            this.txtSide.Size = new System.Drawing.Size(42, 20);
+            this.txtSide.TabIndex = 73;
+            // 
+            // lblNumberOfTracks
+            // 
+            this.lblNumberOfTracks.AutoSize = true;
+            this.lblNumberOfTracks.Location = new System.Drawing.Point(143, 100);
+            this.lblNumberOfTracks.Name = "lblNumberOfTracks";
+            this.lblNumberOfTracks.Size = new System.Drawing.Size(40, 13);
+            this.lblNumberOfTracks.TabIndex = 74;
+            this.lblNumberOfTracks.Text = "Tracks";
+            // 
+            // cboTrackCombo
+            // 
+            this.cboTrackCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTrackCombo.FormattingEnabled = true;
+            this.cboTrackCombo.Items.AddRange(new object[] {
+            "79",
+            "81"});
+            this.cboTrackCombo.Location = new System.Drawing.Point(146, 117);
+            this.cboTrackCombo.MaxDropDownItems = 2;
+            this.cboTrackCombo.Name = "cboTrackCombo";
+            this.cboTrackCombo.Size = new System.Drawing.Size(45, 21);
+            this.cboTrackCombo.Sorted = true;
+            this.cboTrackCombo.TabIndex = 75;
+            // 
+            // lblDiskType
+            // 
+            this.lblDiskType.AutoSize = true;
+            this.lblDiskType.Location = new System.Drawing.Point(205, 102);
+            this.lblDiskType.Name = "lblDiskType";
+            this.lblDiskType.Size = new System.Drawing.Size(52, 13);
+            this.lblDiskType.TabIndex = 76;
+            this.lblDiskType.Text = "DiskType";
+            // 
+            // cboType
+            // 
+            this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboType.FormattingEnabled = true;
+            this.cboType.Items.AddRange(new object[] {
+            "ADF",
+            "SCP",
+            "RAWSCP"});
+            this.cboType.Location = new System.Drawing.Point(208, 118);
+            this.cboType.Name = "cboType";
+            this.cboType.Size = new System.Drawing.Size(71, 21);
+            this.cboType.TabIndex = 77;
+            // 
+            // lblRetries
+            // 
+            this.lblRetries.AutoSize = true;
+            this.lblRetries.Location = new System.Drawing.Point(301, 107);
+            this.lblRetries.Name = "lblRetries";
+            this.lblRetries.Size = new System.Drawing.Size(105, 13);
+            this.lblRetries.TabIndex = 78;
+            this.lblRetries.Text = "read retries (adf only)";
+            // 
+            // cboRetries
+            // 
+            this.cboRetries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRetries.FormattingEnabled = true;
+            this.cboRetries.IntegralHeight = false;
+            this.cboRetries.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25",
+            "26",
+            "27",
+            "28",
+            "29",
+            "30",
+            "31",
+            "32",
+            "33",
+            "34",
+            "35",
+            "36",
+            "37",
+            "38",
+            "39",
+            "40",
+            "41",
+            "42",
+            "43",
+            "44",
+            "45",
+            "46",
+            "47",
+            "48",
+            "49",
+            "50",
+            "51",
+            "52",
+            "53",
+            "54",
+            "55",
+            "56",
+            "57",
+            "58",
+            "59",
+            "60",
+            "61",
+            "62",
+            "63",
+            "64",
+            "65",
+            "66",
+            "67",
+            "68",
+            "69",
+            "70",
+            "71",
+            "72",
+            "73",
+            "74",
+            "75",
+            "76",
+            "77",
+            "78",
+            "79",
+            "80",
+            "81",
+            "82",
+            "83",
+            "84",
+            "85",
+            "86",
+            "87",
+            "88",
+            "89",
+            "90",
+            "91",
+            "92",
+            "93",
+            "94",
+            "95",
+            "96",
+            "97",
+            "98",
+            "99"});
+            this.cboRetries.Location = new System.Drawing.Point(304, 123);
+            this.cboRetries.MaxDropDownItems = 99;
+            this.cboRetries.Name = "cboRetries";
+            this.cboRetries.Size = new System.Drawing.Size(56, 21);
+            this.cboRetries.TabIndex = 79;
+            // 
+            // lblDriveSelect
+            // 
+            this.lblDriveSelect.AutoSize = true;
+            this.lblDriveSelect.Location = new System.Drawing.Point(454, 229);
+            this.lblDriveSelect.Name = "lblDriveSelect";
+            this.lblDriveSelect.Size = new System.Drawing.Size(65, 13);
+            this.lblDriveSelect.TabIndex = 80;
+            this.lblDriveSelect.Text = "Select Drive";
+            // 
+            // cboDriveSelect
+            // 
+            this.cboDriveSelect.FormattingEnabled = true;
+            this.cboDriveSelect.Items.AddRange(new object[] {
+            "A",
+            "B"});
+            this.cboDriveSelect.Location = new System.Drawing.Point(456, 245);
+            this.cboDriveSelect.Name = "cboDriveSelect";
+            this.cboDriveSelect.Size = new System.Drawing.Size(62, 21);
+            this.cboDriveSelect.TabIndex = 81;
+            // 
+            // lblNoOfDisks
+            // 
+            this.lblNoOfDisks.AutoSize = true;
+            this.lblNoOfDisks.Location = new System.Drawing.Point(544, 229);
+            this.lblNoOfDisks.MaximumSize = new System.Drawing.Size(68, 73);
+            this.lblNoOfDisks.Name = "lblNoOfDisks";
+            this.lblNoOfDisks.Size = new System.Drawing.Size(63, 52);
+            this.lblNoOfDisks.TabIndex = 82;
+            this.lblNoOfDisks.Text = "Select Number Of Disks for batch mode";
+            // 
+            // cboNumberOfDisks
+            // 
+            this.cboNumberOfDisks.FormattingEnabled = true;
+            this.cboNumberOfDisks.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.cboNumberOfDisks.Location = new System.Drawing.Point(547, 284);
+            this.cboNumberOfDisks.Name = "cboNumberOfDisks";
+            this.cboNumberOfDisks.Size = new System.Drawing.Size(50, 21);
+            this.cboNumberOfDisks.TabIndex = 83;
+            // 
+            // LblFileInUse
+            // 
+            this.LblFileInUse.AutoSize = true;
+            this.LblFileInUse.Location = new System.Drawing.Point(444, 320);
+            this.LblFileInUse.Name = "LblFileInUse";
+            this.LblFileInUse.Size = new System.Drawing.Size(74, 13);
+            this.LblFileInUse.TabIndex = 84;
+            this.LblFileInUse.Text = "Last File Used";
+            // 
+            // lblFileName
+            // 
+            this.lblFileName.AutoSize = true;
+            this.lblFileName.Location = new System.Drawing.Point(444, 348);
+            this.lblFileName.Name = "lblFileName";
+            this.lblFileName.Size = new System.Drawing.Size(52, 13);
+            this.lblFileName.TabIndex = 85;
+            this.lblFileName.Text = "Blank.adf";
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(880, 633);
+            this.Controls.Add(this.lblFileName);
+            this.Controls.Add(this.LblFileInUse);
+            this.Controls.Add(this.cboNumberOfDisks);
+            this.Controls.Add(this.lblNoOfDisks);
+            this.Controls.Add(this.cboDriveSelect);
+            this.Controls.Add(this.lblDriveSelect);
+            this.Controls.Add(this.cboRetries);
+            this.Controls.Add(this.lblRetries);
+            this.Controls.Add(this.cboType);
+            this.Controls.Add(this.lblDiskType);
+            this.Controls.Add(this.cboTrackCombo);
+            this.Controls.Add(this.lblNumberOfTracks);
+            this.Controls.Add(this.txtSide);
+            this.Controls.Add(this.lblSide);
+            this.Controls.Add(this.txtTrackNo);
+            this.Controls.Add(this.lblTrackNo);
+            this.Controls.Add(this.prgProgressBar1);
+            this.Controls.Add(this.LblPercentComplete);
             this.Controls.Add(this.btnGwinfo);
             this.Controls.Add(this.BtnCloseButton);
             this.Controls.Add(this.txtDiag);
@@ -322,6 +649,7 @@ namespace ADFDiskBox
             this.Controls.Add(this.lblComPort);
             this.Name = "FrmOptions";
             this.Text = "Options";
+            this.Load += new System.EventHandler(this.FrmOptions_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +682,23 @@ namespace ADFDiskBox
         private System.Windows.Forms.TextBox txtDiag;
         private System.Windows.Forms.Button BtnCloseButton;
         private System.Windows.Forms.Button btnGwinfo;
+        private System.Windows.Forms.Label LblPercentComplete;
+        private System.Windows.Forms.ProgressBar prgProgressBar1;
+        private System.Windows.Forms.Label lblTrackNo;
+        private System.Windows.Forms.TextBox txtTrackNo;
+        private System.Windows.Forms.Label lblSide;
+        private System.Windows.Forms.TextBox txtSide;
+        private System.Windows.Forms.Label lblNumberOfTracks;
+        private System.Windows.Forms.ComboBox cboTrackCombo;
+        private System.Windows.Forms.Label lblDiskType;
+        private System.Windows.Forms.ComboBox cboType;
+        private System.Windows.Forms.Label lblRetries;
+        private System.Windows.Forms.ComboBox cboRetries;
+        private System.Windows.Forms.Label lblDriveSelect;
+        private System.Windows.Forms.ComboBox cboDriveSelect;
+        private System.Windows.Forms.Label lblNoOfDisks;
+        private System.Windows.Forms.ComboBox cboNumberOfDisks;
+        private System.Windows.Forms.Label LblFileInUse;
+        private System.Windows.Forms.Label lblFileName;
     }
 }

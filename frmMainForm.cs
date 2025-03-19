@@ -29,7 +29,15 @@ namespace ADFDiskBox
     public partial class frmMainForm : Form
 
     {
-
+        public string StxtGwtext;
+        public string SINIPath;
+        public string StxtDiskdefs;
+        public string SlblFileName;
+        public string ScboTrackCombo;
+        public string ScboType;
+        public string ScboRetries;
+        public string ScboNumberOfDisks;
+        public string ScboDriveSelect;
 
         public frmMainForm()
         {
@@ -348,7 +356,7 @@ namespace ADFDiskBox
                 EnableRaisingEvents = true,
                 StartInfo = new ProcessStartInfo
                 {
-                    WorkingDirectory = txtGwtext.Text,
+                    WorkingDirectory = StxtGwtext,
                     Arguments = arg,
                     FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                     UseShellExecute = false,
@@ -430,8 +438,8 @@ namespace ADFDiskBox
 
                 if (File.Exists(exepath))
                 {
-                    txtGwtext.Text = folderDlg.SelectedPath;
-                    SaveINI(INIPath.Text);
+                    StxtGwtext = folderDlg.SelectedPath;
+                    SaveINI(SINIPath);
 
                     string sMessage = string.Format("greasewesal software found at {0}", exepath);
                     ErrorReporter(sMessage);
@@ -480,7 +488,7 @@ namespace ADFDiskBox
         private void btnSaveSettings_Click(object sender, EventArgs e)
 
         {
-            string fullpath = INIPath.Text;
+            string fullpath = SINIPath;
 
             //(!File.Exists(path))
 
@@ -500,8 +508,8 @@ namespace ADFDiskBox
                     INIPath.Text = folderDlg.SelectedPath;
                     Environment.SpecialFolder root = folderDlg.RootFolder;
 
-                    fullpath = INIPath.Text + "\\" + "ADFDiskBox.ini";
-                    INIPath.Text = fullpath;
+                    fullpath = SINIPath + "\\" + "ADFDiskBox.ini";
+                    SINIPath = fullpath;
                 }
 
 
@@ -543,7 +551,7 @@ namespace ADFDiskBox
             string s = string.Join(",", defsstring);
             MessageBox.Show(s);
 
-            string FilePath = txtDiskdefs.Text;
+            string FilePath = StxtDiskdefs;
 
             string DirectoryName;
 
@@ -551,7 +559,7 @@ namespace ADFDiskBox
 
             MessageBox.Show("Directory " + DirectoryName);
 
-            openFileDialog1.FileName = txtDiskdefs.Text;
+            openFileDialog1.FileName = StxtDiskdefs;
             openFileDialog1.Filter = "Diskdefs File Location|*.cfg";
             openFileDialog1.InitialDirectory = DirectoryName;
             openFileDialog1.RestoreDirectory = true;
@@ -566,9 +574,9 @@ namespace ADFDiskBox
                 //Get the path of specified file
                 filePath = openFileDialog1.FileName;
 
-                txtDiskdefs.Text = filePath;
+                StxtDiskdefs = filePath;
 
-                SaveINI(INIPath.Text);
+                SaveINI(SINIPath);
             }
 
             else
@@ -584,20 +592,20 @@ namespace ADFDiskBox
         private void btnLoadSettings_Click(object sender, EventArgs e)
         {
             Checkexists();
-            LoadINI(INIPath.Text);
+            LoadINI(SINIPath);
         }
 
         private void btnChangeSettings_Click(object sender, EventArgs e)
         {
 
-            string FilePath = INIPath.Text;
+            string FilePath = SINIPath;
             string DirectoryName;
 
             DirectoryName = Path.GetDirectoryName(FilePath);
 
             MessageBox.Show("Directory " + DirectoryName);
 
-            saveFileDialog1.FileName = INIPath.Text;
+            saveFileDialog1.FileName = SINIPath;
             saveFileDialog1.Filter = "Settings File Location|" + "ADFDiskbox.ini";
 
             saveFileDialog1.InitialDirectory = DirectoryName;
@@ -615,9 +623,9 @@ namespace ADFDiskBox
                 //Get the path of specified file
                 filePath = saveFileDialog1.FileName;
 
-                INIPath.Text = filePath;
+                SINIPath = filePath;
 
-                SaveINI(INIPath.Text);
+                SaveINI(SINIPath);
             }
 
             else
@@ -677,20 +685,18 @@ namespace ADFDiskBox
             string fullpath = path + "\\" + ADFDiskBoxINI;
 
             string defs = path + "\\" + "Jdiskdefs.cfg";
-            txtDiskdefs.Text = defs;
 
-            INIPath.Text = fullpath;
 
-            txtGwtext.Text = " ";
-            INIPath.Text = fullpath;
-            txtDiskdefs.Text = defs;
-            lblFileName.Text = "last file.adf";
-            cboTrackCombo.Text = "79";
-            cboType.Text = "ADF";
-            cboRetries.Text = "3";
+            StxtGwtext = " ";
+            SINIPath = fullpath;
+            StxtDiskdefs = defs;
+            SlblFileName = "last file.adf";
+            ScboTrackCombo = "79";
+            ScboType = "ADF";
+            ScboRetries = "3";
 
-            cboNumberOfDisks.Text = "2";
-            cboDriveSelect.Text = "A";
+            ScboNumberOfDisks = "2";
+            ScboDriveSelect = "A";
 
 
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
@@ -710,7 +716,7 @@ namespace ADFDiskBox
                 {
                     txtGwtext.Text = folderDlg.SelectedPath;
                     Environment.SpecialFolder root = folderDlg.RootFolder;
-                    SaveINI(INIPath.Text);
+                    SaveINI(SINIPath);
 
                     MessageBox.Show(string.Format("greasewesal software found at {0}", exepath));
 
@@ -812,6 +818,8 @@ namespace ADFDiskBox
                     //string NoOfTracks = "";
 
                     int SelectedTracks = cboTrackCombo.SelectedIndex;
+
+                    MessageBox.Show("disk format "+SelectedTracks);
 
                     switch (SelectedTracks)
                     {
