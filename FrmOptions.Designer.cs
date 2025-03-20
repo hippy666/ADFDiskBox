@@ -73,6 +73,8 @@ namespace ADFDiskBox
             this.cboNumberOfDisks = new System.Windows.Forms.ComboBox();
             this.LblFileInUse = new System.Windows.Forms.Label();
             this.lblFileName = new System.Windows.Forms.Label();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
             // lblComPort
@@ -128,6 +130,7 @@ namespace ADFDiskBox
             this.btnChangeSettings.TabIndex = 32;
             this.btnChangeSettings.Text = "Reset Path To Settings";
             this.btnChangeSettings.UseVisualStyleBackColor = true;
+            this.btnChangeSettings.Click += new System.EventHandler(this.btnChangeSettings_Click);
             // 
             // lblSettings
             // 
@@ -146,20 +149,22 @@ namespace ADFDiskBox
             this.INIPath.ReadOnly = true;
             this.INIPath.Size = new System.Drawing.Size(345, 20);
             this.INIPath.TabIndex = 34;
+            this.INIPath.Text = "C:\\greasewezel";
             // 
             // btnDiskdefs
             // 
-            this.btnDiskdefs.Location = new System.Drawing.Point(0, 239);
+            this.btnDiskdefs.Location = new System.Drawing.Point(59, 229);
             this.btnDiskdefs.Name = "btnDiskdefs";
             this.btnDiskdefs.Size = new System.Drawing.Size(142, 55);
             this.btnDiskdefs.TabIndex = 35;
             this.btnDiskdefs.Text = "Change Diskdefs Path";
             this.btnDiskdefs.UseVisualStyleBackColor = true;
+            this.btnDiskdefs.Click += new System.EventHandler(this.btnDiskdefs_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-3, 297);
+            this.label1.Location = new System.Drawing.Point(67, 287);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 13);
             this.label1.TabIndex = 36;
@@ -167,7 +172,7 @@ namespace ADFDiskBox
             // 
             // txtDiskdefs
             // 
-            this.txtDiskdefs.Location = new System.Drawing.Point(4, 313);
+            this.txtDiskdefs.Location = new System.Drawing.Point(29, 310);
             this.txtDiskdefs.Name = "txtDiskdefs";
             this.txtDiskdefs.Size = new System.Drawing.Size(419, 20);
             this.txtDiskdefs.TabIndex = 37;
@@ -180,6 +185,7 @@ namespace ADFDiskBox
             this.btnConvert2ADF.TabIndex = 42;
             this.btnConvert2ADF.Text = "Convert scp 2 adf";
             this.btnConvert2ADF.UseVisualStyleBackColor = true;
+            this.btnConvert2ADF.Click += new System.EventHandler(this.btnConvert2ADF_Click);
             // 
             // btnConvert2SCP
             // 
@@ -189,6 +195,7 @@ namespace ADFDiskBox
             this.btnConvert2SCP.TabIndex = 43;
             this.btnConvert2SCP.Text = "Convert adf 2 scp";
             this.btnConvert2SCP.UseVisualStyleBackColor = true;
+            this.btnConvert2SCP.Click += new System.EventHandler(this.btnConvert2SCP_Click);
             // 
             // btnRescan
             // 
@@ -219,6 +226,7 @@ namespace ADFDiskBox
             this.btnReset.TabIndex = 57;
             this.btnReset.Text = "Reset Settings to Factory";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // BtnLoadSettings
             // 
@@ -237,11 +245,12 @@ namespace ADFDiskBox
             this.btnSaveSettings.Size = new System.Drawing.Size(99, 65);
             this.btnSaveSettings.TabIndex = 59;
             this.btnSaveSettings.Text = "SaveSettings";
+            this.btnSaveSettings.Click += new System.EventHandler(this.btnSaveSettings_Click);
             // 
             // lbOutput
             // 
             this.lbOutput.FormattingEnabled = true;
-            this.lbOutput.Location = new System.Drawing.Point(10, 368);
+            this.lbOutput.Location = new System.Drawing.Point(26, 368);
             this.lbOutput.Name = "lbOutput";
             this.lbOutput.Size = new System.Drawing.Size(411, 95);
             this.lbOutput.TabIndex = 60;
@@ -249,7 +258,7 @@ namespace ADFDiskBox
             // lblOutputWIndow
             // 
             this.lblOutputWIndow.AutoSize = true;
-            this.lblOutputWIndow.Location = new System.Drawing.Point(7, 348);
+            this.lblOutputWIndow.Location = new System.Drawing.Point(26, 352);
             this.lblOutputWIndow.Name = "lblOutputWIndow";
             this.lblOutputWIndow.Size = new System.Drawing.Size(81, 13);
             this.lblOutputWIndow.TabIndex = 61;
@@ -258,7 +267,7 @@ namespace ADFDiskBox
             // lblErrorReport
             // 
             this.lblErrorReport.AutoSize = true;
-            this.lblErrorReport.Location = new System.Drawing.Point(7, 466);
+            this.lblErrorReport.Location = new System.Drawing.Point(26, 466);
             this.lblErrorReport.Name = "lblErrorReport";
             this.lblErrorReport.Size = new System.Drawing.Size(63, 13);
             this.lblErrorReport.TabIndex = 62;
@@ -268,7 +277,7 @@ namespace ADFDiskBox
             // 
             this.lbErrors.FormattingEnabled = true;
             this.lbErrors.HorizontalScrollbar = true;
-            this.lbErrors.Location = new System.Drawing.Point(10, 485);
+            this.lbErrors.Location = new System.Drawing.Point(26, 485);
             this.lbErrors.Name = "lbErrors";
             this.lbErrors.Size = new System.Drawing.Size(411, 95);
             this.lbErrors.TabIndex = 63;
@@ -276,7 +285,7 @@ namespace ADFDiskBox
             // lblDiag
             // 
             this.lblDiag.AutoSize = true;
-            this.lblDiag.Location = new System.Drawing.Point(15, 583);
+            this.lblDiag.Location = new System.Drawing.Point(23, 583);
             this.lblDiag.Name = "lblDiag";
             this.lblDiag.Size = new System.Drawing.Size(73, 13);
             this.lblDiag.TabIndex = 64;
@@ -284,7 +293,7 @@ namespace ADFDiskBox
             // 
             // txtDiag
             // 
-            this.txtDiag.Location = new System.Drawing.Point(14, 599);
+            this.txtDiag.Location = new System.Drawing.Point(26, 601);
             this.txtDiag.Name = "txtDiag";
             this.txtDiag.Size = new System.Drawing.Size(409, 20);
             this.txtDiag.TabIndex = 65;
@@ -320,7 +329,7 @@ namespace ADFDiskBox
             // 
             // prgProgressBar1
             // 
-            this.prgProgressBar1.Location = new System.Drawing.Point(0, 183);
+            this.prgProgressBar1.Location = new System.Drawing.Point(59, 183);
             this.prgProgressBar1.Maximum = 162;
             this.prgProgressBar1.Name = "prgProgressBar1";
             this.prgProgressBar1.Size = new System.Drawing.Size(650, 23);
@@ -583,7 +592,7 @@ namespace ADFDiskBox
             // LblFileInUse
             // 
             this.LblFileInUse.AutoSize = true;
-            this.LblFileInUse.Location = new System.Drawing.Point(444, 320);
+            this.LblFileInUse.Location = new System.Drawing.Point(490, 313);
             this.LblFileInUse.Name = "LblFileInUse";
             this.LblFileInUse.Size = new System.Drawing.Size(74, 13);
             this.LblFileInUse.TabIndex = 84;
@@ -592,17 +601,21 @@ namespace ADFDiskBox
             // lblFileName
             // 
             this.lblFileName.AutoSize = true;
-            this.lblFileName.Location = new System.Drawing.Point(444, 348);
+            this.lblFileName.Location = new System.Drawing.Point(490, 338);
             this.lblFileName.Name = "lblFileName";
             this.lblFileName.Size = new System.Drawing.Size(52, 13);
             this.lblFileName.TabIndex = 85;
             this.lblFileName.Text = "Blank.adf";
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(880, 633);
+            this.ClientSize = new System.Drawing.Size(1084, 749);
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.LblFileInUse);
             this.Controls.Add(this.cboNumberOfDisks);
@@ -700,5 +713,7 @@ namespace ADFDiskBox
         private System.Windows.Forms.ComboBox cboNumberOfDisks;
         private System.Windows.Forms.Label LblFileInUse;
         private System.Windows.Forms.Label lblFileName;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
