@@ -24,7 +24,7 @@ namespace ADFDiskBox
          "MIT License"+ "\n\n" +
 
 
-        "Copyright(c) 2024 John Brett" + "\n\n" +
+        "Copyright(c) 2025 John Brett" + "\n\n" +
 
         "Permission is hereby granted, free of charge, to any person obtaining a copy" + "\n\n" +
         "of this software and associated documentation files(the "+"\""+"Software"+"\""+"), to deal"+"\n\n"+

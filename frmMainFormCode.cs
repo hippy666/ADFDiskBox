@@ -260,7 +260,7 @@ namespace ADFDiskBox
 
                 //MessageBox.Show(driveselect);
 
-                string arg = "/K " + "gw write " + device+" "+driveselect+" "+" --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + "\"";
+                string arg = "/K " + "gw write " + device+" "+driveselect+" "+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + "\"";
 
                 //MessageBox.Show(arg);
 
@@ -272,7 +272,7 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = txtGwtext.Text,
+                        WorkingDirectory = StxtGwtext,
                         Arguments = arg,
                         FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                         UseShellExecute = false,
@@ -375,7 +375,7 @@ namespace ADFDiskBox
                 
                 //MessageBox.Show(driveselect);
 
-                string arg = "/K " + "gw read " + device + " "+driveselect+" --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                string arg = "/K " + "gw read " + device + " "+driveselect+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
                 //MessageBox.Show(arg);
@@ -390,7 +390,7 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = txtGwtext.Text,
+                        WorkingDirectory = StxtGwtext,
                         Arguments = arg,
                         FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                         UseShellExecute = false,
@@ -496,7 +496,7 @@ namespace ADFDiskBox
                 string device;
                 device = "--device=" + cboComPort.Text;
 
-                string arg = "/K " + "gw write " +device + " " + driveselect + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                string arg = "/K " + "gw write " +device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
 
@@ -513,7 +513,7 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = txtGwtext.Text,
+                        WorkingDirectory = StxtGwtext,
                         Arguments = arg,
                         FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                         UseShellExecute = false,
@@ -582,7 +582,7 @@ namespace ADFDiskBox
 
                 startInfo.FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe";
                 startInfo.WindowStyle = ProcessWindowStyle.Normal;
-                startInfo.WorkingDirectory = txtGwtext.Text;
+                startInfo.WorkingDirectory = StxtGwtext;
 
                 
 
@@ -621,7 +621,7 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = txtGwtext.Text,
+                        WorkingDirectory = StxtGwtext,
                         Arguments = arg,
                         FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                         UseShellExecute = false,
@@ -719,7 +719,7 @@ namespace ADFDiskBox
 
 
 
-                string arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + txtDiskdefs.Text+ "\"" + diskformat + " " + NoOfRetries +" " + "\"" + filePath +"::disktype=amiga" + "\"";
+                string arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs+ "\"" + diskformat + " " + NoOfRetries +" " + "\"" + filePath +"::disktype=amiga" + "\"";
 
                 //MessageBox.Show(arg);
 
@@ -731,7 +731,7 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = txtGwtext.Text,
+                        WorkingDirectory = StxtGwtext,
                         Arguments = arg,
                         FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                         UseShellExecute = false,
@@ -826,7 +826,7 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = txtGwtext.Text,
+                        WorkingDirectory = StxtGwtext,
                         Arguments = arg,
                         FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                         UseShellExecute = false,
@@ -877,7 +877,7 @@ namespace ADFDiskBox
             string fullpath = path + "\\" + ADFDiskBoxINI;
 
             string defs = path + "\\" + "Jdiskdefs.cfg";
-            txtDiskdefs.Text = defs;
+            StxtDiskdefs = defs;
 
             //check adfdiskbox ini exists
             //MessageBox.Show(string.Format(fullpath));
@@ -886,7 +886,7 @@ namespace ADFDiskBox
             {
                 //MessageBox.Show(string.Format("File {0} at path {1} Exists", fullpath, path));
                 txtDiag.Text = string.Format("File {0} at path {1} Exists", fullpath, path);
-                INIPath.Text = fullpath;
+                SINIPath = fullpath;
 
                 LoadINI(fullpath);
                 return fullpath;
@@ -904,7 +904,7 @@ namespace ADFDiskBox
 
                 "MIT License"+ "\n\n" +
 
-                "Copyright(c) 2024 John Brett" + "\n\n" +
+                "Copyright(c) 2025 John Brett" + "\n\n" +
 
                 "Parts from GreasewesalGUI .NET Copyright(c) 2020 Don Mankin"+"\n\n"+
 
@@ -936,11 +936,10 @@ namespace ADFDiskBox
                 /* legal shit is for here */
                 MessageBox.Show(string.Format("{0}", LegalCrap));
 
-                INIPath.Text = fullpath;
 
-                txtGwtext.Text = " ";
-                INIPath.Text = fullpath;
-                txtDiskdefs.Text = defs;
+                StxtGwtext = " ";
+                SINIPath = fullpath;
+                StxtDiskdefs = defs;
                 lblFileName.Text = "last file.adf";
                 cboTrackCombo.Text = "79";
                 cboType.Text = "ADF";
@@ -965,9 +964,9 @@ namespace ADFDiskBox
 
                     if (File.Exists(exepath))
                     {
-                        txtGwtext.Text = folderDlg.SelectedPath;
+                        StxtGwtext = folderDlg.SelectedPath;
                         Environment.SpecialFolder root = folderDlg.RootFolder;
-                        SaveINI(INIPath.Text);
+                        SaveINI(SINIPath);
 
                         //MessageBox.Show(string.Format("greasewesal software found at {0}", exepath));
                         //txtDiag.Text = string.Format("greasewesal software found at {0}", exepath);
@@ -1011,9 +1010,9 @@ namespace ADFDiskBox
                     if (line != null)
                     {
                         string[] settings = line.Split(',');
-                        txtGwtext.Text = settings[0];
-                        INIPath.Text = settings[1];
-                        txtDiskdefs.Text = settings[2];
+                        StxtGwtext = settings[0];
+                        SINIPath = settings[1];
+                        StxtDiskdefs = settings[2];
                         lblFileName.Text = settings[3];
                         cboTrackCombo.Text = settings[4];
                         cboType.Text = settings[5];
@@ -1025,7 +1024,7 @@ namespace ADFDiskBox
 
                         
 
-                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
+                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
 
                         //testing
                         //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
@@ -1053,7 +1052,7 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
 
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 

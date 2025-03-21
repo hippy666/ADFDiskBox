@@ -33,11 +33,25 @@ namespace ADFDiskBox
 
         //private string _testpath = "testpath";
 
-        // properties
-        //public string StxtGwtext { get { return this._testpath; } set { this._testpath = value; } }
-        public string StxtGwtext { get { return txtGwtext.Text; } set { txtGwtext.Text = value;  } }
 
-        //public string StxtGwtext;
+        // properties
+
+        /*
+         * public string StxtGwtext { get { return txtGwtext.Text; } set { txtGwtext.Text = value;  } }
+        public string SINIPath { get { return INIPath.Text; } set { INIPath.Text = value; } }
+        public string StxtDiskdefs { get { return txtDiskdefs.Text; } set { txtDiskdefs.Text = value; } }
+        public string SlblFileName { get { return lblFileName.Text ; } set { lblFileName.Text = value; } }
+        //public string ScboTrackCombo { get { return ScboTrackCombo.?; } set { ScboTrackCombo.? = value; } }
+        //public string ScboType { get { return ScboType.Text; } set { ScboType.Text = value; } }
+        //public string ScboRetries { get { return ScboRetries.; } set { txtGwtext.Text = value; } }
+        //public string ScboNumberOfDisks { get { return ScboNumberOfDisks.Text; } set { ScboNumberOfDisks.text = value; } }
+        //public string ScboDriveSelect { get { return ScboDriveSelect.Text; } set { ScboDriveSelect.Text = value; } }
+        */
+
+
+
+
+        public string StxtGwtext;
         public string SINIPath;
         public string StxtDiskdefs;
         public string SlblFileName;
@@ -47,22 +61,26 @@ namespace ADFDiskBox
         public string ScboNumberOfDisks;
         public string ScboDriveSelect;
 
+
+        public static frmMainForm frmMain;
+
         public frmMainForm()
         {
             InitializeComponent();
+            frmMain = this;
 
-            frmmainform = this;
-            comms = new Comms();
+            //public frmmainform = this;
+            //comms = new Comms();
 
         }
 
-        public Comms()
-        {
-            //frmMainForm.txtGwtext.Text = "Testing";
-            //Form1.gui.tsStatus.Text = "test";
-            //Form1.gui.addLogLine("Hello from Comms class");
-            //Form1.gui.bn_connect.Text = "Comms";
-        }
+        //public void Comms()
+        //{
+         //   frmMain.txtGwtext.Text = "Testing";
+         //   //Form1.gui.tsStatus.Text = "test";
+         //   //Form1.gui.addLogLine("Hello from Comms class");
+         //   //Form1.gui.bn_connect.Text = "Comms";
+        //}
 
 
 
@@ -74,7 +92,7 @@ namespace ADFDiskBox
             
 
 
-            MessageBox.Show("ADF Diskbox version 2.0" + "\n\n" + "By John Brett"
+            MessageBox.Show("ADF Diskbox version 2.2" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2 and up" + "\n\n"
@@ -121,7 +139,7 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = txtGwtext.Text,
+                        WorkingDirectory = StxtGwtext,
                         Arguments = arg,
                         FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                         UseShellExecute = false,
@@ -256,7 +274,7 @@ namespace ADFDiskBox
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] helpstring = new string[] {
-                "ADF Diskbox version 2.0 By John Brett"+"\n\n"+
+                "ADF Diskbox version 2.2 By John Brett"+"\n\n"+
                 "this is a gui frontend for the greasewesal v4 host tools."+ "\n\n"+
                 "\n\n" + "this program reads and writes amiga disks" + "\n\n"+
                 " using the greasewesal v4 hardware and host tools" + "\n\n"+
@@ -444,7 +462,7 @@ namespace ADFDiskBox
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
             folderDlg.ShowNewFolderButton = true;
             folderDlg.ShowNewFolderButton = false;
-            folderDlg.SelectedPath = txtGwtext.Text;
+            folderDlg.SelectedPath = StxtGwtext;
             folderDlg.Description = "Please Select the greasewesal Folder";
             // Show the FolderBrowserDialog.  
             DialogResult result = folderDlg.ShowDialog();
@@ -524,7 +542,7 @@ namespace ADFDiskBox
                 DialogResult result = folderDlg.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    INIPath.Text = folderDlg.SelectedPath;
+                    SINIPath = folderDlg.SelectedPath;
                     Environment.SpecialFolder root = folderDlg.RootFolder;
 
                     fullpath = SINIPath + "\\" + "ADFDiskBox.ini";
@@ -733,7 +751,7 @@ namespace ADFDiskBox
 
                 if (File.Exists(exepath))
                 {
-                    txtGwtext.Text = folderDlg.SelectedPath;
+                    StxtGwtext = folderDlg.SelectedPath;
                     Environment.SpecialFolder root = folderDlg.RootFolder;
                     SaveINI(SINIPath);
 
@@ -922,16 +940,16 @@ namespace ADFDiskBox
                         switch (selected)
                         {
                             case "ADF":
-                                arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                                arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
                                 break;
                             case "SCP":
-                                arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk "+i+" .scp"+"::disktype=amiga" + "\"";
+                                arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk "+i+" .scp"+"::disktype=amiga" + "\"";
                                 break;
                             case "RAWSCP":
                                 arg = "/K " + "gw read " + device + " " + driveselect + " " + "\"" + filePath +" Disk "+i+" .scp"+"\"";
                                 break;
                             default:
-                                arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                                arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
                                 break;
                         }
 
@@ -958,7 +976,7 @@ namespace ADFDiskBox
                             EnableRaisingEvents = true,
                             StartInfo = new ProcessStartInfo
                             {
-                                WorkingDirectory = txtGwtext.Text,
+                                WorkingDirectory = StxtGwtext,
                                 Arguments = arg,
                                 FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                                 UseShellExecute = false,
@@ -1059,7 +1077,7 @@ namespace ADFDiskBox
 
                     // insert process stuff
 
-                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
+                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
 
                     txtDiag.Text = arg;
 
@@ -1071,7 +1089,7 @@ namespace ADFDiskBox
                         EnableRaisingEvents = true,
                         StartInfo = new ProcessStartInfo
                         {
-                            WorkingDirectory = txtGwtext.Text,
+                            WorkingDirectory = StxtGwtext,
                             Arguments = arg,
                             FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                             UseShellExecute = false,
@@ -1146,7 +1164,7 @@ namespace ADFDiskBox
 
                     // insert process stuff
 
-                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
+                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
 
                     //MessageBox.Show(arg);
                     txtDiag.Text = arg;
@@ -1159,7 +1177,7 @@ namespace ADFDiskBox
                         EnableRaisingEvents = true,
                         StartInfo = new ProcessStartInfo
                         {
-                            WorkingDirectory = txtGwtext.Text,
+                            WorkingDirectory = StxtGwtext,
                             Arguments = arg,
                             FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                             UseShellExecute = false,
@@ -1381,16 +1399,16 @@ namespace ADFDiskBox
                             switch (selected)
                             {
                             case "ADF":
-                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
                             case "SCP":
-                                arg = "/K " + "gw write " + device + " " + driveselect + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                arg = "/K " + "gw write " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
                             case "RAWSCP":
                                 arg = "/K " + "gw write " + device + " " + driveselect + " " + "\"" + filePath + "\"";
                                 break;
                             default:
-                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
                             }
 
@@ -1416,7 +1434,7 @@ namespace ADFDiskBox
                                 EnableRaisingEvents = true,
                                 StartInfo = new ProcessStartInfo
                                 {
-                                    WorkingDirectory = txtGwtext.Text,
+                                    WorkingDirectory = StxtGwtext,
                                     Arguments = arg,
                                     FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                                     UseShellExecute = false,
@@ -1538,7 +1556,7 @@ namespace ADFDiskBox
                 EnableRaisingEvents = true,
                 StartInfo = new ProcessStartInfo
                 {
-                    WorkingDirectory = txtGwtext.Text,
+                    WorkingDirectory = StxtGwtext,
                     Arguments = arg,
                     FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
                     UseShellExecute = false,

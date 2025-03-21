@@ -75,7 +75,6 @@ namespace ADFDiskBox
             this.lblFileName = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.BtnTestbutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblComPort
@@ -612,22 +611,11 @@ namespace ADFDiskBox
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // BtnTestbutton
-            // 
-            this.BtnTestbutton.Location = new System.Drawing.Point(816, 245);
-            this.BtnTestbutton.Name = "BtnTestbutton";
-            this.BtnTestbutton.Size = new System.Drawing.Size(75, 23);
-            this.BtnTestbutton.TabIndex = 86;
-            this.BtnTestbutton.Text = "testbutton";
-            this.BtnTestbutton.UseVisualStyleBackColor = true;
-            this.BtnTestbutton.Click += new System.EventHandler(this.button1_Click);
-            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 749);
-            this.Controls.Add(this.BtnTestbutton);
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.LblFileInUse);
             this.Controls.Add(this.cboNumberOfDisks);
@@ -727,6 +715,5 @@ namespace ADFDiskBox
         private System.Windows.Forms.Label lblFileName;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button BtnTestbutton;
     }
 }

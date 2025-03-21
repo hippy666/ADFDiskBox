@@ -144,11 +144,13 @@ namespace ADFDiskBox
             INIPath.Text = Checkexists();
 
 
+            /*
             MessageBox.Show("ADF Diskbox version 2.0" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2 and up" + "\n\n"
             + "This is a beta and a work in progress!" + "\n\n");
+            */
 
             // Get a list of serial port names.
             string[] ports = SerialPort.GetPortNames();
@@ -700,6 +702,10 @@ namespace ADFDiskBox
 
         private void button1_Click(object sender, EventArgs e)
         {
+            
+            frmMainForm.frmMain.StxtGwtext = "string working";
+            //frmMainForm.frmMain.ini
+            MessageBox.Show("value of StxtGwtext: " + frmMainForm.frmMain.StxtGwtext);
             //frmMainForm myClass = new frmMainForm();
             //myClass.StxtGwtext = "shit";
 
