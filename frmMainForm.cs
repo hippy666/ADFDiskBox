@@ -29,7 +29,15 @@ namespace ADFDiskBox
     public partial class frmMainForm : Form
 
     {
-        public string StxtGwtext;
+        // declarations
+
+        //private string _testpath = "testpath";
+
+        // properties
+        //public string StxtGwtext { get { return this._testpath; } set { this._testpath = value; } }
+        public string StxtGwtext { get { return txtGwtext.Text; } set { txtGwtext.Text = value;  } }
+
+        //public string StxtGwtext;
         public string SINIPath;
         public string StxtDiskdefs;
         public string SlblFileName;
@@ -43,6 +51,17 @@ namespace ADFDiskBox
         {
             InitializeComponent();
 
+            frmmainform = this;
+            comms = new Comms();
+
+        }
+
+        public Comms()
+        {
+            //frmMainForm.txtGwtext.Text = "Testing";
+            //Form1.gui.tsStatus.Text = "test";
+            //Form1.gui.addLogLine("Hello from Comms class");
+            //Form1.gui.bn_connect.Text = "Comms";
         }
 
 
@@ -1562,6 +1581,17 @@ namespace ADFDiskBox
         {
             FrmOptions FormOptions = new FrmOptions();
             FormOptions.ShowDialog();
+        }
+
+        private void BtnLoadButton_Click(object sender, EventArgs e)
+        {
+            FrmOptions FormOptions = new FrmOptions();
+            FormOptions.ShowDialog();
+        }
+
+        private void BtnTesting_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("testing value " + StxtGwtext);
         }
     }
     

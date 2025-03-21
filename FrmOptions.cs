@@ -294,6 +294,9 @@ namespace ADFDiskBox
 
         private void btnChange_Click(object sender, EventArgs e)
         {
+
+            //frmMainForm.StxtGwtext;
+
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
             folderDlg.ShowNewFolderButton = true;
             folderDlg.ShowNewFolderButton = false;
@@ -693,6 +696,19 @@ namespace ADFDiskBox
             }
 
             SaveINI(fullpath);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //frmMainForm myClass = new frmMainForm();
+            //myClass.StxtGwtext = "shit";
+
+            //MessageBox.Show(myClass.StxtGwtext);
+            //string stxtgwtext=frmMainForm.
+            //StxtGwtext
+            //frmMainForm.txt
+            //txtGwtext.Text
+
         }
     }
 }

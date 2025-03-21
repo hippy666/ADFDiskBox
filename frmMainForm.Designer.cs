@@ -99,6 +99,8 @@
             this.lblComPort = new System.Windows.Forms.Label();
             this.btnRescan = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.BtnLoadButton = new System.Windows.Forms.Button();
+            this.BtnTesting = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -300,13 +302,13 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.optionsToolStripMenuItem.Text = "&Options";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -847,11 +849,33 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // BtnLoadButton
+            // 
+            this.BtnLoadButton.Location = new System.Drawing.Point(918, 260);
+            this.BtnLoadButton.Name = "BtnLoadButton";
+            this.BtnLoadButton.Size = new System.Drawing.Size(75, 70);
+            this.BtnLoadButton.TabIndex = 56;
+            this.BtnLoadButton.Text = "Load Options";
+            this.BtnLoadButton.UseVisualStyleBackColor = true;
+            this.BtnLoadButton.Click += new System.EventHandler(this.BtnLoadButton_Click);
+            // 
+            // BtnTesting
+            // 
+            this.BtnTesting.Location = new System.Drawing.Point(949, 33);
+            this.BtnTesting.Name = "BtnTesting";
+            this.BtnTesting.Size = new System.Drawing.Size(75, 59);
+            this.BtnTesting.TabIndex = 57;
+            this.BtnTesting.Text = "testbutton";
+            this.BtnTesting.UseVisualStyleBackColor = true;
+            this.BtnTesting.Click += new System.EventHandler(this.BtnTesting_Click);
+            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1060, 557);
+            this.Controls.Add(this.BtnTesting);
+            this.Controls.Add(this.BtnLoadButton);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnRescan);
             this.Controls.Add(this.lblComPort);
@@ -988,6 +1012,8 @@
         private System.Windows.Forms.Button btnRescan;
         private System.Windows.Forms.Button btnUpdate;
         public System.Windows.Forms.ComboBox cboComPort;
+        private System.Windows.Forms.Button BtnLoadButton;
+        public System.Windows.Forms.Button BtnTesting;
     }
 }
 
