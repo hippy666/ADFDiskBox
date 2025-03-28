@@ -319,9 +319,18 @@ namespace ADFDiskBox
 
 
                     string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
-
+                    //frmMainForm.frmMain.StxtDiskdefs = "trash";
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 
+                    frmMainForm.frmMain.StxtGwtext = txtGwtext.Text;
+                    frmMainForm.frmMain.SINIPath = INIPath.Text;
+                    frmMainForm.frmMain.StxtDiskdefs = txtDiskdefs.Text;
+                    frmMainForm.frmMain.lblFileName.Text = lblFileName.Text;
+                    frmMainForm.frmMain.cboTrackCombo.Text = cboTrackCombo.Text;
+                    frmMainForm.frmMain.cboType.Text = cboType.Text;
+                    frmMainForm.frmMain.cboRetries.Text = cboRetries.Text;
+                    frmMainForm.frmMain.cboNumberOfDisks.Text = cboNumberOfDisks.Text;
+                    frmMainForm.frmMain.cboDriveSelect.Text = cboDriveSelect.Text;
 
                     sw.WriteLine(settings);
 

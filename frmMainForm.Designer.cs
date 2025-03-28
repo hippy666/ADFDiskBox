@@ -285,7 +285,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // optionsToolStripMenuItem
@@ -754,8 +754,6 @@
         private System.Windows.Forms.Label LblFileInUse;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.ComboBox cboTrackCombo;
-        private System.Windows.Forms.Label lblFileName;
         private System.Windows.Forms.Label lblNumberOfTracks;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
@@ -777,10 +775,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.Label lblDiskType;
-        private System.Windows.Forms.ComboBox cboType;
         private System.Windows.Forms.Button btnGwinfo;
         private System.Windows.Forms.Label lblRetries;
-        private System.Windows.Forms.ComboBox cboRetries;
         private System.Windows.Forms.ToolStripMenuItem softwareLicenceToolStripMenuItem;
         private System.Windows.Forms.TextBox txtTrackNo;
         private System.Windows.Forms.Label lblTrackNo;
@@ -791,16 +787,20 @@
         private System.Windows.Forms.TextBox txtDiag;
         private System.Windows.Forms.Label lblDiag;
         private System.Windows.Forms.Label lblNoOfDisks;
-        private System.Windows.Forms.ComboBox cboNumberOfDisks;
         private System.Windows.Forms.Label lblOutputWIndow;
         private System.Windows.Forms.ListBox lbErrors;
         private System.Windows.Forms.Label lblErrorReport;
         private System.Windows.Forms.Button btnXwrite;
         private System.Windows.Forms.Label lblDriveSelect;
-        private System.Windows.Forms.ComboBox cboDriveSelect;
         private System.Windows.Forms.Label lblComPort;
         public System.Windows.Forms.ComboBox cboComPort;
         private System.Windows.Forms.Button BtnLoadButton;
+        public System.Windows.Forms.ComboBox cboType;
+        public System.Windows.Forms.ComboBox cboRetries;
+        public System.Windows.Forms.ComboBox cboTrackCombo;
+        public System.Windows.Forms.Label lblFileName;
+        public System.Windows.Forms.ComboBox cboNumberOfDisks;
+        public System.Windows.Forms.ComboBox cboDriveSelect;
     }
 }
 

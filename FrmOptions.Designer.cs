@@ -676,7 +676,6 @@ namespace ADFDiskBox
         public System.Windows.Forms.TextBox txtGwtext;
         private System.Windows.Forms.Button btnChangeSettings;
         private System.Windows.Forms.Label lblSettings;
-        private System.Windows.Forms.TextBox INIPath;
         private System.Windows.Forms.Button btnDiskdefs;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtDiskdefs;
@@ -702,7 +701,6 @@ namespace ADFDiskBox
         private System.Windows.Forms.Label lblSide;
         private System.Windows.Forms.TextBox txtSide;
         private System.Windows.Forms.Label lblNumberOfTracks;
-        private System.Windows.Forms.ComboBox cboTrackCombo;
         private System.Windows.Forms.Label lblDiskType;
         private System.Windows.Forms.ComboBox cboType;
         private System.Windows.Forms.Label lblRetries;
@@ -715,5 +713,7 @@ namespace ADFDiskBox
         private System.Windows.Forms.Label lblFileName;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.TextBox INIPath;
+        public System.Windows.Forms.ComboBox cboTrackCombo;
     }
 }

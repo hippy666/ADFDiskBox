@@ -26,12 +26,13 @@ namespace ADFDiskBox
 {
     public partial class FrmOptions : Form
     {
-
+        public static FrmOptions frmOpt;
         //public string INIpath;
 
         public FrmOptions()
         {
             InitializeComponent();
+            frmOpt = this;
         }
 
         private void btnRescan_Click(object sender, EventArgs e)
