@@ -1,6 +1,6 @@
 # ADFDiskBox
 
-ADF Diskbox version 2.0 By John Brett
+ADF Diskbox version 2.2 By John Brett
 
 this program reads and writes amiga disks
 
@@ -10,4 +10,4 @@ Tested on host tools 1.16.2 and up
 
 works with windows 10 and 11
 
-This is a beta and a work in progress!
+This is a work in progress!
