@@ -718,5 +718,74 @@ namespace ADFDiskBox
             //txtGwtext.Text
 
         }
+
+        private void BtnHxCPath_Click(object sender, EventArgs e)
+        {
+
+
+            openFileDialog1.FileName = "HxCFloppyEmulator.exe";
+            openFileDialog1.InitialDirectory = "c:\\";
+
+            
+            openFileDialog1.Filter = "path to hxc exe | HxCFloppyEmulator.exe";
+            // testing.....
+            openFileDialog1.ShowReadOnly = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            //
+
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                TxtHxCPath.Text = openFileDialog1.FileName;
+                frmMainForm.frmMain.StxtHxCFile = TxtHxCPath.Text;
+            }
+
+            else
+            {
+                string sMessage = "could not find the program";
+                ErrorReporter(sMessage);
+
+                return;
+            }
+        }
+
+        private void btnHxCFolder_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.ShowNewFolderButton = true;
+            folderDlg.ShowNewFolderButton = false;
+            folderDlg.SelectedPath = "C:\\";
+            folderDlg.Description = "Please Select the HxC Software Folder";
+            // Show the FolderBrowserDialog.  
+            DialogResult result = folderDlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //Environment.SpecialFolder root = folderDlg.RootFolder;
+
+                string exepath = folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
+
+                if (File.Exists(exepath))
+                {
+                    TxtHxCFolder.Text = folderDlg.SelectedPath;
+                    frmMainForm.frmMain.StxtHxCFolder = TxtHxCFolder.Text;
+                    SaveINI(INIPath.Text);
+                    
+                    string sMessage = string.Format("HxC software found at {0}", exepath);
+                    ErrorReporter(sMessage);
+                }
+
+                else
+                {
+                    string sMessage = "folder does not contain HxC software please try again";
+                    ErrorReporter(sMessage);
+                }
+            }
+
+            else
+            {
+                string sMessage = "Invalid Folder please try again";
+                ErrorReporter(sMessage);
+            }
+        }
     }
 }

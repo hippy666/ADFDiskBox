@@ -60,6 +60,8 @@ namespace ADFDiskBox
         public string ScboRetries;
         public string ScboNumberOfDisks;
         public string ScboDriveSelect;
+        public string StxtHxCFolder;
+        public string StxtHxCFile;
 
 
         public static frmMainForm frmMain;
@@ -1612,9 +1614,9 @@ namespace ADFDiskBox
         private void BtnLoadHxC_Click(object sender, EventArgs e)
         {
             openFileDialog1.FileName = lblFileName.Text;
-            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.InitialDirectory = StxtHxCFolder;
 
-            openFileDialog1.Filter = "path to hxc|*.exe";
+            openFileDialog1.Filter = "pick an adf |*.adf";
             // testing.....
             openFileDialog1.ShowReadOnly = true;
             openFileDialog1.ReadOnlyChecked = true;
@@ -1622,9 +1624,8 @@ namespace ADFDiskBox
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string arg = lblFileName.Text;
-                string testing = openFileDialog1.FileName;
-                string programCall = "HxCFloppyEmulator.exe";
+                string arg = openFileDialog1.FileName;
+                //string programCall = "HxCFloppyEmulator.exe";
 
                 //MessageBox.Show(arg);
 
@@ -1636,10 +1637,10 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = StxtGwtext,
+                        WorkingDirectory = StxtHxCFolder,
                         Arguments = arg,
                         //FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
-                        FileName = testing,
+                        FileName = StxtHxCFile,
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,

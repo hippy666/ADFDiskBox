@@ -940,7 +940,7 @@ namespace ADFDiskBox
                 StxtGwtext = " ";
                 SINIPath = fullpath;
                 StxtDiskdefs = defs;
-                lblFileName.Text = "last file.adf";
+                lblFileName.Text = "C:\\temp\\temp.adf";
                 cboTrackCombo.Text = "79";
                 cboType.Text = "AmigaDos";
                 cboRetries.Text = "3";
@@ -988,6 +988,8 @@ namespace ADFDiskBox
                         string sMessage = "That folders no good please try again";
                         ErrorReporter(sMessage);
                 }
+
+                cboType.Text = "AmigaDos";
 
                 return fullpath;
             }

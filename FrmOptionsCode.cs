@@ -331,6 +331,9 @@ namespace ADFDiskBox
                     frmMainForm.frmMain.cboRetries.Text = cboRetries.Text;
                     frmMainForm.frmMain.cboNumberOfDisks.Text = cboNumberOfDisks.Text;
                     frmMainForm.frmMain.cboDriveSelect.Text = cboDriveSelect.Text;
+                    //
+                    frmMainForm.frmMain.StxtHxCFolder = TxtHxCFolder.Text;
+                    frmMainForm.frmMain.StxtHxCFile = TxtHxCPath.Text;
 
                     sw.WriteLine(settings);
 

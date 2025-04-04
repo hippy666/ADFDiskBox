@@ -75,6 +75,12 @@ namespace ADFDiskBox
             this.lblFileName = new System.Windows.Forms.Label();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.LblHxCPath = new System.Windows.Forms.Label();
+            this.TxtHxCPath = new System.Windows.Forms.TextBox();
+            this.BtnHxCPath = new System.Windows.Forms.Button();
+            this.btnHxCFolder = new System.Windows.Forms.Button();
+            this.LblHxCFolder = new System.Windows.Forms.Label();
+            this.TxtHxCFolder = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblComPort
@@ -411,13 +417,13 @@ namespace ADFDiskBox
             "SCP"});
             this.cboType.Location = new System.Drawing.Point(208, 118);
             this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(71, 21);
+            this.cboType.Size = new System.Drawing.Size(101, 21);
             this.cboType.TabIndex = 77;
             // 
             // lblRetries
             // 
             this.lblRetries.AutoSize = true;
-            this.lblRetries.Location = new System.Drawing.Point(301, 107);
+            this.lblRetries.Location = new System.Drawing.Point(332, 102);
             this.lblRetries.Name = "lblRetries";
             this.lblRetries.Size = new System.Drawing.Size(105, 13);
             this.lblRetries.TabIndex = 78;
@@ -529,7 +535,7 @@ namespace ADFDiskBox
             "97",
             "98",
             "99"});
-            this.cboRetries.Location = new System.Drawing.Point(304, 123);
+            this.cboRetries.Location = new System.Drawing.Point(351, 118);
             this.cboRetries.MaxDropDownItems = 99;
             this.cboRetries.Name = "cboRetries";
             this.cboRetries.Size = new System.Drawing.Size(56, 21);
@@ -611,11 +617,69 @@ namespace ADFDiskBox
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // LblHxCPath
+            // 
+            this.LblHxCPath.AutoSize = true;
+            this.LblHxCPath.Location = new System.Drawing.Point(620, 368);
+            this.LblHxCPath.Name = "LblHxCPath";
+            this.LblHxCPath.Size = new System.Drawing.Size(89, 13);
+            this.LblHxCPath.TabIndex = 86;
+            this.LblHxCPath.Text = "Current HxC Path";
+            // 
+            // TxtHxCPath
+            // 
+            this.TxtHxCPath.Location = new System.Drawing.Point(603, 381);
+            this.TxtHxCPath.Name = "TxtHxCPath";
+            this.TxtHxCPath.Size = new System.Drawing.Size(305, 20);
+            this.TxtHxCPath.TabIndex = 87;
+            // 
+            // BtnHxCPath
+            // 
+            this.BtnHxCPath.Location = new System.Drawing.Point(493, 368);
+            this.BtnHxCPath.Name = "BtnHxCPath";
+            this.BtnHxCPath.Size = new System.Drawing.Size(104, 44);
+            this.BtnHxCPath.TabIndex = 88;
+            this.BtnHxCPath.Text = "Set HxC Path";
+            this.BtnHxCPath.UseVisualStyleBackColor = true;
+            this.BtnHxCPath.Click += new System.EventHandler(this.BtnHxCPath_Click);
+            // 
+            // btnHxCFolder
+            // 
+            this.btnHxCFolder.Location = new System.Drawing.Point(489, 428);
+            this.btnHxCFolder.Name = "btnHxCFolder";
+            this.btnHxCFolder.Size = new System.Drawing.Size(108, 23);
+            this.btnHxCFolder.TabIndex = 89;
+            this.btnHxCFolder.Text = "Set HxC Folder";
+            this.btnHxCFolder.UseVisualStyleBackColor = true;
+            this.btnHxCFolder.Click += new System.EventHandler(this.btnHxCFolder_Click);
+            // 
+            // LblHxCFolder
+            // 
+            this.LblHxCFolder.AutoSize = true;
+            this.LblHxCFolder.Location = new System.Drawing.Point(620, 412);
+            this.LblHxCFolder.Name = "LblHxCFolder";
+            this.LblHxCFolder.Size = new System.Drawing.Size(59, 13);
+            this.LblHxCFolder.TabIndex = 90;
+            this.LblHxCFolder.Text = "HxC Folder";
+            // 
+            // TxtHxCFolder
+            // 
+            this.TxtHxCFolder.Location = new System.Drawing.Point(604, 428);
+            this.TxtHxCFolder.Name = "TxtHxCFolder";
+            this.TxtHxCFolder.Size = new System.Drawing.Size(304, 20);
+            this.TxtHxCFolder.TabIndex = 91;
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 749);
+            this.Controls.Add(this.TxtHxCFolder);
+            this.Controls.Add(this.LblHxCFolder);
+            this.Controls.Add(this.btnHxCFolder);
+            this.Controls.Add(this.BtnHxCPath);
+            this.Controls.Add(this.TxtHxCPath);
+            this.Controls.Add(this.LblHxCPath);
             this.Controls.Add(this.lblFileName);
             this.Controls.Add(this.LblFileInUse);
             this.Controls.Add(this.cboNumberOfDisks);
@@ -715,5 +779,11 @@ namespace ADFDiskBox
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         public System.Windows.Forms.TextBox INIPath;
         public System.Windows.Forms.ComboBox cboTrackCombo;
+        private System.Windows.Forms.Label LblHxCPath;
+        private System.Windows.Forms.TextBox TxtHxCPath;
+        private System.Windows.Forms.Button BtnHxCPath;
+        private System.Windows.Forms.Button btnHxCFolder;
+        private System.Windows.Forms.Label LblHxCFolder;
+        private System.Windows.Forms.TextBox TxtHxCFolder;
     }
 }
