@@ -948,6 +948,9 @@ namespace ADFDiskBox
                 cboNumberOfDisks.Text = "5";
                 cboDriveSelect.Text = "A";
 
+                StxtHxCFolder = "C:\\";
+                StxtHxCFile = "C:\\file";
+
 
                 FolderBrowserDialog folderDlg = new FolderBrowserDialog();
                 folderDlg.ShowNewFolderButton = true;
