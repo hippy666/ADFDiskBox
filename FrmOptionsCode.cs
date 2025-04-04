@@ -211,7 +211,7 @@ namespace ADFDiskBox
                 txtDiskdefs.Text = defs;
                 lblFileName.Text = "last file.adf";
                 cboTrackCombo.Text = "79";
-                cboType.Text = "ADF";
+                cboType.Text = "AmigaDos";
                 cboRetries.Text = "3";
 
                 cboNumberOfDisks.Text = "5";
@@ -290,7 +290,7 @@ namespace ADFDiskBox
 
 
 
-                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
+                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, cboComPort.Text);
 
                         //testing
                         //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
@@ -318,7 +318,7 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, cboComPort.Text);
                     //frmMainForm.frmMain.StxtDiskdefs = "trash";
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 

@@ -406,9 +406,9 @@ namespace ADFDiskBox
             this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType.FormattingEnabled = true;
             this.cboType.Items.AddRange(new object[] {
-            "ADF",
-            "SCP",
-            "RAWSCP"});
+            "AmigaDos",
+            "AmigaDosSCP",
+            "SCP"});
             this.cboType.Location = new System.Drawing.Point(208, 118);
             this.cboType.Name = "cboType";
             this.cboType.Size = new System.Drawing.Size(71, 21);

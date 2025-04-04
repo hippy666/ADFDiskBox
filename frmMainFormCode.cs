@@ -559,7 +559,7 @@ namespace ADFDiskBox
         {
             openFileDialog1.FileName = "";
             openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "Amiga SCP only|*.scp";
+            openFileDialog1.Filter = "SCP only|*.scp";
             openFileDialog1.RestoreDirectory = true;
             // testing.....
             openFileDialog1.ShowReadOnly = true;
@@ -776,7 +776,7 @@ namespace ADFDiskBox
         {
             saveFileDialog1.FileName = "";
             saveFileDialog1.InitialDirectory = "c:\\";
-            saveFileDialog1.Filter = "SCP Amiga only|*.scp";
+            saveFileDialog1.Filter = "SCP only|*.scp";
             saveFileDialog1.RestoreDirectory = true;
 
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -942,7 +942,7 @@ namespace ADFDiskBox
                 StxtDiskdefs = defs;
                 lblFileName.Text = "last file.adf";
                 cboTrackCombo.Text = "79";
-                cboType.Text = "ADF";
+                cboType.Text = "AmigaDos";
                 cboRetries.Text = "3";
 
                 cboNumberOfDisks.Text = "5";
@@ -1052,7 +1052,7 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, cboComPort.Text);
 
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 

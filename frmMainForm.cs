@@ -76,10 +76,10 @@ namespace ADFDiskBox
 
         //public void Comms()
         //{
-         //   frmMain.txtGwtext.Text = "Testing";
-         //   //Form1.gui.tsStatus.Text = "test";
-         //   //Form1.gui.addLogLine("Hello from Comms class");
-         //   //Form1.gui.bn_connect.Text = "Comms";
+        //   frmMain.txtGwtext.Text = "Testing";
+        //   //Form1.gui.tsStatus.Text = "test";
+        //   //Form1.gui.addLogLine("Hello from Comms class");
+        //   //Form1.gui.bn_connect.Text = "Comms";
         //}
 
 
@@ -89,7 +89,7 @@ namespace ADFDiskBox
             INIControl inisettings = new INIControl();
 
             var INIpath = Checkexists();
-            
+
 
 
             MessageBox.Show("ADF Diskbox version 2.2" + "\n\n" + "By John Brett"
@@ -226,13 +226,13 @@ namespace ADFDiskBox
 
             switch (selected)
             {
-                case "ADF":
+                case "AmigaDos":
                     DISK2ADF();
                     break;
-                case "SCP":
+                case "AmigaDosSCP":
                     DISK2SCP();
                     break;
-                case "RAWSCP":
+                case "SCP":
                     DISK2RAWSCP();
                     break;
                 default:
@@ -252,13 +252,13 @@ namespace ADFDiskBox
 
             switch (selected)
             {
-                case "ADF":
+                case "AmigaDos":
                     ADF2DISK();
                     break;
-                case "SCP":
+                case "AmigaDosSCP":
                     SCP2DISK();
                     break;
-                case "RAWSCP":
+                case "SCP":
                     RAWSCP2DISK();
                     break;
                 default:
@@ -427,7 +427,7 @@ namespace ADFDiskBox
 
                 ErrorReporter(sMessage);
 
-                
+
             }
             /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -443,13 +443,13 @@ namespace ADFDiskBox
 
             switch (selected)
             {
-                case "ADF":
+                case "AmigaDos":
                     DISK2ADF();
                     break;
-                case "SCP":
+                case "AmigaDosSCP":
                     DISK2SCP();
                     break;
-                case "RAWSCP":
+                case "SCP":
                     DISK2RAWSCP();
                     break;
                 default:
@@ -508,13 +508,13 @@ namespace ADFDiskBox
 
             switch (selected)
             {
-                case "ADF":
+                case "AmigaDos":
                     ADF2DISK();
                     break;
-                case "SCP":
+                case "AmigaDosSCP":
                     SCP2DISK();
                     break;
-                case "RAWSCP":
+                case "SCP":
                     RAWSCP2DISK();
                     break;
                 default:
@@ -729,7 +729,7 @@ namespace ADFDiskBox
             StxtDiskdefs = defs;
             SlblFileName = "last file.adf";
             ScboTrackCombo = "79";
-            ScboType = "ADF";
+            ScboType = "AmigaDos";
             ScboRetries = "3";
 
             ScboNumberOfDisks = "2";
@@ -825,7 +825,7 @@ namespace ADFDiskBox
 
                     string report = string.Format("that files no good please try again");
                     ErrorReporter(report);
-                    
+
                     /*txtDiag.Text = report;
 
                     lbErrors.Items.Add("An error");
@@ -856,7 +856,7 @@ namespace ADFDiskBox
 
                     int SelectedTracks = cboTrackCombo.SelectedIndex;
 
-                    MessageBox.Show("disk format "+SelectedTracks);
+                    MessageBox.Show("disk format " + SelectedTracks);
 
                     switch (SelectedTracks)
                     {
@@ -890,8 +890,8 @@ namespace ADFDiskBox
 
 
 
-                    string driveselect; 
-                    if (cboDriveSelect.SelectedIndex==0)
+                    string driveselect;
+                    if (cboDriveSelect.SelectedIndex == 0)
                     {
                         driveselect = "--drive=A";
                     }
@@ -939,14 +939,14 @@ namespace ADFDiskBox
                         string arg = " ";
                         switch (selected)
                         {
-                            case "ADF":
+                            case "AmigaDos":
                                 arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
                                 break;
-                            case "SCP":
-                                arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk "+i+" .scp"+"::disktype=amiga" + "\"";
+                            case "AmigaDosSCP":
+                                arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .scp" + "::disktype=amiga" + "\"";
                                 break;
-                            case "RAWSCP":
-                                arg = "/K " + "gw read " + device + " " + driveselect + " " + "\"" + filePath +" Disk "+i+" .scp"+"\"";
+                            case "SCP":
+                                arg = "/K " + "gw read " + device + " " + driveselect + " " + "\"" + filePath + " Disk " + i + " .scp" + "\"";
                                 break;
                             default:
                                 arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
@@ -1012,7 +1012,7 @@ namespace ADFDiskBox
 
                             string report = string.Format("{0}", sMessage);
                             ErrorReporter(report);
-                            
+
                             /*txtDiag.Text = report;
 
                             lbErrors.Items.Add("An error");
@@ -1264,53 +1264,53 @@ namespace ADFDiskBox
                 selectedfolder = folderDlg.SelectedPath;
                 Environment.SpecialFolder root = folderDlg.RootFolder;
 
-                    string diskformat = "";
-                    //string NoOfTracks = "";
+                string diskformat = "";
+                //string NoOfTracks = "";
 
-                    int SelectedTracks = cboTrackCombo.SelectedIndex;
+                int SelectedTracks = cboTrackCombo.SelectedIndex;
 
-                    switch (SelectedTracks)
-                    {
+                switch (SelectedTracks)
+                {
 
-                        case 0:
-                            //NoOfTracks = "--tracks=c=0-79:h=0-1 ";
-                            diskformat = " --format=amiga.amigados ";
-                            break;
-                        case 1:
-                            //NoOfTracks = "--tracks=c=0-81:h=0-1 ";
-                            diskformat = " --format=amiga.amigados.plus ";
-                            break;
-                        default:
-                            //NoOfTracks = "--tracks=c=0-79:h=0-1 ";
-                            diskformat = " --format=amiga.amigados ";
-                            break;
-                    }
+                    case 0:
+                        //NoOfTracks = "--tracks=c=0-79:h=0-1 ";
+                        diskformat = " --format=amiga.amigados ";
+                        break;
+                    case 1:
+                        //NoOfTracks = "--tracks=c=0-81:h=0-1 ";
+                        diskformat = " --format=amiga.amigados.plus ";
+                        break;
+                    default:
+                        //NoOfTracks = "--tracks=c=0-79:h=0-1 ";
+                        diskformat = " --format=amiga.amigados ";
+                        break;
+                }
 
-                    string NoOfRetries = " --retries=" + cboRetries.SelectedIndex;
+                string NoOfRetries = " --retries=" + cboRetries.SelectedIndex;
 
-                    /////////////////////////////////////////////////////////////////////
-                    // insert while here
+                /////////////////////////////////////////////////////////////////////
+                // insert while here
 
-                    int NoDisks = cboNumberOfDisks.SelectedIndex + 1;
+                int NoDisks = cboNumberOfDisks.SelectedIndex + 1;
 
-                    string NumberOfDisks = NoDisks.ToString();
+                string NumberOfDisks = NoDisks.ToString();
 
-                    int i = 1;
+                int i = 1;
 
-                    MessageBox.Show(string.Format(" number of disks {0}", NumberOfDisks));
+                MessageBox.Show(string.Format(" number of disks {0}", NumberOfDisks));
 
 
-                    bool quitwhile = false;
+                bool quitwhile = false;
 
-                    string driveselect;
-                    if (cboDriveSelect.SelectedIndex == 0)
-                    {
-                        driveselect = "--drive=A";
-                    }
-                    else
-                    {
-                        driveselect = "--drive=B";
-                    }
+                string driveselect;
+                if (cboDriveSelect.SelectedIndex == 0)
+                {
+                    driveselect = "--drive=A";
+                }
+                else
+                {
+                    driveselect = "--drive=B";
+                }
 
                 string device;
                 device = "--device=" + cboComPort.Text;
@@ -1319,8 +1319,8 @@ namespace ADFDiskBox
                 //MessageBox.Show(driveselect);
 
 
-                while (i <= NoDisks && quitwhile==false)
-                    {
+                while (i <= NoDisks && quitwhile == false)
+                {
                     string selectedformat = cboType.SelectedItem.ToString();
                     //MessageBox.Show(selected);
                     //string tracks = cboTrackCombo.SelectedItem.ToString();
@@ -1329,13 +1329,13 @@ namespace ADFDiskBox
 
                     switch (selectedformat)
                     {
-                        case "ADF":
+                        case "AmigaDos":
                             openFileDialog1.Filter = "Amiga dos ADF|*.adf";
                             break;
-                        case "SCP":
+                        case "AmigaDosSCP":
                             openFileDialog1.Filter = "Amiga dos SCP|*.scp";
                             break;
-                        case "RAWSCP":
+                        case "SCP":
                             openFileDialog1.Filter = "Amiga raw SCP|*.scp";
                             break;
                         default:
@@ -1345,72 +1345,72 @@ namespace ADFDiskBox
 
                     MessageBox.Show(string.Format("Please Insert disk {0}", i));
 
-                        openFileDialog1.FileName = "";
-                        openFileDialog1.InitialDirectory = selectedfolder;
-                        openFileDialog1.Title = "Pick the next disk to write";
+                    openFileDialog1.FileName = "";
+                    openFileDialog1.InitialDirectory = selectedfolder;
+                    openFileDialog1.Title = "Pick the next disk to write";
 
-                        //openFileDialog1.Filter = "Amiga ADF only|*.adf";
+                    //openFileDialog1.Filter = "Amiga ADF only|*.adf";
 
-                        // testing.....
-                        openFileDialog1.ShowReadOnly = true;
-                        openFileDialog1.ReadOnlyChecked = true;
-                        //
-                        openFileDialog1.RestoreDirectory = true;
-                        if (openFileDialog1.ShowDialog() != DialogResult.OK)
-                        {
-                            /* error reporter */
+                    // testing.....
+                    openFileDialog1.ShowReadOnly = true;
+                    openFileDialog1.ReadOnlyChecked = true;
+                    //
+                    openFileDialog1.RestoreDirectory = true;
+                    if (openFileDialog1.ShowDialog() != DialogResult.OK)
+                    {
+                        /* error reporter */
 
-                            ErrorReporter("that files no good please try again");
+                        ErrorReporter("that files no good please try again");
 
-                            /*
+                        /*
 
-                            string report = string.Format("that files no good please try again");
-                            txtDiag.Text = report;
+                        string report = string.Format("that files no good please try again");
+                        txtDiag.Text = report;
 
-                            lbErrors.Items.Add("An error");
-                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+                        lbErrors.Items.Add("An error");
+                        lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                            lbErrors.Items.Add(report);
-                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+                        lbErrors.Items.Add(report);
+                        lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                            lbErrors.Items.Add("has occured");
-                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+                        lbErrors.Items.Add("has occured");
+                        lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                         end of error reporter */
-                            quitwhile = true;
-                        }
+                     end of error reporter */
+                        quitwhile = true;
+                    }
 
-                        else
-                        {
-                            var fileContent = string.Empty;
-                            var filePath = string.Empty;
+                    else
+                    {
+                        var fileContent = string.Empty;
+                        var filePath = string.Empty;
 
-                            //Get the path of specified file
-                            filePath = openFileDialog1.FileName;
-                            lblFileName.Text = filePath;
+                        //Get the path of specified file
+                        filePath = openFileDialog1.FileName;
+                        lblFileName.Text = filePath;
 
-                            string selected = cboType.SelectedItem.ToString();
-                            //MessageBox.Show(selected);
-                            string tracks = cboTrackCombo.SelectedItem.ToString();
+                        string selected = cboType.SelectedItem.ToString();
+                        //MessageBox.Show(selected);
+                        string tracks = cboTrackCombo.SelectedItem.ToString();
 
                         //MessageBox.Show(tracks);
 
-                            string arg = " ";
-                            switch (selected)
-                            {
-                            case "ADF":
+                        string arg = " ";
+                        switch (selected)
+                        {
+                            case "AmigaDos":
                                 arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
-                            case "SCP":
+                            case "AmigaDosSCP":
                                 arg = "/K " + "gw write " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
-                            case "RAWSCP":
+                            case "SCP":
                                 arg = "/K " + "gw write " + device + " " + driveselect + " " + "\"" + filePath + "\"";
                                 break;
                             default:
                                 arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
-                            }
+                        }
 
 
                         // original
@@ -1425,70 +1425,70 @@ namespace ADFDiskBox
                         //MessageBox.Show(arg);
 
 
-                            ClearlbOutput();
-                            ClearlbErrorOutput();
+                        ClearlbOutput();
+                        ClearlbErrorOutput();
 
 
-                            var proc = new Process
+                        var proc = new Process
+                        {
+                            EnableRaisingEvents = true,
+                            StartInfo = new ProcessStartInfo
                             {
-                                EnableRaisingEvents = true,
-                                StartInfo = new ProcessStartInfo
-                                {
-                                    WorkingDirectory = StxtGwtext,
-                                    Arguments = arg,
-                                    FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
-                                    UseShellExecute = false,
-                                    RedirectStandardOutput = true,
-                                    RedirectStandardError = true,
-                                    CreateNoWindow = true
-                                }
-                            };
-
-                            prgProgressBar1.Value = 0;
-
-                            proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
-                            proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
-
-                            //proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
-
-                            try
-                            {
-                                proc.Start();
-
-                                proc.BeginOutputReadLine();
-                                proc.BeginErrorReadLine();
-
-
-                                proc.Close();
+                                WorkingDirectory = StxtGwtext,
+                                Arguments = arg,
+                                FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                                UseShellExecute = false,
+                                RedirectStandardOutput = true,
+                                RedirectStandardError = true,
+                                CreateNoWindow = true
                             }
+                        };
 
-                            catch (Exception error)
-                            {
-                                /* error reporter */
+                        prgProgressBar1.Value = 0;
 
-                                string sMessage = error.Message.ToString();
+                        proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+                        proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
 
-                                string report = string.Format("{0}", sMessage);
+                        //proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
 
-                                ErrorReporter(report);
-                            
-                                /*
-                                txtDiag.Text = report;
+                        try
+                        {
+                            proc.Start();
 
-                                lbErrors.Items.Add("An error");
-                                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+                            proc.BeginOutputReadLine();
+                            proc.BeginErrorReadLine();
 
-                                lbErrors.Items.Add(report);
-                                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
 
-                                lbErrors.Items.Add("has occured");
-                                lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+                            proc.Close();
+                        }
 
-                                 end of error reporter */
-                            }
+                        catch (Exception error)
+                        {
+                            /* error reporter */
 
-                            // end of while i think
-                            i++;
+                            string sMessage = error.Message.ToString();
+
+                            string report = string.Format("{0}", sMessage);
+
+                            ErrorReporter(report);
+
+                            /*
+                            txtDiag.Text = report;
+
+                            lbErrors.Items.Add("An error");
+                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                            lbErrors.Items.Add(report);
+                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                            lbErrors.Items.Add("has occured");
+                            lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
+
+                             end of error reporter */
+                        }
+
+                        // end of while i think
+                        i++;
 
                     }
 
@@ -1510,33 +1510,7 @@ namespace ADFDiskBox
 
         private void btnRescan_Click(object sender, EventArgs e)
         {
-            // Get a list of serial port names.
-            string[] ports = SerialPort.GetPortNames();
 
-            MessageBox.Show("The following serial ports were found:");
-
-            // Display each port name
-
-            cboComPort.Items.Clear();
-
-            if(ports.Length!=0)
-            {
-                foreach (string port in ports)
-                {
-
-                    MessageBox.Show(port);
-                    cboComPort.Items.Add(port);
-                    cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
-                }
-            }
-
-            else
-            {
-                MessageBox.Show("No Com ports Detected. replugin and press rescan com ports!");
-                cboComPort.Items.Add("Rescan");
-                cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
-            }
-            
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -1610,6 +1584,103 @@ namespace ADFDiskBox
         private void BtnTesting_Click(object sender, EventArgs e)
         {
             MessageBox.Show("testing value " + StxtGwtext);
+        }
+
+        private void btnRescan_Click_1(object sender, EventArgs e)
+        {
+            // Get a list of serial port names.
+            string[] ports = SerialPort.GetPortNames();
+
+            MessageBox.Show("The following serial ports were found:");
+
+            // Display each port name
+
+            cboComPort.Items.Clear();
+
+            if (ports.Length != 0)
+            {
+                foreach (string port in ports)
+                {
+
+                    MessageBox.Show(port);
+                    cboComPort.Items.Add(port);
+                    cboComPort.SelectedIndex = cboComPort.Items.Count - 1;
+                }
+            }
+        }
+
+        private void BtnLoadHxC_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.FileName = lblFileName.Text;
+            openFileDialog1.InitialDirectory = "c:\\";
+
+            openFileDialog1.Filter = "path to hxc|*.exe";
+            // testing.....
+            openFileDialog1.ShowReadOnly = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            //
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string arg = lblFileName.Text;
+                string testing = openFileDialog1.FileName;
+                string programCall = "HxCFloppyEmulator.exe";
+
+                //MessageBox.Show(arg);
+
+                ClearlbOutput();
+                ClearlbErrorOutput();
+
+                var proc = new Process
+                {
+                    EnableRaisingEvents = true,
+                    StartInfo = new ProcessStartInfo
+                    {
+                        WorkingDirectory = StxtGwtext,
+                        Arguments = arg,
+                        //FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                        FileName = testing,
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true
+                    }
+                };
+
+                //prgProgressBar1.Value = 0;
+
+                proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+                proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+                try
+                {
+                    proc.Start();
+                    //ChooserForm.m_ProcessId = proc.Id;
+
+
+                    proc.BeginErrorReadLine();
+                    proc.BeginOutputReadLine();
+
+                    //proc.WaitForExit();
+                    proc.Close();
+                }
+
+                catch (Exception error)
+                {
+                    string sMessage = error.Message.ToString();
+                    ErrorReporter(sMessage);
+                }
+            }
+
+        
+
+            else
+            {
+                string sMessage = "could not load the program";
+                ErrorReporter(sMessage);
+
+                return;
+            }
         }
     }
     

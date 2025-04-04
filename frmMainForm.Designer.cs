@@ -84,6 +84,8 @@
             this.cboComPort = new System.Windows.Forms.ComboBox();
             this.lblComPort = new System.Windows.Forms.Label();
             this.BtnLoadButton = new System.Windows.Forms.Button();
+            this.btnRescan = new System.Windows.Forms.Button();
+            this.BtnLoadHxC = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -349,7 +351,7 @@
             // lblDiskType
             // 
             this.lblDiskType.AutoSize = true;
-            this.lblDiskType.Location = new System.Drawing.Point(174, 40);
+            this.lblDiskType.Location = new System.Drawing.Point(244, 40);
             this.lblDiskType.Name = "lblDiskType";
             this.lblDiskType.Size = new System.Drawing.Size(52, 13);
             this.lblDiskType.TabIndex = 17;
@@ -360,18 +362,18 @@
             this.cboType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboType.FormattingEnabled = true;
             this.cboType.Items.AddRange(new object[] {
-            "ADF",
-            "SCP",
-            "RAWSCP"});
-            this.cboType.Location = new System.Drawing.Point(165, 71);
+            "AmigaDos",
+            "AmigaDosSCP",
+            "SCP"});
+            this.cboType.Location = new System.Drawing.Point(236, 71);
             this.cboType.Name = "cboType";
-            this.cboType.Size = new System.Drawing.Size(71, 21);
+            this.cboType.Size = new System.Drawing.Size(105, 21);
             this.cboType.TabIndex = 18;
             this.cboType.SelectedIndexChanged += new System.EventHandler(this.cboType_SelectedIndexChanged);
             // 
             // btnGwinfo
             // 
-            this.btnGwinfo.Location = new System.Drawing.Point(653, 63);
+            this.btnGwinfo.Location = new System.Drawing.Point(699, 63);
             this.btnGwinfo.Name = "btnGwinfo";
             this.btnGwinfo.Size = new System.Drawing.Size(87, 35);
             this.btnGwinfo.TabIndex = 19;
@@ -382,7 +384,7 @@
             // lblRetries
             // 
             this.lblRetries.AutoSize = true;
-            this.lblRetries.Location = new System.Drawing.Point(248, 40);
+            this.lblRetries.Location = new System.Drawing.Point(346, 40);
             this.lblRetries.Name = "lblRetries";
             this.lblRetries.Size = new System.Drawing.Size(105, 13);
             this.lblRetries.TabIndex = 22;
@@ -494,7 +496,7 @@
             "97",
             "98",
             "99"});
-            this.cboRetries.Location = new System.Drawing.Point(271, 71);
+            this.cboRetries.Location = new System.Drawing.Point(370, 71);
             this.cboRetries.MaxDropDownItems = 99;
             this.cboRetries.Name = "cboRetries";
             this.cboRetries.Size = new System.Drawing.Size(56, 21);
@@ -570,7 +572,7 @@
             // lblNoOfDisks
             // 
             this.lblNoOfDisks.AutoSize = true;
-            this.lblNoOfDisks.Location = new System.Drawing.Point(463, 48);
+            this.lblNoOfDisks.Location = new System.Drawing.Point(562, 46);
             this.lblNoOfDisks.MaximumSize = new System.Drawing.Size(68, 73);
             this.lblNoOfDisks.Name = "lblNoOfDisks";
             this.lblNoOfDisks.Size = new System.Drawing.Size(63, 52);
@@ -597,7 +599,7 @@
             "13",
             "14",
             "15"});
-            this.cboNumberOfDisks.Location = new System.Drawing.Point(546, 71);
+            this.cboNumberOfDisks.Location = new System.Drawing.Point(631, 71);
             this.cboNumberOfDisks.Name = "cboNumberOfDisks";
             this.cboNumberOfDisks.Size = new System.Drawing.Size(50, 21);
             this.cboNumberOfDisks.TabIndex = 45;
@@ -643,7 +645,7 @@
             // lblDriveSelect
             // 
             this.lblDriveSelect.AutoSize = true;
-            this.lblDriveSelect.Location = new System.Drawing.Point(371, 40);
+            this.lblDriveSelect.Location = new System.Drawing.Point(466, 40);
             this.lblDriveSelect.Name = "lblDriveSelect";
             this.lblDriveSelect.Size = new System.Drawing.Size(65, 13);
             this.lblDriveSelect.TabIndex = 50;
@@ -655,7 +657,7 @@
             this.cboDriveSelect.Items.AddRange(new object[] {
             "A",
             "B"});
-            this.cboDriveSelect.Location = new System.Drawing.Point(374, 71);
+            this.cboDriveSelect.Location = new System.Drawing.Point(469, 71);
             this.cboDriveSelect.Name = "cboDriveSelect";
             this.cboDriveSelect.Size = new System.Drawing.Size(62, 21);
             this.cboDriveSelect.TabIndex = 51;
@@ -690,11 +692,34 @@
             this.BtnLoadButton.UseVisualStyleBackColor = true;
             this.BtnLoadButton.Click += new System.EventHandler(this.BtnLoadButton_Click);
             // 
+            // btnRescan
+            // 
+            this.btnRescan.Location = new System.Drawing.Point(157, 33);
+            this.btnRescan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRescan.Name = "btnRescan";
+            this.btnRescan.Size = new System.Drawing.Size(56, 65);
+            this.btnRescan.TabIndex = 57;
+            this.btnRescan.Text = "Rescan Com Ports";
+            this.btnRescan.UseVisualStyleBackColor = true;
+            this.btnRescan.Click += new System.EventHandler(this.btnRescan_Click_1);
+            // 
+            // BtnLoadHxC
+            // 
+            this.BtnLoadHxC.Location = new System.Drawing.Point(699, 120);
+            this.BtnLoadHxC.Name = "BtnLoadHxC";
+            this.BtnLoadHxC.Size = new System.Drawing.Size(87, 72);
+            this.BtnLoadHxC.TabIndex = 58;
+            this.BtnLoadHxC.Text = "LoadHxC Lastfile";
+            this.BtnLoadHxC.UseVisualStyleBackColor = true;
+            this.BtnLoadHxC.Click += new System.EventHandler(this.BtnLoadHxC_Click);
+            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 569);
+            this.Controls.Add(this.BtnLoadHxC);
+            this.Controls.Add(this.btnRescan);
             this.Controls.Add(this.BtnLoadButton);
             this.Controls.Add(this.lblComPort);
             this.Controls.Add(this.cboComPort);
@@ -801,6 +826,8 @@
         public System.Windows.Forms.Label lblFileName;
         public System.Windows.Forms.ComboBox cboNumberOfDisks;
         public System.Windows.Forms.ComboBox cboDriveSelect;
+        private System.Windows.Forms.Button btnRescan;
+        private System.Windows.Forms.Button BtnLoadHxC;
     }
 }
 

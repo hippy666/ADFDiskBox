@@ -181,7 +181,8 @@ namespace ADFDiskBox
 
                 string device;
                 device = "--device=" + cboComPort.Text;
-
+                frmMainForm.frmMain.cboComPort.Text = cboComPort.Text;
+                
                 string arg = "/K gw info " + device;
 
                 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -452,7 +453,7 @@ namespace ADFDiskBox
 
                 saveFileDialog1.FileName = "";
                 saveFileDialog1.InitialDirectory = "c:\\";
-                saveFileDialog1.Filter = "SCP Amiga only|*.scp";
+                saveFileDialog1.Filter = "SCP only|*.scp";
                 saveFileDialog1.RestoreDirectory = true;
 
                 if (saveFileDialog1.ShowDialog() == DialogResult.OK)
@@ -524,7 +525,7 @@ namespace ADFDiskBox
 
             openFileDialog1.FileName = "";
             openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "Amiga SCP only|*.scp";
+            openFileDialog1.Filter = "SCP only|*.scp";
             openFileDialog1.RestoreDirectory = true;
             // testing.....
             openFileDialog1.ShowReadOnly = true;
@@ -620,7 +621,7 @@ namespace ADFDiskBox
             txtDiskdefs.Text = defs;
             lblFileName.Text = "last file.adf";
             cboTrackCombo.Text = "79";
-            cboType.Text = "ADF";
+            cboType.Text = "AmigaDos";
             cboRetries.Text = "3";
 
             cboNumberOfDisks.Text = "2";
