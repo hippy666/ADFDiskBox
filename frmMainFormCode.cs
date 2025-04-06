@@ -948,10 +948,6 @@ namespace ADFDiskBox
                 cboNumberOfDisks.Text = "5";
                 cboDriveSelect.Text = "A";
 
-                StxtHxCFolder = "C:\\";
-                StxtHxCFile = "C:\\file";
-
-
                 FolderBrowserDialog folderDlg = new FolderBrowserDialog();
                 folderDlg.ShowNewFolderButton = true;
                 folderDlg.ShowNewFolderButton = false;
@@ -992,12 +988,90 @@ namespace ADFDiskBox
                         ErrorReporter(sMessage);
                 }
 
+
+                // Load HxC File and path here..
+                // load hxc folders
+                //StxtHxCFolder = "C:\\";
+                //StxtHxCFile = "C:\\file";
+
+                StxtHxCFolder = LoadHxCFolder();
+                StxtHxCFile =  LoadHxCpath();
+                
                 cboType.Text = "AmigaDos";
 
                 return fullpath;
             }
         }
 
+        public string LoadHxCFolder()
+        {
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.ShowNewFolderButton = true;
+            folderDlg.ShowNewFolderButton = false;
+            folderDlg.SelectedPath = "C:\\";
+            folderDlg.Description = "Please Select the HxC Software Folder";
+            // Show the FolderBrowserDialog.  
+            DialogResult result = folderDlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //Environment.SpecialFolder root = folderDlg.RootFolder;
+
+                string exepath = folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
+
+                if (File.Exists(exepath))
+                {
+
+                    StxtHxCFolder = folderDlg.SelectedPath;
+                    SaveINI(SINIPath);
+
+                    string sMessage = string.Format("HxC software found at {0}", exepath);
+                    ErrorReporter(sMessage);
+                    return (exepath);
+                }
+
+                else
+                {
+                    string sMessage = "folder does not contain HxC software please try again";
+                    ErrorReporter(sMessage);
+                    return ("Blank");
+                }
+            }
+
+            else
+            {
+                string sMessage = "Invalid Folder please try again";
+                ErrorReporter(sMessage);
+                return("blank");
+            }
+        }
+
+        public string LoadHxCpath()
+        {
+            openFileDialog1.FileName = "HxCFloppyEmulator.exe";
+            openFileDialog1.InitialDirectory = "c:\\";
+
+
+            openFileDialog1.Filter = "path to hxc exe | HxCFloppyEmulator.exe";
+            // testing.....
+            openFileDialog1.ShowReadOnly = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            //
+
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //StxtHxCFile = openFileDialog1.FileName;
+                return (openFileDialog1.FileName);
+            }
+
+            else
+            {
+                string sMessage = "could not find the program";
+                ErrorReporter(sMessage);
+
+                return ("blank");
+            }
+        }
 
 
 
@@ -1026,10 +1100,12 @@ namespace ADFDiskBox
                         cboNumberOfDisks.Text = settings[7];
                         cboDriveSelect.Text = settings[8];
 
+                        StxtHxCFile = settings[9];
+                        StxtHxCFolder = settings[10];
 
                         
 
-                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text);
+                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text,StxtHxCFile,StxtHxCFolder);
 
                         //testing
                         //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
@@ -1057,7 +1133,7 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, cboComPort.Text);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, StxtHxCFile, StxtHxCFolder);
 
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 

@@ -217,6 +217,23 @@ namespace ADFDiskBox
                 cboNumberOfDisks.Text = "5";
                 cboDriveSelect.Text = "A";
 
+                // Load HxC File and path here..
+                // load hxc folders
+
+
+                string file, dir;
+                file = LoadHxCpath();
+                dir = LoadHxCFolder();
+
+                TxtHxCFolder.Text = dir;
+                TxtHxCPath.Text = file;
+
+                frmMainForm.frmMain.StxtHxCFolder = dir;
+                frmMainForm.frmMain.StxtHxCFile = file;
+
+                // Load HxC File and path here..
+                // load hxc folders
+
 
                 FolderBrowserDialog folderDlg = new FolderBrowserDialog();
                 folderDlg.ShowNewFolderButton = true;
@@ -286,11 +303,12 @@ namespace ADFDiskBox
 
                         cboNumberOfDisks.Text = settings[7];
                         cboDriveSelect.Text = settings[8];
+                        TxtHxCPath.Text = settings[9];
+                        TxtHxCFolder.Text = settings[10];
 
 
 
-
-                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, cboComPort.Text);
+                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, TxtHxCPath.Text,TxtHxCFolder);
 
                         //testing
                         //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
@@ -318,7 +336,7 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, cboComPort.Text);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, TxtHxCPath.Text,TxtHxCFolder.Text);
                     //frmMainForm.frmMain.StxtDiskdefs = "trash";
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 

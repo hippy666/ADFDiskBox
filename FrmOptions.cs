@@ -235,6 +235,25 @@ namespace ADFDiskBox
 
             }
 
+            
+            // Load HxC File and path here..
+            // load hxc folders
+
+
+            /*string file, dir;
+            file = LoadHxCpath();
+            dir = LoadHxCFolder();
+
+            TxtHxCFolder.Text = dir;
+            TxtHxCPath.Text = file;
+
+            frmMainForm.frmMain.StxtHxCFolder = dir;
+            frmMainForm.frmMain.StxtHxCFile = file;
+            */
+
+            // Load HxC File and path here..
+            // load hxc folders
+ 
 
             //lbErrors.Items.Add(report);
             //lbErrors.SelectedIndex = lbErrors.Items.Count - 1;
@@ -785,6 +804,76 @@ namespace ADFDiskBox
             {
                 string sMessage = "Invalid Folder please try again";
                 ErrorReporter(sMessage);
+            }
+        }
+
+        public string LoadHxCFolder()
+        {
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.ShowNewFolderButton = true;
+            folderDlg.ShowNewFolderButton = false;
+            folderDlg.SelectedPath = "C:\\";
+            folderDlg.Description = "Please Select the HxC Software Folder";
+            // Show the FolderBrowserDialog.  
+            DialogResult result = folderDlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //Environment.SpecialFolder root = folderDlg.RootFolder;
+
+                string exepath = folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
+
+                if (File.Exists(exepath))
+                {
+
+                    frmMainForm.frmMain.StxtHxCFolder = folderDlg.SelectedPath;
+                    SaveINI(INIPath.Text);
+
+                    string sMessage = string.Format("HxC software found at {0}", exepath);
+                    ErrorReporter(sMessage);
+                    return (exepath);
+                }
+
+                else
+                {
+                    string sMessage = "folder does not contain HxC software please try again";
+                    ErrorReporter(sMessage);
+                    return ("Blank");
+                }
+            }
+
+            else
+            {
+                string sMessage = "Invalid Folder please try again";
+                ErrorReporter(sMessage);
+                return ("blank");
+            }
+        }
+
+        public string LoadHxCpath()
+        {
+            openFileDialog1.FileName = "HxCFloppyEmulator.exe";
+            openFileDialog1.InitialDirectory = "c:\\";
+            openFileDialog1.Title = "Please Select The HxC Software";
+
+            openFileDialog1.Filter = "path to hxc exe | HxCFloppyEmulator.exe";
+            // testing.....
+            openFileDialog1.ShowReadOnly = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            //
+
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //StxtHxCFile = openFileDialog1.FileName;
+                return (openFileDialog1.FileName);
+            }
+
+            else
+            {
+                string sMessage = "could not find the program";
+                ErrorReporter(sMessage);
+
+                return ("blank");
             }
         }
     }

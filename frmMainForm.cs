@@ -1613,10 +1613,13 @@ namespace ADFDiskBox
 
         private void BtnLoadHxC_Click(object sender, EventArgs e)
         {
+            openFileDialog1.Title = "Pick a file to load";
             openFileDialog1.FileName = lblFileName.Text;
             openFileDialog1.InitialDirectory = StxtHxCFolder;
 
-            openFileDialog1.Filter = "pick an adf |*.adf";
+            //openFileDialog1.Filter = "pick file |*.adf;*.scp";
+            openFileDialog1.Filter= "Pick An Image adf or scp|*.adf;*.scp;";
+
             // testing.....
             openFileDialog1.ShowReadOnly = true;
             openFileDialog1.ReadOnlyChecked = true;
