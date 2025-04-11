@@ -635,6 +635,7 @@ namespace ADFDiskBox
             // 
             // BtnHxCPath
             // 
+            this.BtnHxCPath.Enabled = false;
             this.BtnHxCPath.Location = new System.Drawing.Point(493, 368);
             this.BtnHxCPath.Name = "BtnHxCPath";
             this.BtnHxCPath.Size = new System.Drawing.Size(104, 44);

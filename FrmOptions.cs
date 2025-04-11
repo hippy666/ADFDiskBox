@@ -781,12 +781,16 @@ namespace ADFDiskBox
             {
                 //Environment.SpecialFolder root = folderDlg.RootFolder;
 
-                string exepath = folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
+                string exepath= folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
+
 
                 if (File.Exists(exepath))
                 {
                     TxtHxCFolder.Text = folderDlg.SelectedPath;
+                    TxtHxCPath.Text = exepath;
+
                     frmMainForm.frmMain.StxtHxCFolder = TxtHxCFolder.Text;
+                    frmMainForm.frmMain.StxtHxCFile = TxtHxCPath.Text;
                     SaveINI(INIPath.Text);
                     
                     string sMessage = string.Format("HxC software found at {0}", exepath);

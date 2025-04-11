@@ -948,6 +948,14 @@ namespace ADFDiskBox
                 cboNumberOfDisks.Text = "5";
                 cboDriveSelect.Text = "A";
 
+                // Load HxC File and path here..
+                // load hxc folders
+                //StxtHxCFolder = "C:\\";
+                //StxtHxCFile = "C:\\file";
+
+                StxtHxCFolder = LoadHxCFolder();
+                //StxtHxCFile = LoadHxCpath();
+
                 FolderBrowserDialog folderDlg = new FolderBrowserDialog();
                 folderDlg.ShowNewFolderButton = true;
                 folderDlg.ShowNewFolderButton = false;
@@ -987,18 +995,7 @@ namespace ADFDiskBox
                         string sMessage = "That folders no good please try again";
                         ErrorReporter(sMessage);
                 }
-
-
-                // Load HxC File and path here..
-                // load hxc folders
-                //StxtHxCFolder = "C:\\";
-                //StxtHxCFile = "C:\\file";
-
-                StxtHxCFolder = LoadHxCFolder();
-                StxtHxCFile =  LoadHxCpath();
                 
-                cboType.Text = "AmigaDos";
-
                 return fullpath;
             }
         }
@@ -1016,17 +1013,22 @@ namespace ADFDiskBox
             {
                 //Environment.SpecialFolder root = folderDlg.RootFolder;
 
-                string exepath = folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
+                StxtHxCFile = folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
 
-                if (File.Exists(exepath))
+                if (File.Exists(StxtHxCFile))
                 {
 
                     StxtHxCFolder = folderDlg.SelectedPath;
+
                     SaveINI(SINIPath);
 
-                    string sMessage = string.Format("HxC software found at {0}", exepath);
+
+                    MessageBox.Show("Folder is: " + StxtHxCFolder);
+                    MessageBox.Show("File is : " + StxtHxCFile);
+
+                    string sMessage = string.Format("HxC software found at {0}", StxtHxCFile);
                     ErrorReporter(sMessage);
-                    return (exepath);
+                    return (StxtHxCFolder);
                 }
 
                 else
@@ -1049,7 +1051,6 @@ namespace ADFDiskBox
         {
             openFileDialog1.FileName = "HxCFloppyEmulator.exe";
             openFileDialog1.InitialDirectory = "c:\\";
-
 
             openFileDialog1.Filter = "path to hxc exe | HxCFloppyEmulator.exe";
             // testing.....

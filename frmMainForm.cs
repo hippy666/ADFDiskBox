@@ -94,7 +94,7 @@ namespace ADFDiskBox
             
 
 
-            MessageBox.Show("ADF Diskbox version 2.2" + "\n\n" + "By John Brett"
+            MessageBox.Show("ADF Diskbox version 2.3" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2 and up" + "\n\n"
@@ -1628,16 +1628,16 @@ namespace ADFDiskBox
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string arg = openFileDialog1.FileName;
+                string arg = "\"" + openFileDialog1.FileName + "\"";
                 //string programCall = "HxCFloppyEmulator.exe";
 
                 //MessageBox.Show(arg);
 
                 ClearlbOutput();
                 ClearlbErrorOutput();
-                
+
                 //MessageBox.Show(string.Format("file {0} " + StxtHxCFile));
-                MessageBox.Show(string.Format("folder {0} " +  StxtHxCFolder));
+                //MessageBox.Show(string.Format("folder {0} " +  StxtHxCFolder));
 
                 var proc = new Process
                 {
@@ -1654,6 +1654,10 @@ namespace ADFDiskBox
                         CreateNoWindow = true
                     }
                 };
+
+                MessageBox.Show("HxC filename: "+StxtHxCFile);
+                MessageBox.Show("HxC Folder: "+StxtHxCFolder);
+                MessageBox.Show("filename: "+arg);
 
                 //prgProgressBar1.Value = 0;
 
