@@ -89,9 +89,9 @@ namespace ADFDiskBox
         private void frmMainForm_Load(object sender, EventArgs e)
         {
             INIControl inisettings = new INIControl();
-
+            
             var INIpath = Checkexists();
-
+            
 
 
             MessageBox.Show("ADF Diskbox version 2.2" + "\n\n" + "By John Brett"
@@ -156,6 +156,7 @@ namespace ADFDiskBox
                 proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
                 proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
 
+                
                 try
                 {
                     proc.Start();
@@ -1634,6 +1635,9 @@ namespace ADFDiskBox
 
                 ClearlbOutput();
                 ClearlbErrorOutput();
+                
+                //MessageBox.Show(string.Format("file {0} " + StxtHxCFile));
+                MessageBox.Show(string.Format("folder {0} " +  StxtHxCFolder));
 
                 var proc = new Process
                 {

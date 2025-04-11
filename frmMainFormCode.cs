@@ -872,7 +872,7 @@ namespace ADFDiskBox
             string ADFDiskBoxINI = "ADFDiskbox.ini";
 
             string path = Directory.GetCurrentDirectory();
-            //MessageBox.Show(string.Format("current directory {0}", path));
+            ErrorReporter(string.Format("current directory {0}", path));
 
             string fullpath = path + "\\" + ADFDiskBoxINI;
 
@@ -888,7 +888,7 @@ namespace ADFDiskBox
                 txtDiag.Text = string.Format("File {0} at path {1} Exists", fullpath, path);
                 SINIPath = fullpath;
 
-                LoadINI(fullpath);
+                LoadINI(SINIPath);
                 return fullpath;
             }
 
@@ -1086,6 +1086,8 @@ namespace ADFDiskBox
                     //line = sr.ReadLine();
 
                     line = sr.ReadLine();
+
+                    
                     if (line != null)
                     {
                         string[] settings = line.Split(',');
@@ -1103,8 +1105,7 @@ namespace ADFDiskBox
                         StxtHxCFile = settings[9];
                         StxtHxCFolder = settings[10];
 
-                        
-
+                       
                         string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text,StxtHxCFile,StxtHxCFolder);
 
                         //testing
@@ -1118,8 +1119,10 @@ namespace ADFDiskBox
 
             catch (Exception error)
             {
+                
                 string sMessage = error.Message.ToString();
                 ErrorReporter(sMessage);
+                ErrorReporter("this is the crashing point");
             }
         }
 
@@ -1133,7 +1136,7 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, StxtHxCFile, StxtHxCFolder);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, StxtHxCFile, StxtHxCFolder);
 
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 
