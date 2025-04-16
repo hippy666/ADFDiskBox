@@ -172,9 +172,9 @@
             this.lblFileName.AutoSize = true;
             this.lblFileName.Location = new System.Drawing.Point(197, 180);
             this.lblFileName.Name = "lblFileName";
-            this.lblFileName.Size = new System.Drawing.Size(91, 13);
+            this.lblFileName.Size = new System.Drawing.Size(63, 13);
             this.lblFileName.TabIndex = 10;
-            this.lblFileName.Text = "C:\\temp\\temp.adf";
+            this.lblFileName.Text = "C:\\temp.adf";
             // 
             // lblNumberOfTracks
             // 

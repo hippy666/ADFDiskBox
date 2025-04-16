@@ -940,7 +940,7 @@ namespace ADFDiskBox
                 StxtGwtext = " ";
                 SINIPath = fullpath;
                 StxtDiskdefs = defs;
-                lblFileName.Text = "C:\\temp\\temp.adf";
+                lblFileName.Text = "C:\\temp.adf";
                 cboTrackCombo.Text = "79";
                 cboType.Text = "AmigaDos";
                 cboRetries.Text = "3";
