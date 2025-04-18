@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2024 John Brett
+Copyright (c) 2025 John Brett
 
 Parts from GreasewesalGUI .NET Copyright(c) 2020 Don Mankin
 

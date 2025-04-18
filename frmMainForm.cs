@@ -756,6 +756,8 @@ namespace ADFDiskBox
                 {
                     StxtGwtext = folderDlg.SelectedPath;
                     Environment.SpecialFolder root = folderDlg.RootFolder;
+
+                    //MessageBox.Show("Root: " + root);
                     SaveINI(SINIPath);
 
                     MessageBox.Show(string.Format("greasewesal software found at {0}", exepath));
@@ -1616,7 +1618,7 @@ namespace ADFDiskBox
         {
             openFileDialog1.Title = "Pick a file to load";
             openFileDialog1.FileName = lblFileName.Text;
-            openFileDialog1.InitialDirectory = StxtHxCFolder;
+            openFileDialog1.InitialDirectory = "C:\\";
 
             //openFileDialog1.Filter = "pick file |*.adf;*.scp";
             openFileDialog1.Filter= "Pick An Image adf or scp|*.adf;*.scp;";
@@ -1625,10 +1627,13 @@ namespace ADFDiskBox
             openFileDialog1.ShowReadOnly = true;
             openFileDialog1.ReadOnlyChecked = true;
             //
+            
+            
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string arg = "\"" + openFileDialog1.FileName + "\"";
+                string arg = " \"" + openFileDialog1.FileName + "\"";
+
                 //string programCall = "HxCFloppyEmulator.exe";
 
                 //MessageBox.Show(arg);
@@ -1646,18 +1651,20 @@ namespace ADFDiskBox
                     {
                         WorkingDirectory = StxtHxCFolder,
                         Arguments = arg,
-                        //FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
-                        FileName = StxtHxCFile,
+                        
+                        FileName=StxtHxCFile,
+
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         CreateNoWindow = true
+
                     }
                 };
 
                 MessageBox.Show("HxC filename: "+StxtHxCFile);
                 MessageBox.Show("HxC Folder: "+StxtHxCFolder);
-                MessageBox.Show("filename: "+arg);
+                MessageBox.Show(string.Format("filename:{0} arguments:{1} ",StxtHxCFile,arg));
 
                 //prgProgressBar1.Value = 0;
 
@@ -1694,6 +1701,89 @@ namespace ADFDiskBox
                 return;
             }
         }
+
+        private void BtnHxC2_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Pick a file to load";
+            openFileDialog1.FileName = lblFileName.Text;
+            openFileDialog1.InitialDirectory = "C:\\";
+
+            //openFileDialog1.Filter = "pick file |*.adf;*.scp";
+            openFileDialog1.Filter = "Pick An Image adf or scp|*.adf;*.scp;";
+            
+            // testing.....
+            openFileDialog1.ShowReadOnly = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            //
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+
+                var fileContent = string.Empty;
+                var filePath = string.Empty;
+
+                //Get the path of specified file
+                filePath = openFileDialog1.FileName;
+                lblFileName.Text = filePath;
+
+
+                //MessageBox.Show(driveselect);
+
+                string arg = " /K " + StxtHxCFile+ " "+"C:\\temp\\temp.adf";
+
+                MessageBox.Show("Arguments" +arg);
+
+                ClearlbOutput();
+                ClearlbErrorOutput();
+
+                var proc = new Process
+                {
+                    EnableRaisingEvents = true,
+                    StartInfo = new ProcessStartInfo
+                    {
+                        WorkingDirectory = StxtHxCFolder,
+                        Arguments = arg,
+                        FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true
+                    }
+                };
+
+                prgProgressBar1.Value = 0;
+
+                proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+                proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+                try
+                {
+                    proc.Start();
+                    //ChooserForm.m_ProcessId = proc.Id;
+
+
+                    proc.BeginErrorReadLine();
+                    proc.BeginOutputReadLine();
+
+                    //proc.WaitForExit();
+                    proc.Close();
+                }
+
+                catch (Exception error)
+                {
+                    string sMessage = error.Message.ToString();
+                    ErrorReporter(sMessage);
+                }
+            }
+            else
+            {
+                string sMessage = "could not write That adf files no good try again";
+                ErrorReporter(sMessage);
+
+                return;
+            }
+        }
+    
     }
     
 }
