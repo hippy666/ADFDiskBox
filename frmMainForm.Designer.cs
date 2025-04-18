@@ -86,7 +86,6 @@
             this.BtnLoadButton = new System.Windows.Forms.Button();
             this.btnRescan = new System.Windows.Forms.Button();
             this.BtnLoadHxC = new System.Windows.Forms.Button();
-            this.BtnHxC2 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -288,7 +287,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // optionsToolStripMenuItem
@@ -714,22 +713,11 @@
             this.BtnLoadHxC.UseVisualStyleBackColor = true;
             this.BtnLoadHxC.Click += new System.EventHandler(this.BtnLoadHxC_Click);
             // 
-            // BtnHxC2
-            // 
-            this.BtnHxC2.Location = new System.Drawing.Point(822, 120);
-            this.BtnHxC2.Name = "BtnHxC2";
-            this.BtnHxC2.Size = new System.Drawing.Size(88, 72);
-            this.BtnHxC2.TabIndex = 59;
-            this.BtnHxC2.Text = "Alt Load HxC";
-            this.BtnHxC2.UseVisualStyleBackColor = true;
-            this.BtnHxC2.Click += new System.EventHandler(this.BtnHxC2_Click);
-            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 569);
-            this.Controls.Add(this.BtnHxC2);
             this.Controls.Add(this.BtnLoadHxC);
             this.Controls.Add(this.btnRescan);
             this.Controls.Add(this.BtnLoadButton);
@@ -840,7 +828,6 @@
         public System.Windows.Forms.ComboBox cboDriveSelect;
         private System.Windows.Forms.Button btnRescan;
         private System.Windows.Forms.Button BtnLoadHxC;
-        private System.Windows.Forms.Button BtnHxC2;
     }
 }
 

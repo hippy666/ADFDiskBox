@@ -1618,7 +1618,11 @@ namespace ADFDiskBox
         {
             openFileDialog1.Title = "Pick a file to load";
             openFileDialog1.FileName = lblFileName.Text;
-            openFileDialog1.InitialDirectory = "C:\\";
+            
+
+            string path = Directory.GetCurrentDirectory();
+
+            openFileDialog1.InitialDirectory = path;
 
             //openFileDialog1.Filter = "pick file |*.adf;*.scp";
             openFileDialog1.Filter= "Pick An Image adf or scp|*.adf;*.scp;";
@@ -1662,10 +1666,6 @@ namespace ADFDiskBox
                     }
                 };
 
-                MessageBox.Show("HxC filename: "+StxtHxCFile);
-                MessageBox.Show("HxC Folder: "+StxtHxCFolder);
-                MessageBox.Show(string.Format("filename:{0} arguments:{1} ",StxtHxCFile,arg));
-
                 //prgProgressBar1.Value = 0;
 
                 proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
@@ -1702,7 +1702,7 @@ namespace ADFDiskBox
             }
         }
 
-        private void BtnHxC2_Click(object sender, EventArgs e)
+        /*private void BtnHxC2_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Pick a file to load";
             openFileDialog1.FileName = lblFileName.Text;
@@ -1782,7 +1782,7 @@ namespace ADFDiskBox
 
                 return;
             }
-        }
+        }*/
     
     }
     
