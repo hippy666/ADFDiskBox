@@ -403,13 +403,25 @@ namespace ADFDiskBox
             string[] defsstring = new string[]{
                     "If you want to use your own diskdefs file\n"+
                     " please include the following\n\n"+
-                            "disk amiga.amigados.plus\n"+
-                            "cyls = 82\n"+
-                                "    heads = 2\n"+
-                                "    tracks * amiga.amigados\n"+
-                                "        secs = 11\n"+
-                                "    end\n"+
-                             "end\n"
+                    "\n\n"+
+                "disk amiga.amigados\n"+
+                "cyls = 80\n"+
+                "    heads = 2\n"+
+                "    tracks * amiga.amigados\n"+
+                "        secs = 11\n"+
+                "    end\n"+
+                "end\n"+
+                "\n"+
+                "\n"+
+                "disk amiga.amigados.plus\n"+
+                "cyls = 82\n"+
+                "    heads = 2\n"+
+                "    tracks * amiga.amigados\n"+
+                "        secs = 11\n"+
+                "    end\n"+
+                "end\n"
+
+
             };
 
             string s = string.Join(",", defsstring);

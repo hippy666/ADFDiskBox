@@ -1019,8 +1019,8 @@ namespace ADFDiskBox
                     SaveINI(SINIPath);
 
 
-                    MessageBox.Show("Folder is: " + StxtHxCFolder);
-                    MessageBox.Show("File is : " + StxtHxCFile);
+                    //MessageBox.Show("Folder is: " + StxtHxCFolder);
+                    //MessageBox.Show("File is : " + StxtHxCFile);
 
                     string sMessage = string.Format("HxC software found at {0}", StxtHxCFile);
                     ErrorReporter(sMessage);

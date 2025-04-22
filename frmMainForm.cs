@@ -277,7 +277,7 @@ namespace ADFDiskBox
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] helpstring = new string[] {
-                "ADF Diskbox version 2.2 By John Brett"+"\n\n"+
+                "ADF Diskbox version 2.3 By John Brett"+"\n\n"+
                 "this is a gui frontend for the greasewesal v4 host tools."+ "\n\n"+
                 "\n\n" + "this program reads and writes amiga disks" + "\n\n"+
                 " using the greasewesal v4 hardware and host tools" + "\n\n"+
@@ -296,6 +296,15 @@ namespace ADFDiskBox
                 "\n\nIf you want to use your own diskdefs file\n" +
                 " please include the following\n\n" +
                 "\n\n"+
+                "disk amiga.amigados\n"+
+                "cyls = 80\n"+
+                "    heads = 2\n"+
+                "    tracks * amiga.amigados\n"+
+                "        secs = 11\n"+
+                "    end\n"+
+                "end\n"+
+                " \n"+
+                "\n"+
                 "disk amiga.amigados.plus\n" +
                 "cyls = 82\n" +
                 "    heads = 2\n" +
@@ -304,8 +313,8 @@ namespace ADFDiskBox
                 "    end\n" +
                 "end\n\n"+
                 "\n\n"+
-                "pick your number of tracks then disk type (adf for a plain disk,"+
-                "scp for a protected amigados and rawscp for a rearly protected)" + "\n\n"+
+                "pick your number of tracks then disk type (adf for a plain amigados disk,"+
+                "AmigadosSCP for a tricky amigados disk and scp for a non dos disk)" + "\n\n"+
                 "pick your read retries - for adf files only." + "\n\n"+
                 "then hit read from floppy disk or write to floppy disk" + "\n\n"+
                 " and follow the instructions." + "\n\n"+
