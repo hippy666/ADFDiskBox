@@ -305,10 +305,11 @@ namespace ADFDiskBox
                         cboDriveSelect.Text = settings[8];
                         TxtHxCPath.Text = settings[9];
                         TxtHxCFolder.Text = settings[10];
+                        CboRevs.Text = settings[11];
 
 
 
-                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, TxtHxCPath.Text,TxtHxCFolder);
+                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, TxtHxCPath.Text,TxtHxCFolder,CboRevs.Text);
 
                         //testing
                         //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
@@ -336,7 +337,7 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, TxtHxCPath.Text,TxtHxCFolder.Text);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, TxtHxCPath.Text,TxtHxCFolder.Text,CboRevs.Text);
                     //frmMainForm.frmMain.StxtDiskdefs = "trash";
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 
@@ -352,6 +353,7 @@ namespace ADFDiskBox
                     //
                     frmMainForm.frmMain.StxtHxCFolder = TxtHxCFolder.Text;
                     frmMainForm.frmMain.StxtHxCFile = TxtHxCPath.Text;
+                    frmMainForm.frmMain.CboRevs.Text = CboRevs.Text;
 
                     sw.WriteLine(settings);
 

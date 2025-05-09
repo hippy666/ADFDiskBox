@@ -182,7 +182,7 @@ namespace ADFDiskBox
                 string device;
                 device = "--device=" + cboComPort.Text;
                 frmMainForm.frmMain.cboComPort.Text = cboComPort.Text;
-                
+
                 string arg = "/K gw info " + device;
 
                 //////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -231,9 +231,16 @@ namespace ADFDiskBox
 
 
                 }
-                /////////////////////////////////////////////////////////////////////////////////////////////////////
 
             }
+
+
+            CboRevs.Text = frmMainForm.frmMain.CboRevs.Text;
+                
+            
+            /////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            
 
             
             // Load HxC File and path here..
@@ -657,6 +664,7 @@ namespace ADFDiskBox
 
             cboNumberOfDisks.Text = "2";
             cboDriveSelect.Text = "A";
+            CboRevs.Text = "5";
 
 
             FolderBrowserDialog folderDlg = new FolderBrowserDialog();
@@ -694,6 +702,48 @@ namespace ADFDiskBox
                 MessageBox.Show("Cant open that config file");
                 txtDiag.Text = "Cant open that config file";
             }
+
+            /*stuff to fix later on
+            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
+            folderDlg.ShowNewFolderButton = true;
+            folderDlg.ShowNewFolderButton = false;
+            folderDlg.SelectedPath = "C:\\";
+            folderDlg.Description = "Please Select the HxC Software Folder";
+            // Show the FolderBrowserDialog.  
+            DialogResult result = folderDlg.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //Environment.SpecialFolder root = folderDlg.RootFolder;
+
+                string exepath = folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
+
+
+                if (File.Exists(exepath))
+                {
+                    TxtHxCFolder.Text = folderDlg.SelectedPath;
+                    TxtHxCPath.Text = exepath;
+
+                    frmMainForm.frmMain.StxtHxCFolder = TxtHxCFolder.Text;
+                    frmMainForm.frmMain.StxtHxCFile = TxtHxCPath.Text;
+                    SaveINI(INIPath.Text);
+
+                    string sMessage = string.Format("HxC software found at {0}", exepath);
+                    ErrorReporter(sMessage);
+                }
+
+                else
+                {
+                    string sMessage = "folder does not contain HxC software please try again";
+                    ErrorReporter(sMessage);
+                }
+            }
+
+            else
+            {
+                string sMessage = "Invalid Folder please try again";
+                ErrorReporter(sMessage);
+            }*/
+
         }
 
         private void btnSaveSettings_Click(object sender, EventArgs e)

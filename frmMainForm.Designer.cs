@@ -86,6 +86,8 @@
             this.BtnLoadButton = new System.Windows.Forms.Button();
             this.btnRescan = new System.Windows.Forms.Button();
             this.BtnLoadHxC = new System.Windows.Forms.Button();
+            this.LblRevs = new System.Windows.Forms.Label();
+            this.CboRevs = new System.Windows.Forms.ComboBox();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -287,7 +289,7 @@
             this.toolsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.toolsToolStripMenuItem.Name = "toolsToolStripMenuItem";
-            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.toolsToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.toolsToolStripMenuItem.Text = "&Tools";
             // 
             // optionsToolStripMenuItem
@@ -373,9 +375,9 @@
             // 
             // btnGwinfo
             // 
-            this.btnGwinfo.Location = new System.Drawing.Point(699, 63);
+            this.btnGwinfo.Location = new System.Drawing.Point(730, 141);
             this.btnGwinfo.Name = "btnGwinfo";
-            this.btnGwinfo.Size = new System.Drawing.Size(87, 35);
+            this.btnGwinfo.Size = new System.Drawing.Size(87, 63);
             this.btnGwinfo.TabIndex = 19;
             this.btnGwinfo.Text = "Greaseweazle Info";
             this.btnGwinfo.UseVisualStyleBackColor = true;
@@ -705,7 +707,7 @@
             // 
             // BtnLoadHxC
             // 
-            this.BtnLoadHxC.Location = new System.Drawing.Point(699, 120);
+            this.BtnLoadHxC.Location = new System.Drawing.Point(827, 240);
             this.BtnLoadHxC.Name = "BtnLoadHxC";
             this.BtnLoadHxC.Size = new System.Drawing.Size(87, 72);
             this.BtnLoadHxC.TabIndex = 58;
@@ -713,11 +715,37 @@
             this.BtnLoadHxC.UseVisualStyleBackColor = true;
             this.BtnLoadHxC.Click += new System.EventHandler(this.BtnLoadHxC_Click);
             // 
+            // LblRevs
+            // 
+            this.LblRevs.AutoSize = true;
+            this.LblRevs.Location = new System.Drawing.Point(717, 46);
+            this.LblRevs.Name = "LblRevs";
+            this.LblRevs.Size = new System.Drawing.Size(111, 13);
+            this.LblRevs.TabIndex = 59;
+            this.LblRevs.Text = "Select Revs Per track";
+            // 
+            // CboRevs
+            // 
+            this.CboRevs.FormattingEnabled = true;
+            this.CboRevs.Items.AddRange(new object[] {
+            "1.1",
+            "3",
+            "5",
+            "9",
+            "25",
+            "50"});
+            this.CboRevs.Location = new System.Drawing.Point(720, 71);
+            this.CboRevs.Name = "CboRevs";
+            this.CboRevs.Size = new System.Drawing.Size(121, 21);
+            this.CboRevs.TabIndex = 60;
+            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 569);
+            this.Controls.Add(this.CboRevs);
+            this.Controls.Add(this.LblRevs);
             this.Controls.Add(this.BtnLoadHxC);
             this.Controls.Add(this.btnRescan);
             this.Controls.Add(this.BtnLoadButton);
@@ -828,6 +856,8 @@
         public System.Windows.Forms.ComboBox cboDriveSelect;
         private System.Windows.Forms.Button btnRescan;
         private System.Windows.Forms.Button BtnLoadHxC;
+        private System.Windows.Forms.Label LblRevs;
+        public System.Windows.Forms.ComboBox CboRevs;
     }
 }
 

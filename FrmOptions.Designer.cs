@@ -81,6 +81,8 @@ namespace ADFDiskBox
             this.btnHxCFolder = new System.Windows.Forms.Button();
             this.LblHxCFolder = new System.Windows.Forms.Label();
             this.TxtHxCFolder = new System.Windows.Forms.TextBox();
+            this.LblRevs = new System.Windows.Forms.Label();
+            this.CboRevs = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // lblComPort
@@ -670,11 +672,37 @@ namespace ADFDiskBox
             this.TxtHxCFolder.Size = new System.Drawing.Size(304, 20);
             this.TxtHxCFolder.TabIndex = 91;
             // 
+            // LblRevs
+            // 
+            this.LblRevs.AutoSize = true;
+            this.LblRevs.Location = new System.Drawing.Point(836, 24);
+            this.LblRevs.Name = "LblRevs";
+            this.LblRevs.Size = new System.Drawing.Size(111, 13);
+            this.LblRevs.TabIndex = 92;
+            this.LblRevs.Text = "Select Revs Per track";
+            // 
+            // CboRevs
+            // 
+            this.CboRevs.FormattingEnabled = true;
+            this.CboRevs.Items.AddRange(new object[] {
+            "1.1",
+            "3",
+            "5",
+            "9",
+            "25",
+            "50"});
+            this.CboRevs.Location = new System.Drawing.Point(839, 43);
+            this.CboRevs.Name = "CboRevs";
+            this.CboRevs.Size = new System.Drawing.Size(121, 21);
+            this.CboRevs.TabIndex = 93;
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 749);
+            this.Controls.Add(this.CboRevs);
+            this.Controls.Add(this.LblRevs);
             this.Controls.Add(this.TxtHxCFolder);
             this.Controls.Add(this.LblHxCFolder);
             this.Controls.Add(this.btnHxCFolder);
@@ -786,5 +814,7 @@ namespace ADFDiskBox
         private System.Windows.Forms.Button btnHxCFolder;
         private System.Windows.Forms.Label LblHxCFolder;
         private System.Windows.Forms.TextBox TxtHxCFolder;
+        private System.Windows.Forms.Label LblRevs;
+        private System.Windows.Forms.ComboBox CboRevs;
     }
 }

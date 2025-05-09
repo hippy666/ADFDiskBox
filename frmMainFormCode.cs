@@ -256,7 +256,7 @@ namespace ADFDiskBox
 
                 //MessageBox.Show(driveselect);
 
-                string arg = "/K " + "gw write " + device+" "+driveselect+" "+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + "\"";
+                string arg = "/K " + "gw write " + device+" "+driveselect+" "+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries +" "+"--revs="+CboRevs.Text+" "+ "\"" + filePath + "\"";
 
                 //MessageBox.Show(arg);
 
@@ -371,7 +371,7 @@ namespace ADFDiskBox
                 
                 //MessageBox.Show(driveselect);
 
-                string arg = "/K " + "gw read " + device + " "+driveselect+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                string arg = "/K " + "gw read " + device + " "+driveselect+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " +"--revs="+CboRevs.Text+" "+ "\"" + filePath + "\"";
 
 
                 //MessageBox.Show(arg);
@@ -492,7 +492,7 @@ namespace ADFDiskBox
                 string device;
                 device = "--device=" + cboComPort.Text;
 
-                string arg = "/K " + "gw write " +device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                string arg = "/K " + "gw write " +device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " "+"--revs=" + CboRevs.Text + " " + "\"" + filePath + "\"";
 
 
 
@@ -603,7 +603,7 @@ namespace ADFDiskBox
                 device = "--device=" + cboComPort.Text;
 
 
-                string arg = "/K " + "gw write " + device+" "+ driveselect +" "+"\"" + filePath + "\"";
+                string arg = "/K " + "gw write " + device+" "+ driveselect +" " + "--revs=" + CboRevs.Text + " "+"\"" + filePath + "\"";
                 //if doing scp you will need to add mydisk.scp::disktype=amiga directly
 
                 startInfo.Arguments = arg;
@@ -715,7 +715,7 @@ namespace ADFDiskBox
 
 
 
-                string arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs+ "\"" + diskformat + " " + NoOfRetries +" " + "\"" + filePath +"::disktype=amiga" + "\"";
+                string arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs+ "\"" + diskformat + " " + NoOfRetries +" " + "--revs=" + CboRevs.Text + " "+ "\"" + filePath +"::disktype=amiga" + "\"";
 
                 //MessageBox.Show(arg);
 
@@ -809,7 +809,7 @@ namespace ADFDiskBox
 
                 //string arg = "/K " + "gw read " + device + " " +driveselect+" "+"\"" + filePath + "::disktype=amiga" + "\"";
 
-                string arg = "/K " + "gw read " + device + " " + driveselect + " " + "\"" + filePath + "\"";
+                string arg = "/K " + "gw read " + device + " " + driveselect + " "+"--revs=" + CboRevs.Text + " " + "\"" + filePath + "\"";
 
                 //startInfo.Arguments = arg;
                 //MessageBox.Show(arg);
@@ -943,6 +943,7 @@ namespace ADFDiskBox
 
                 cboNumberOfDisks.Text = "5";
                 cboDriveSelect.Text = "A";
+                CboRevs.Text = "5";
 
                 // Load HxC File and path here..
                 // load hxc folders
@@ -1101,9 +1102,10 @@ namespace ADFDiskBox
 
                         StxtHxCFile = settings[9];
                         StxtHxCFolder = settings[10];
+                        CboRevs.Text = settings[11];
 
                        
-                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text,StxtHxCFile,StxtHxCFolder);
+                        string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text,StxtHxCFile,StxtHxCFolder,CboRevs.Text);
 
                         //testing
                         //MessageBox.Show(string.Format(" Load settings {0}", iniContents));
@@ -1133,7 +1135,7 @@ namespace ADFDiskBox
                     //sw.WriteLine(newline);
 
 
-                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, StxtHxCFile, StxtHxCFolder);
+                    string settings = string.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text, StxtHxCFile, StxtHxCFolder,CboRevs.Text);
 
                     //MessageBox.Show(string.Format(" SaveINI settings {0},{1},{2},{3},{4},{5},{6},{7},{8}", txtGwtext.Text, INIPath.Text, txtDiskdefs.Text, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text));
 
