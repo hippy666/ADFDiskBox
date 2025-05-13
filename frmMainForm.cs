@@ -1671,6 +1671,7 @@ namespace ADFDiskBox
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         CreateNoWindow = true
+                        
 
                     }
                 };
@@ -1683,11 +1684,15 @@ namespace ADFDiskBox
                 try
                 {
                     proc.Start();
+                    
                     //ChooserForm.m_ProcessId = proc.Id;
-
+                    //SendKeys.Send("%(H)");
+                    SendKeys.SendWait("%H");
 
                     proc.BeginErrorReadLine();
                     proc.BeginOutputReadLine();
+                   
+
 
                     //proc.WaitForExit();
                     proc.Close();
