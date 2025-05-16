@@ -24,9 +24,13 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>2</ApplicationRevision>
+    <SupportUrl>https://adfdiskbox.com</SupportUrl>
+    <ErrorReportUrl>https://adfdiskbox.com</ErrorReportUrl>
+    <ProductName>adfdiskbox</ProductName>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>2.4.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
