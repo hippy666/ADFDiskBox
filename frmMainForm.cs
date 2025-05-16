@@ -94,7 +94,7 @@ namespace ADFDiskBox
             
 
 
-            MessageBox.Show("ADF Diskbox version 2.3" + "\n\n" + "By John Brett"
+            MessageBox.Show("ADF Diskbox version 2.4" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2 and up" + "\n\n"
@@ -277,7 +277,7 @@ namespace ADFDiskBox
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] helpstring = new string[] {
-                "ADF Diskbox version 2.3 By John Brett"+"\n\n"+
+                "ADF Diskbox version 2.4 By John Brett"+"\n\n"+
                 "this is a gui frontend for the greasewesal v4 host tools."+ "\n\n"+
                 "\n\n" + "this program reads and writes amiga disks" + "\n\n"+
                 " using the greasewesal v4 hardware and host tools" + "\n\n"+
@@ -692,7 +692,7 @@ namespace ADFDiskBox
 
                 "MIT License"+ "\n\n" +
 
-                "Copyright(c) 2024 John Brett" + "\n\n" +
+                "Copyright(c) 2025 John Brett" + "\n\n" +
 
                 "Parts from GreasewesalGUI .NET Copyright(c) 2020 Don Mankin"+"\n\n"+
 
