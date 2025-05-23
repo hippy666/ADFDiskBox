@@ -83,6 +83,7 @@ namespace ADFDiskBox
             this.TxtHxCFolder = new System.Windows.Forms.TextBox();
             this.LblRevs = new System.Windows.Forms.Label();
             this.CboRevs = new System.Windows.Forms.ComboBox();
+            this.BtnEmergency = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblComPort
@@ -696,11 +697,22 @@ namespace ADFDiskBox
             this.CboRevs.Size = new System.Drawing.Size(121, 21);
             this.CboRevs.TabIndex = 93;
             // 
+            // BtnEmergency
+            // 
+            this.BtnEmergency.Location = new System.Drawing.Point(872, 157);
+            this.BtnEmergency.Name = "BtnEmergency";
+            this.BtnEmergency.Size = new System.Drawing.Size(75, 69);
+            this.BtnEmergency.TabIndex = 94;
+            this.BtnEmergency.Text = "Emergency Stop";
+            this.BtnEmergency.UseVisualStyleBackColor = true;
+            this.BtnEmergency.Click += new System.EventHandler(this.BtnEmergency_Click);
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 749);
+            this.Controls.Add(this.BtnEmergency);
             this.Controls.Add(this.CboRevs);
             this.Controls.Add(this.LblRevs);
             this.Controls.Add(this.TxtHxCFolder);
@@ -816,5 +828,6 @@ namespace ADFDiskBox
         private System.Windows.Forms.TextBox TxtHxCFolder;
         private System.Windows.Forms.Label LblRevs;
         private System.Windows.Forms.ComboBox CboRevs;
+        private System.Windows.Forms.Button BtnEmergency;
     }
 }

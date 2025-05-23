@@ -619,6 +619,7 @@ namespace ADFDiskBox
 
                     proc.BeginErrorReadLine();
                     proc.BeginOutputReadLine();
+                    
 
                     proc.Close();
                 }
@@ -703,24 +704,24 @@ namespace ADFDiskBox
                 txtDiag.Text = "Cant open that config file";
             }
 
-            /*stuff to fix later on
-            FolderBrowserDialog folderDlg = new FolderBrowserDialog();
-            folderDlg.ShowNewFolderButton = true;
-            folderDlg.ShowNewFolderButton = false;
-            folderDlg.SelectedPath = "C:\\";
-            folderDlg.Description = "Please Select the HxC Software Folder";
+            //stuff to fix later on
+            FolderBrowserDialog folderDlg1 = new FolderBrowserDialog();
+            folderDlg1.ShowNewFolderButton = true;
+            folderDlg1.ShowNewFolderButton = false;
+            folderDlg1.SelectedPath = "C:\\";
+            folderDlg1.Description = "Please Select the HxC Software Folder";
             // Show the FolderBrowserDialog.  
-            DialogResult result = folderDlg.ShowDialog();
-            if (result == DialogResult.OK)
+            DialogResult result2 = folderDlg1.ShowDialog();
+            if (result2 == DialogResult.OK)
             {
                 //Environment.SpecialFolder root = folderDlg.RootFolder;
 
-                string exepath = folderDlg.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
+                string exepath = folderDlg1.SelectedPath + "\\" + "HxCFloppyEmulator.exe";
 
 
                 if (File.Exists(exepath))
                 {
-                    TxtHxCFolder.Text = folderDlg.SelectedPath;
+                    TxtHxCFolder.Text = folderDlg1.SelectedPath;
                     TxtHxCPath.Text = exepath;
 
                     frmMainForm.frmMain.StxtHxCFolder = TxtHxCFolder.Text;
@@ -742,7 +743,7 @@ namespace ADFDiskBox
             {
                 string sMessage = "Invalid Folder please try again";
                 ErrorReporter(sMessage);
-            }*/
+            }
 
         }
 
@@ -941,6 +942,11 @@ namespace ADFDiskBox
 
                 return ("blank");
             }
+        }
+
+        private void BtnEmergency_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
