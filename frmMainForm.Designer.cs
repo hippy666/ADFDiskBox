@@ -88,6 +88,7 @@
             this.BtnLoadHxC = new System.Windows.Forms.Button();
             this.LblRevs = new System.Windows.Forms.Label();
             this.CboRevs = new System.Windows.Forms.ComboBox();
+            this.BtnEmergency = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -739,11 +740,22 @@
             this.CboRevs.Size = new System.Drawing.Size(121, 21);
             this.CboRevs.TabIndex = 60;
             // 
+            // BtnEmergency
+            // 
+            this.BtnEmergency.Location = new System.Drawing.Point(839, 146);
+            this.BtnEmergency.Name = "BtnEmergency";
+            this.BtnEmergency.Size = new System.Drawing.Size(75, 58);
+            this.BtnEmergency.TabIndex = 61;
+            this.BtnEmergency.Text = "Emergency Stop";
+            this.BtnEmergency.UseVisualStyleBackColor = true;
+            this.BtnEmergency.Click += new System.EventHandler(this.BtnEmergency_Click);
+            // 
             // frmMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(938, 569);
+            this.Controls.Add(this.BtnEmergency);
             this.Controls.Add(this.CboRevs);
             this.Controls.Add(this.LblRevs);
             this.Controls.Add(this.BtnLoadHxC);
@@ -858,6 +870,7 @@
         private System.Windows.Forms.Button BtnLoadHxC;
         private System.Windows.Forms.Label LblRevs;
         public System.Windows.Forms.ComboBox CboRevs;
+        private System.Windows.Forms.Button BtnEmergency;
     }
 }
 

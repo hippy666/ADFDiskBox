@@ -94,7 +94,7 @@ namespace ADFDiskBox
             
 
 
-            MessageBox.Show("ADF Diskbox version 2.4" + "\n\n" + "By John Brett"
+            MessageBox.Show("ADF Diskbox version 2.5" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2 and up" + "\n\n"
@@ -277,7 +277,7 @@ namespace ADFDiskBox
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] helpstring = new string[] {
-                "ADF Diskbox version 2.4 By John Brett"+"\n\n"+
+                "ADF Diskbox version 2.5 By John Brett"+"\n\n"+
                 "this is a gui frontend for the greasewesal v4 host tools."+ "\n\n"+
                 "\n\n" + "this program reads and writes amiga disks" + "\n\n"+
                 " using the greasewesal v4 hardware and host tools" + "\n\n"+
@@ -1716,6 +1716,11 @@ namespace ADFDiskBox
             }
         }
 
+        private void BtnEmergency_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         /*private void BtnHxC2_Click(object sender, EventArgs e)
         {
             openFileDialog1.Title = "Pick a file to load";
@@ -1797,7 +1802,7 @@ namespace ADFDiskBox
                 return;
             }
         }*/
-    
+
     }
     
 }
