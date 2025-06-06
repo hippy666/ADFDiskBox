@@ -946,7 +946,13 @@ namespace ADFDiskBox
 
         private void BtnEmergency_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Process[] GWprocess = Process.GetProcessesByName("gw");
+            foreach (Process GWP in GWprocess)
+            {
+                GWP.Kill();
+                GWP.WaitForExit();
+                GWP.Dispose();
+            }
         }
     }
 }
