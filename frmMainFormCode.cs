@@ -410,6 +410,7 @@ namespace ADFDiskBox
                     proc.BeginOutputReadLine();
 
                     proc.Close();
+                    
                 }
 
                 catch (Exception error)
@@ -424,6 +425,7 @@ namespace ADFDiskBox
                 string sMessage="could not save That adf try again";
                 ErrorReporter(sMessage);
             }
+
         }
                 
 
