@@ -168,6 +168,7 @@ namespace ADFDiskBox
 
                     //proc.WaitForExit();
                     proc.Close();
+                    
                 }
 
                 catch (Exception error)
@@ -179,7 +180,7 @@ namespace ADFDiskBox
 
                 }
                 /////////////////////////////////////////////////////////////////////////////////////////////////////
-
+                
             }
 
 
@@ -431,6 +432,7 @@ namespace ADFDiskBox
 
                 //proc.WaitForExit();
                 proc.Close();
+                
             }
 
             catch (Exception error)
@@ -1720,6 +1722,17 @@ namespace ADFDiskBox
         {
 
             Process[] GWprocess = Process.GetProcessesByName("gw");
+            foreach (Process GWP in GWprocess)
+            {
+                GWP.Kill();
+                GWP.WaitForExit();
+                GWP.Dispose();
+            }
+        }
+
+        private void KillCMD()
+        {
+            Process [] GWprocess = Process.GetProcessesByName("CMD");
             foreach (Process GWP in GWprocess)
             {
                 GWP.Kill();
