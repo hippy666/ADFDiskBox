@@ -84,6 +84,7 @@ namespace ADFDiskBox
             this.LblRevs = new System.Windows.Forms.Label();
             this.CboRevs = new System.Windows.Forms.ComboBox();
             this.BtnEmergency = new System.Windows.Forms.Button();
+            this.BtnHxCTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblComPort
@@ -707,11 +708,22 @@ namespace ADFDiskBox
             this.BtnEmergency.UseVisualStyleBackColor = true;
             this.BtnEmergency.Click += new System.EventHandler(this.BtnEmergency_Click);
             // 
+            // BtnHxCTest
+            // 
+            this.BtnHxCTest.Location = new System.Drawing.Point(872, 245);
+            this.BtnHxCTest.Name = "BtnHxCTest";
+            this.BtnHxCTest.Size = new System.Drawing.Size(75, 71);
+            this.BtnHxCTest.TabIndex = 95;
+            this.BtnHxCTest.Text = "HxC TestButton";
+            this.BtnHxCTest.UseVisualStyleBackColor = true;
+            this.BtnHxCTest.Click += new System.EventHandler(this.BtnHxCTest_Click);
+            // 
             // FrmOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 749);
+            this.Controls.Add(this.BtnHxCTest);
             this.Controls.Add(this.BtnEmergency);
             this.Controls.Add(this.CboRevs);
             this.Controls.Add(this.LblRevs);
@@ -829,5 +841,6 @@ namespace ADFDiskBox
         private System.Windows.Forms.Label LblRevs;
         private System.Windows.Forms.ComboBox CboRevs;
         private System.Windows.Forms.Button BtnEmergency;
+        private System.Windows.Forms.Button BtnHxCTest;
     }
 }

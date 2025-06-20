@@ -129,7 +129,7 @@ namespace ADFDiskBox
                 string device;
                 device = "--device=" + cboComPort.Text;
 
-                string arg = "/K gw info " + device;
+                string arg = "/C gw info " + device;
 
                 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -338,9 +338,9 @@ namespace ADFDiskBox
             */
 
             // create the command console
-            //frmForm1.createCmdConsole("/K "+"echo hello");
-            //frmForm1.createCmdConsole("/K " + "\"" + commandline + "\"");
-            //frmForm1.createCmdConsole("/K " + "\"" + txtInfoCommandLine.Text + "\"");
+            //frmForm1.createCmdConsole("/C "+"echo hello");
+            //frmForm1.createCmdConsole("/C " + "\"" + commandline + "\"");
+            //frmForm1.createCmdConsole("/C " + "\"" + txtInfoCommandLine.Text + "\"");
         }
         #endregion
 
@@ -394,7 +394,7 @@ namespace ADFDiskBox
             string device;
             device = "--device=" + cboComPort.Text;
 
-            string arg = "/K gw info " + device;
+            string arg = "/C gw info " + device;
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -956,16 +956,16 @@ namespace ADFDiskBox
                         switch (selected)
                         {
                             case "AmigaDos":
-                                arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                                arg = "/C " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
                                 break;
                             case "AmigaDosSCP":
-                                arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .scp" + "::disktype=amiga" + "\"";
+                                arg = "/C " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .scp" + "::disktype=amiga" + "\"";
                                 break;
                             case "SCP":
-                                arg = "/K " + "gw read " + device + " " + driveselect + " " + "\"" + filePath + " Disk " + i + " .scp" + "\"";
+                                arg = "/C " + "gw read " + device + " " + driveselect + " " + "\"" + filePath + " Disk " + i + " .scp" + "\"";
                                 break;
                             default:
-                                arg = "/K " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                                arg = "/C " + "gw read " + device + " " + driveselect + " " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + " Disk " + i + " .adf" + "\"";
                                 break;
                         }
 
@@ -973,10 +973,10 @@ namespace ADFDiskBox
                         MessageBox.Show(string.Format("Please Wait for disk activity to finish then Insert disk {0}", i));
 
                         // original
-                        //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                        //string arg = "/C " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
-                        //string arg = "/K " + "gw read " + device + " " + driveselect + " "+ " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + " Disk " + i + " .adf" + "\"";
+                        //string arg = "/C " + "gw read " + device + " " + driveselect + " "+ " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + " Disk " + i + " .adf" + "\"";
 
 
                         //startInfo.Arguments = arg;
@@ -1093,7 +1093,7 @@ namespace ADFDiskBox
 
                     // insert process stuff
 
-                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
+                    string arg = "/C " + "gw convert " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
 
                     txtDiag.Text = arg;
 
@@ -1180,7 +1180,7 @@ namespace ADFDiskBox
 
                     // insert process stuff
 
-                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
+                    string arg = "/C " + "gw convert " + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
 
                     //MessageBox.Show(arg);
                     txtDiag.Text = arg;
@@ -1415,25 +1415,25 @@ namespace ADFDiskBox
                         switch (selected)
                         {
                             case "AmigaDos":
-                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                arg = "/C " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
                             case "AmigaDosSCP":
-                                arg = "/K " + "gw write " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                arg = "/C " + "gw write " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
                             case "SCP":
-                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "\"" + filePath + "\"";
+                                arg = "/C " + "gw write " + device + " " + driveselect + " " + "\"" + filePath + "\"";
                                 break;
                             default:
-                                arg = "/K " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                                arg = "/C " + "gw write " + device + " " + driveselect + " " + "--diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
                                 break;
                         }
 
 
                         // original
-                        //string arg = "/K " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                        //string arg = "/C " + "gw read " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
-                        //string arg = "/K " + "gw write " + device + " " + driveselect + " "+"--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
+                        //string arg = "/C " + "gw write " + device + " " + driveselect + " "+"--diskdefs " + "\"" + txtDiskdefs.Text + "\"" + diskformat + " " + NoOfRetries + " " + "\"" + filePath + "\"";
 
 
                         //startInfo.Arguments = arg;
@@ -1534,7 +1534,7 @@ namespace ADFDiskBox
             string device;
             device = "--device=" + cboComPort.Text;
 
-            string arg = "/K gw update " + device;
+            string arg = "/C gw update " + device;
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -1647,7 +1647,7 @@ namespace ADFDiskBox
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string arg = " \"" + openFileDialog1.FileName + "\"";
+                string arg =  "\"" + openFileDialog1.FileName + "\"";
 
                 //string programCall = "HxCFloppyEmulator.exe";
 
@@ -1689,7 +1689,7 @@ namespace ADFDiskBox
                     
                     //ChooserForm.m_ProcessId = proc.Id;
                     //SendKeys.Send("%(H)");
-                    SendKeys.SendWait("%H");
+                    //SendKeys.SendWait("%H");
 
                     proc.BeginErrorReadLine();
                     proc.BeginOutputReadLine();
@@ -1768,7 +1768,7 @@ namespace ADFDiskBox
 
                 //MessageBox.Show(driveselect);
 
-                string arg = " /K " + StxtHxCFile+ " "+"C:\\temp\\temp.adf";
+                string arg = " /C " + StxtHxCFile+ " "+"C:\\temp\\temp.adf";
 
                 MessageBox.Show("Arguments" +arg);
 

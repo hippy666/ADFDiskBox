@@ -256,7 +256,7 @@ namespace ADFDiskBox
 
                 //MessageBox.Show(driveselect);
 
-                string arg = "/K " + "gw write " + device+" "+driveselect+" "+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + "\"";
+                string arg = "/C " + "gw write " + device+" "+driveselect+" "+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries +" "+ "\"" + filePath + "\"";
 
                 //MessageBox.Show(arg);
 
@@ -371,7 +371,7 @@ namespace ADFDiskBox
                 
                 //MessageBox.Show(driveselect);
 
-                string arg = "/K " + "gw read " + device + " "+driveselect+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " +"--revs="+CboRevs.Text+" "+ "\"" + filePath + "\"";
+                string arg = "/C " + "gw read " + device + " "+driveselect+" --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " " +"--revs="+CboRevs.Text+" "+ "\"" + filePath + "\"";
 
 
                 //MessageBox.Show(arg);
@@ -494,7 +494,7 @@ namespace ADFDiskBox
                 string device;
                 device = "--device=" + cboComPort.Text;
 
-                string arg = "/K " + "gw write " +device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " "+ "\"" + filePath + "\"";
+                string arg = "/C " + "gw write " +device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs + "\"" + diskformat + " " + NoOfRetries + " "+ "\"" + filePath + "\"";
 
 
 
@@ -599,13 +599,13 @@ namespace ADFDiskBox
                 //MessageBox.Show(driveselect);
 
                 // below for raw scp....
-                //string arg = "/K " + "gw write " + "\"" + filePath + "::disktype=amiga" + "\"";
+                //string arg = "/C " + "gw write " + "\"" + filePath + "::disktype=amiga" + "\"";
 
                 string device;
                 device = "--device=" + cboComPort.Text;
 
 
-                string arg = "/K " + "gw write " + device+" "+ driveselect + " "+"\"" + filePath + "\"";
+                string arg = "/C " + "gw write " + device+" "+ driveselect + " "+"\"" + filePath + "\"";
                 //if doing scp you will need to add mydisk.scp::disktype=amiga directly
 
                 startInfo.Arguments = arg;
@@ -717,7 +717,7 @@ namespace ADFDiskBox
 
 
 
-                string arg = "/K " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs+ "\"" + diskformat + " " + NoOfRetries +" " + "--revs=" + CboRevs.Text + " "+ "\"" + filePath +"::disktype=amiga" + "\"";
+                string arg = "/C " + "gw read " + device + " " + driveselect + " --diskdefs " + "\"" + StxtDiskdefs+ "\"" + diskformat + " " + NoOfRetries +" " + "--revs=" + CboRevs.Text + " "+ "\"" + filePath +"::disktype=amiga" + "\"";
 
                 //MessageBox.Show(arg);
 
@@ -809,9 +809,9 @@ namespace ADFDiskBox
                 string device;
                 device = "--device=" + cboComPort.Text;
 
-                //string arg = "/K " + "gw read " + device + " " +driveselect+" "+"\"" + filePath + "::disktype=amiga" + "\"";
+                //string arg = "/C " + "gw read " + device + " " +driveselect+" "+"\"" + filePath + "::disktype=amiga" + "\"";
 
-                string arg = "/K " + "gw read " + device + " " + driveselect + " "+"--revs=" + CboRevs.Text + " " + "\"" + filePath + "\"";
+                string arg = "/C " + "gw read " + device + " " + driveselect + " "+"--revs=" + CboRevs.Text + " " + "\"" + filePath + "\"";
 
                 //startInfo.Arguments = arg;
                 //MessageBox.Show(arg);

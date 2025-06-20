@@ -729,7 +729,7 @@
             // 
             this.CboRevs.FormattingEnabled = true;
             this.CboRevs.Items.AddRange(new object[] {
-            "1.1",
+            "1",
             "3",
             "5",
             "9",

@@ -76,7 +76,7 @@ namespace ADFDiskBox
             string device;
             device = "--device=" + cboComPort.Text;
 
-            string arg = "/K gw info " + device;
+            string arg = "/C gw info " + device;
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -183,7 +183,7 @@ namespace ADFDiskBox
                 device = "--device=" + cboComPort.Text;
                 frmMainForm.frmMain.cboComPort.Text = cboComPort.Text;
 
-                string arg = "/K gw info " + device;
+                string arg = "/C gw info " + device;
 
                 //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -271,7 +271,7 @@ namespace ADFDiskBox
             string device;
             device = "--device=" + cboComPort.Text;
 
-            string arg = "/K gw update " + device;
+            string arg = "/C gw update " + device;
 
             //////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -502,7 +502,7 @@ namespace ADFDiskBox
 
                     // insert process stuff
 
-                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
+                    string arg = "/C " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
 
                     //MessageBox.Show(arg);
                     txtDiag.Text = arg;
@@ -588,7 +588,7 @@ namespace ADFDiskBox
 
                     // insert process stuff
 
-                    string arg = "/K " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
+                    string arg = "/C " + "gw convert " + " --diskdefs " + "\"" + txtDiskdefs.Text + "\"" + " " + "\"" + filePathin + "\"" + " " + "\"" + filePathout + "\"";
 
                     txtDiag.Text = arg;
 
@@ -952,6 +952,101 @@ namespace ADFDiskBox
                 GWP.Kill();
                 GWP.WaitForExit();
                 GWP.Dispose();
+            }
+        }
+
+        private void BtnHxCTest_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.Title = "Pick a file to load";
+            openFileDialog1.FileName = lblFileName.Text;
+
+
+            string path = Directory.GetCurrentDirectory();
+
+            openFileDialog1.InitialDirectory = path;
+
+            //openFileDialog1.Filter = "pick file |*.adf;*.scp";
+            openFileDialog1.Filter = "Pick An Image adf or scp|*.adf;*.scp;";
+
+            // testing.....
+            openFileDialog1.ShowReadOnly = true;
+            openFileDialog1.ReadOnlyChecked = true;
+            //
+
+
+            openFileDialog1.RestoreDirectory = true;
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                //string arg = "\"" + openFileDialog1.FileName + "\"";
+                string arg = "/C " + frmMainForm.frmMain.StxtHxCFolder + " \"" + openFileDialog1.FileName + "\"";
+                //string programCall = "HxCFloppyEmulator.exe";
+
+                //MessageBox.Show(arg);
+
+                ClearlbOutput();
+                ClearlbErrorOutput();
+
+                //MessageBox.Show(string.Format("file {0} " + StxtHxCFile));
+                //MessageBox.Show(string.Format("folder {0} " +  StxtHxCFolder));
+
+                var proc = new Process
+                {
+                    EnableRaisingEvents = true,
+                    StartInfo = new ProcessStartInfo
+                    {
+                        
+                        WorkingDirectory = frmMainForm.frmMain.StxtHxCFolder,
+                        Arguments = arg,
+
+                        //FileName = frmMainForm.frmMain.StxtHxCFile,
+                        FileName="C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        CreateNoWindow = true
+
+
+                    }
+                };
+
+                //prgProgressBar1.Value = 0;
+
+                proc.ErrorDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+                proc.OutputDataReceived += new DataReceivedEventHandler(process_OutputDataReceived);
+
+                try
+                {
+                    proc.Start();
+
+                    //ChooserForm.m_ProcessId = proc.Id;
+                    //SendKeys.Send("%(H)");
+                    //SendKeys.SendWait("%H");
+
+                    proc.BeginErrorReadLine();
+                    proc.BeginOutputReadLine();
+
+
+
+                    //proc.WaitForExit();
+                    proc.Close();
+                }
+
+                catch (Exception error)
+                {
+                    string sMessage = error.Message.ToString();
+                    ErrorReporter(sMessage);
+                }
+            }
+
+
+
+            else
+            {
+                string sMessage = "could not load the program";
+                ErrorReporter(sMessage);
+
+                return;
             }
         }
     }
