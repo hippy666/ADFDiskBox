@@ -978,7 +978,11 @@ namespace ADFDiskBox
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 //string arg = "\"" + openFileDialog1.FileName + "\"";
-                string arg = "/C " + frmMainForm.frmMain.StxtHxCFolder + " \"" + openFileDialog1.FileName + "\"";
+
+                string arg = "/C " + frmMainForm.frmMain.StxtHxCFile +" "+ "\"" + openFileDialog1.FileName + "\"";
+                
+                //string arg = "/C " + frmMainForm.frmMain.StxtHxCFile + " "+"C:\\temp\\trash.adf";
+
                 //string programCall = "HxCFloppyEmulator.exe";
 
                 //MessageBox.Show(arg);

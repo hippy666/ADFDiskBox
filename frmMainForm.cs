@@ -94,7 +94,7 @@ namespace ADFDiskBox
             
 
 
-            MessageBox.Show("ADF Diskbox version 2.5" + "\n\n" + "By John Brett"
+            MessageBox.Show("ADF Diskbox version 2.6" + "\n\n" + "By John Brett"
             + "\n\n" + "this program reads and writes amiga disks"
             + " using the greasewesal v4 hardware and host tools" + "\n\n"
             + "Tested on host tools 1.16.2 and up" + "\n\n"
@@ -278,7 +278,7 @@ namespace ADFDiskBox
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             string[] helpstring = new string[] {
-                "ADF Diskbox version 2.5 By John Brett"+"\n\n"+
+                "ADF Diskbox version 2.6 By John Brett"+"\n\n"+
                 "this is a gui frontend for the greasewesal v4 host tools."+ "\n\n"+
                 "\n\n" + "this program reads and writes amiga disks" + "\n\n"+
                 " using the greasewesal v4 hardware and host tools" + "\n\n"+
@@ -1627,27 +1627,33 @@ namespace ADFDiskBox
 
         private void BtnLoadHxC_Click(object sender, EventArgs e)
         {
+
+            ///////////////////////////////////////////
             openFileDialog1.Title = "Pick a file to load";
             openFileDialog1.FileName = lblFileName.Text;
-            
+
 
             string path = Directory.GetCurrentDirectory();
 
             openFileDialog1.InitialDirectory = path;
 
             //openFileDialog1.Filter = "pick file |*.adf;*.scp";
-            openFileDialog1.Filter= "Pick An Image adf or scp|*.adf;*.scp;";
+            openFileDialog1.Filter = "Pick An Image adf or scp|*.adf;*.scp;";
 
             // testing.....
             openFileDialog1.ShowReadOnly = true;
             openFileDialog1.ReadOnlyChecked = true;
             //
-            
-            
+
+
             openFileDialog1.RestoreDirectory = true;
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                string arg =  "\"" + openFileDialog1.FileName + "\"";
+                //string arg = "\"" + openFileDialog1.FileName + "\"";
+
+                string arg = "/C " + frmMainForm.frmMain.StxtHxCFile + " " + "\"" + openFileDialog1.FileName + "\"";
+
+                //string arg = "/C " + frmMainForm.frmMain.StxtHxCFile + " "+"C:\\temp\\trash.adf";
 
                 //string programCall = "HxCFloppyEmulator.exe";
 
@@ -1664,16 +1670,18 @@ namespace ADFDiskBox
                     EnableRaisingEvents = true,
                     StartInfo = new ProcessStartInfo
                     {
-                        WorkingDirectory = StxtHxCFolder,
+
+                        WorkingDirectory = frmMainForm.frmMain.StxtHxCFolder,
                         Arguments = arg,
-                        
-                        FileName=StxtHxCFile,
+
+                        //FileName = frmMainForm.frmMain.StxtHxCFile,
+                        FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
 
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         CreateNoWindow = true
-                        
+
 
                     }
                 };
@@ -1686,14 +1694,14 @@ namespace ADFDiskBox
                 try
                 {
                     proc.Start();
-                    
+
                     //ChooserForm.m_ProcessId = proc.Id;
                     //SendKeys.Send("%(H)");
                     //SendKeys.SendWait("%H");
 
                     proc.BeginErrorReadLine();
                     proc.BeginOutputReadLine();
-                   
+
 
 
                     //proc.WaitForExit();
@@ -1707,7 +1715,7 @@ namespace ADFDiskBox
                 }
             }
 
-        
+
 
             else
             {
@@ -1716,6 +1724,8 @@ namespace ADFDiskBox
 
                 return;
             }
+            ///////////////////////////////////////////
+            
         }
 
         private void BtnEmergency_Click(object sender, EventArgs e)

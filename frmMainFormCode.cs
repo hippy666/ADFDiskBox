@@ -953,7 +953,7 @@ namespace ADFDiskBox
                 //StxtHxCFile = "C:\\file";
 
                 StxtHxCFolder = LoadHxCFolder();
-                //StxtHxCFile = LoadHxCpath();
+                StxtHxCFile = LoadHxCpath();
 
                 FolderBrowserDialog folderDlg = new FolderBrowserDialog();
                 folderDlg.ShowNewFolderButton = true;
@@ -1123,7 +1123,7 @@ namespace ADFDiskBox
                 
                 string sMessage = error.Message.ToString();
                 ErrorReporter(sMessage);
-                ErrorReporter("this is the crashing point");
+                ErrorReporter("could not load the ini file!");
             }
         }
 
