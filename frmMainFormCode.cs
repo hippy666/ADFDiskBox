@@ -960,9 +960,13 @@ namespace ADFDiskBox
                 folderDlg.ShowNewFolderButton = false;
                 folderDlg.Description = "Please Select the greasewesal Folder\nShould Work With Any version\n" +
                 "That recognises the diskdefs.cfg file\n";
-                // Show the FolderBrowserDialog.  
-                DialogResult result = folderDlg.ShowDialog();
+                // Show the FolderBrowserDialog.
+               
 
+                DialogResult result = folderDlg.ShowDialog();
+                
+                //DialogResult result;
+                //result = folderDlg.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
