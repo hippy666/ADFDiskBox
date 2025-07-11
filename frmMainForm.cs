@@ -26,6 +26,7 @@ using System.Collections;
 namespace ADFDiskBox
 
 {
+
     public partial class frmMainForm : Form
 
     {
@@ -1651,7 +1652,9 @@ namespace ADFDiskBox
             {
                 //string arg = "\"" + openFileDialog1.FileName + "\"";
 
-                string arg = "/C " + frmMainForm.frmMain.StxtHxCFile + " " + "\"" + openFileDialog1.FileName + "\"";
+                //***string arg = "/C " + frmMainForm.frmMain.StxtHxCFile + " " + "\"" + openFileDialog1.FileName + "\"";
+
+                string arg =  frmMainForm.frmMain.StxtHxCFile + " " + "\"" + openFileDialog1.FileName + "\"";
 
                 //string arg = "/C " + frmMainForm.frmMain.StxtHxCFile + " "+"C:\\temp\\trash.adf";
 
@@ -1662,7 +1665,7 @@ namespace ADFDiskBox
                 ClearlbOutput();
                 ClearlbErrorOutput();
 
-                //MessageBox.Show(string.Format("file {0} " + StxtHxCFile));
+                MessageBox.Show(string.Format("file {0} " + StxtHxCFile));
                 //MessageBox.Show(string.Format("folder {0} " +  StxtHxCFolder));
 
                 var proc = new Process
@@ -1671,13 +1674,15 @@ namespace ADFDiskBox
                     StartInfo = new ProcessStartInfo
                     {
 
-                        WorkingDirectory = frmMainForm.frmMain.StxtHxCFolder,
+                        //WorkingDirectory = frmMainForm.frmMain.StxtHxCFolder,
+                        WorkingDirectory= "C:\\HxCFloppyEmulator_soft\\HxCFloppyEmulator_Software\\Windows_x64",
                         Arguments = arg,
 
                         //FileName = frmMainForm.frmMain.StxtHxCFile,
-                        FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                        //FileName = "C:\\WINDOWS\\SYSTEM32\\cmd.exe",
+                        FileName= "C:\\HxCFloppyEmulator_soft\\HxCFloppyEmulator_Software\\Windows_x64\\HxCFloppyEmulator.exe",
 
-                        UseShellExecute = false,
+                         UseShellExecute = false,
                         RedirectStandardOutput = true,
                         RedirectStandardError = true,
                         CreateNoWindow = true
@@ -1706,6 +1711,8 @@ namespace ADFDiskBox
 
                     //proc.WaitForExit();
                     proc.Close();
+                    ErrorReporter("HxCFloppyEmulator is complaining that it's cant find it's dll");
+                    ErrorReporter("dont panic it runs fine without it");
                 }
 
                 catch (Exception error)

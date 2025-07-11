@@ -1110,7 +1110,8 @@ namespace ADFDiskBox
                         StxtHxCFolder = settings[10];
                         CboRevs.Text = settings[11];
 
-                       
+                        
+
                         string iniContents = string.Format("loading ini contents {0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11}", StxtGwtext, SINIPath, StxtDiskdefs, lblFileName.Text, cboTrackCombo.Text, cboType.Text, cboRetries.Text, cboNumberOfDisks.Text, cboDriveSelect.Text,StxtHxCFile,StxtHxCFolder,CboRevs.Text);
 
                         //testing
@@ -1119,6 +1120,8 @@ namespace ADFDiskBox
                         ErrorReporter(esettings);
                     }
                     sr.Close();
+
+                    //MessageBox.Show(string.Format("hxc folder working {0} " + StxtHxCFolder));
                 }
             }
 
@@ -1129,6 +1132,8 @@ namespace ADFDiskBox
                 ErrorReporter(sMessage);
                 ErrorReporter("could not load the ini file!");
             }
+
+            
         }
 
         public void SaveINI(string path)
