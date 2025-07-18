@@ -1165,6 +1165,7 @@ namespace ADFDiskBox
             {
                 string sMessage = error.Message.ToString();
                 ErrorReporter(sMessage);
+                ErrorReporter("cant save ini file");
             }
         }
 
